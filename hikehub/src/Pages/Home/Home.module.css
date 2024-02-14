@@ -1,0 +1,24 @@
+.bodyContainer{
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6em;
+    /* border: 1px solid red; */
+}
+
+.upcomingSection{
+    display: flex;
+    flex-direction: column;
+    gap:3em ;
+}
+.upcoming{
+    /* border: 1px solid red; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    /* overflow: scroll; */
+gap: 3em;
+
+}

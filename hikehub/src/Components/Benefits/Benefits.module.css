@@ -1,0 +1,42 @@
+.benefitsHolder{
+    /* border :2px solid green; */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap:2em;
+    height: 30em;
+}
+
+.benefits{
+    display: flex;
+    justify-content: space-between;
+    height: 85%;
+    
+}
+.benefit{
+    /* border: 2px solid red; */
+    width: 31%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.benefit>img{
+    width: 10em;
+    /* height: 12em; */
+    /* border: 1px solid red; */
+    height: 50%;
+}
+.benefit>h3{
+font-size: 1.8em;
+height: 15%;
+}
+.benefit>p{
+    /* border: 1px solid rebeccapurple; */
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 2;
+    height: 35%;
+
+}

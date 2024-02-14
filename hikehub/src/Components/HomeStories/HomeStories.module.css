@@ -1,0 +1,77 @@
+.homeStory{
+    /* border: 2px solid red; */
+    height: 33em;
+    border-radius: var(--border-radius);
+    background-color: var(--dark-green);
+    display: flex;
+    
+}
+
+.storySection{
+    width: 50%;
+    height: 100%;
+    /* border: 2px solid white; */
+}
+
+.storyImages{
+    display: grid;
+    grid-template-areas: 'a b'
+    'a c';
+
+}
+
+.first , .second , .third{
+    background-size: cover;
+background-position: center center;
+
+}
+.first{
+    grid-area: a;
+    border-top-left-radius: var(--border-radius) ;
+    border-bottom-left-radius: var(--border-radius) ;
+    background-image: url( '../../assets/images/story1.jpeg');
+    
+}
+.second{
+    grid-area: b;
+    background-image: url( '../../assets/images/story2.jpeg');
+
+    
+    
+
+
+}
+.third{
+    grid-area: c;
+    background-image: url( '../../assets/images/story3.jpeg');
+}
+
+.storiesImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.storyAction{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10%;
+    padding: 2em;
+}
+.storyAction>h2{
+    font-size: 2.5em;
+}
+.storyAction>p{
+    font-size: 1.8em;
+    font-weight: 300;
+}
+.storyAction>button{
+    font-size: 1.3em;
+    border-radius: var(--border-radius);
+    border: none;
+    background-color: white;
+    color: var(--dark-green);
+    width: 8em;
+    padding:10px;
+}

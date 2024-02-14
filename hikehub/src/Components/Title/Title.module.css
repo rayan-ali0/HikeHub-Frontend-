@@ -1,0 +1,19 @@
+.titleHolder {
+    width: 100%;
+    color: var(--dark-green);
+    display: flex;
+    align-items: center;
+    gap: 15px
+    
+}
+
+.lineTitle {
+    width: 3em;
+    height: 0.7em;
+    display: inline-block;
+    background-color: var(--dark-green);
+    border-radius: var(--border-radius);
+}
+.title{
+    font-size: 2em;
+}

@@ -1,0 +1,37 @@
+.OfferingBox{
+    width: 80%;
+    /* border: 1px solid red; */
+    display: flex;
+    margin: 0 auto;
+    padding: 1em;
+    box-shadow: 0 0 20px rgba(128, 128, 128, 0.537)
+}
+.Offering{
+    /* border: 1px solid red ; */
+    display: flex;
+    flex-direction: column;
+    gap:2.5em
+
+}
+.offer{
+    width: calc(100%/3);
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    gap:1em
+}
+.offerImg{
+    width: 6em;
+    height: 6em;
+}
+.offerTitle{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.offerText{
+    color:var(--gray-blue);
+    font-size: 1.3em;
+    line-height: 2;
+}

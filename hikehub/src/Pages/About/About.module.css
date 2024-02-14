@@ -1,0 +1,64 @@
+
+.container{
+    /* border: 2px solid red; */
+    width: 80%;
+    margin: 3em auto;
+    display: flex;
+    flex-direction: column;
+    gap:4em
+
+}
+.aboutSections{
+    /* border: 1px solid black; */
+    width: 100%;
+}
+
+/******TiTLE SECTION*********/
+.aboutTitle{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5em;
+}
+.aboutTitle>h1 , .aboutTitle>h3{
+    color: var(--dark-green)
+
+}
+.aboutTitle>h1{
+    font-size: 2.5em;
+}
+.aboutTitle>h3{
+    font-size: 1.8em;
+    font-weight: 370;
+}
+
+/*******Numbers Section *****/
+
+.nbSection{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.nbsHolder{
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.number{
+width: 15%;
+/* border: 3px solid red; */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 1em;
+}
+.nb{
+    font-size: 2.9em;
+    font-weight: 700;
+}
+.number>p{
+    font-size: 1.6em;
+    color:rgb(0, 0, 0,0.63);
+}
