@@ -1,0 +1,59 @@
+.restaurantsHolder{
+width: 100%;
+color: var(--text-color-dark-grey);
+display: flex;
+flex-direction: column;
+gap:1em
+}
+.sectionTitle{
+display: flex;
+align-items: center;
+gap:1.5em;
+
+}
+
+.sectionTitle>h1{
+font-size: 1.7em;
+}
+.sectionTitle>img{
+height: 3.5em;  
+/* border: 1px solid black; */
+}
+.restaurants{
+    /* border: 1px solid black; */
+}
+.restaurant{
+    width: 100%;
+    display: flex;
+    gap:2%;
+    /* border: 1px solid black; */
+height: 10em;
+
+}
+.image{
+    width: 30%;
+    /* border: 1px solid black; */
+    height: 90%;
+    border-radius: var(--border-radius);
+
+}
+.image>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+.description{
+    width: 70%;
+    /* border: 2px solid red   ; */
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap:10%
+}
+.description>h1{
+    font-size: 1.4em;
+}
+.description>p{
+    font-size: 1.1em;
+}

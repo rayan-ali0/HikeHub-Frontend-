@@ -16,17 +16,21 @@ object-fit: cover;
   top: 50%; /* Center vertically */
   left: 15%; /* 25% from the left edge */
   transform: translateY(-50%); /* Center vertically */
-  width: 40em; /* Maintain desired width */
+  width: 33em; /* Maintain desired width */
   z-index: 1;
 
   /* Styling */
   /* border: 2px solid red; */
   color: white;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.3); /* White background with 0.8 opacity */
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  background: transparent;
+  backdrop-filter: blur(6px);
   display: flex;
 flex-direction: column;
 gap: 2em;
+/* justify-content: center; */
+/* align-items: start; */
 }
 
 .customButton {
@@ -42,7 +46,56 @@ gap: 2em;
     outline: none;
 
 }
+.normalSign{
+    width: 80%;
+}
+.oauth{
+    width: 15%;
+    background-image: url('../../assets/icons/google-removebg-preview.png');
+    background-size: 2em ;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+.oauth>img{
+    height: 100%;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+.signBtns{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    gap:1em;
+    height: auto;
+    justify-content: space-between;
+    height: 3.5em;
+}
+
 .signTitle{
     color: white;
     text-align: center;
+}
+.formHolder{
+    border: 2px solid white;
+}
+.textStyle{
+position: absolute;
+z-index: 1;
+color: white;
+font-size: 10em;
+color: transparent; 
+-webkit-text-stroke: 1px white; 
+/* display: inline-block; */
+/* border: 1px solid red;   */
+width: 6em;
+text-overflow: clip;
+top: 50%; 
+left: 4%; 
+transform: translateY(-50%); 
+height: 85%;
+text-align: center;
+display: flex;
+flex-direction: column;
+gap:15px
 }

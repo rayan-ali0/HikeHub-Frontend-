@@ -1,0 +1,24 @@
+.numbers{
+    /* border: 1px solid red; */
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    color: var(--text-color-dark-grey);
+}
+
+.number{
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px
+}
+.number>h3{
+    font-size: 1.3em;
+}
+.number>h5{
+    font-size: 1.1em;
+    font-weight: 400;
+}

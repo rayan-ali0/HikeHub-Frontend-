@@ -50,9 +50,9 @@ const Hero = () => {
             </section>
             <div className={style.cloudHolders}>
 
-            {/* <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds}/> */}
+            <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds}/>
 
-{/* <motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds}/> */}
+<motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds}/>
 </div>
         </div>
     )

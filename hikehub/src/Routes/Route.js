@@ -5,6 +5,7 @@ import About from "../Pages/About/About.js";
 import Contact from '../Pages/Contact/Contact.js'
 import Sign from "../Pages/Sign/Sign.js";
 import Events from "../Pages/Events/Events.js";
+import Event from "../Pages/EventDetail/Event.js";
 const Router = () => {
     return (
         <div>
@@ -15,7 +16,7 @@ const Router = () => {
                     <Route index path="/about" element={<About/>} />
                     <Route index path="/contact" element={<Contact/> } />
                     <Route index path="/events" element={<Events/> } />
-
+                    <Route index path="/event/:slug" element={<Event/> } />
                 </Route>
 
 {/*Routes without layout*/}
