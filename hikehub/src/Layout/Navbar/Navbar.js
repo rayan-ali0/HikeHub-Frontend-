@@ -15,8 +15,8 @@ import 'react-toastify/dist/ReactToastify.minimal.css';
 
 
 const Navbar = () => {
-const {user,setUser}=useContext(UserContext)
-    const [nav, setNav] = useState({
+  const { user, setUser } = useContext(UserContext)
+  const [nav, setNav] = useState({
     isOpen: false,
     isCartOpen: false,
   });
@@ -26,9 +26,9 @@ const {user,setUser}=useContext(UserContext)
 
   const navigate = useNavigate();
 
-const openProfile=()=>{
-  navigate('/profile')
-}
+  const openProfile = () => {
+    navigate('/profile')
+  }
   const logout = async () => {
     try {
       const action = await axiosInstance.post(`logout`);
@@ -70,23 +70,23 @@ const openProfile=()=>{
   return (
     // Header Container
     // <header className={styles.headerContainer} >
-    <header className={`${styles.headerContainer} ${location.pathname.startsWith('/productdetails')?styles.headerBule:styles.headerTransparent}`} >
+    <header className={`${styles.headerContainer} ${location.pathname.startsWith('/productdetails') ? styles.headerBule : styles.headerTransparent}`} >
       <div className={styles.navbar} >
         {/* Logo */}
         <NavLink to="/">
-       <div>
-<img className={styles.imagee} src={logo} alt="/"  />  
-{/* <p>AL Monla</p>       */}
-        </div>
+          <div>
+            <img className={styles.imagee} src={logo} alt="/" />
+            {/* <p>AL Monla</p>       */}
+          </div>
         </NavLink>
         {/* Navigation Links */}
         <div className={styles.whatever}>
-          <nav style={{display:"flex", gap:"2rem"}}>
-            <ul className={nav ? [styles.menu, styles.active].join(' ') : [styles.menu]} initial={{opacity:0, scale:0.5}} animate={{opacity:1, scale:1}} transition={{duration:0.5}}>
+          <nav style={{ display: "flex", gap: "2rem" }}>
+            <ul className={nav ? [styles.menu, styles.active].join(' ') : [styles.menu]} initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
               {/* NavLink for Home */}
-            {nav ? <span className={styles.closeMenu} onClick={() => setNav(!nav)}><AiOutlineClose size={25 } /></span> : ""}
+              {nav ? <span className={styles.closeMenu} onClick={() => setNav(!nav)}><AiOutlineClose size={25} /></span> : ""}
               <li>
-                <NavLink to='/' activeclassname={styles.activeLink}  className={`${styles.menuItem} ${styles.white} ${location.pathname === '/' ? styles.activeNavItem : ''} `} >
+                <NavLink to='/' activeclassname={styles.activeLink} className={`${styles.menuItem} ${styles.white} ${location.pathname === '/' ? styles.activeNavItem : ''} `} >
                   Home
                 </NavLink>
               </li>
@@ -117,40 +117,12 @@ const openProfile=()=>{
               {/* NavLink for Contact Us */}
               <li >
 
-              <NavLink to='/contact' activeclassname={styles.activeLink} className={`${styles.menuItem} ${styles.white} ${location.pathname === '/contact' ? styles.activeNavItem : ''}`}>
-                Contact
-              </NavLink>
+                <NavLink to='/contact' activeclassname={styles.activeLink} className={`${styles.menuItem} ${styles.white} ${location.pathname === '/contact' ? styles.activeNavItem : ''}`}>
+                  Contact
+                </NavLink>
               </li>
-
-
-              {
-                <li>
-                  {user?
-                  (
-                    <>
-                     <button  className={`${styles.menuItem} ${styles.logoutBtn}`} onClick={logout}>logout</button>
-                    <button  className={`${styles.menuItem} ${styles.profileBtn}`} onClick={openProfile}>P</button>
-
-                    </>
-                   
-                  )
-                :(
-<NavLink
-                    to="/signin"
-                    activeclassname={styles.activeLink}
-                    className={`${styles.menuItem} ${styles.white}`}
-                  >
-                  
-                    Sign In
-                  </NavLink>
-                )}
-                  
-                </li>
-              }
-            </ul>
-{/* 
-              {user ? (
-                user.role === "admin" ? (
+              {user&&
+                user.role === "organizer" && (
                   <li>
                     <NavLink
                       to="/dashboard"
@@ -160,34 +132,48 @@ const openProfile=()=>{
                       Dashboard
                     </NavLink>
                   </li>
-                ) : (
-                  <button onClick={logout} type="submit" className={styles.button}>
+                  )
+                }
 
-                    Logout
-                  </button>
-                )
-              ) : (
+
+              {
                 <li>
-                  <NavLink
-                    to="/login"
-                    activeclassname={styles.activeLink}
-                    className={`${styles.menuItem} ${location.pathname === '/login' ? styles.activeNavItem : ''} ${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname === '/profile' || location.pathname === '/cart' ? styles.blue : styles.white}`}
-                  >
-                    Sign In
-                  </NavLink>
+                  {user ?
+                    (
+                      <>
+                        <button className={`${styles.menuItem} ${styles.logoutBtn}`} onClick={logout}>logout</button>
+                        <button className={`${styles.menuItem} ${styles.profileBtn}`} onClick={openProfile}>P</button>
+
+                      </>
+
+                    )
+                    : (
+                      <NavLink
+                        to="/signin"
+                        activeclassname={styles.activeLink}
+                        className={`${styles.menuItem} ${styles.white}`}
+                      >
+
+                        Sign In
+                      </NavLink>
+                    )}
+
                 </li>
-              )}
-            </ul> */}
+              }
+            </ul>
+            
+
+           
           </nav>
 
           <div onClick={() => setNav(!nav)} className={styles.mobile_btn}>
-            {nav ? <AiOutlineMenu size={25} style={{visibility: "hidden"}} />  : <AiOutlineMenu size={25} />}
+            {nav ? <AiOutlineMenu size={25} style={{ visibility: "hidden" }} /> : <AiOutlineMenu size={25} />}
           </div>
         </div>
-        
 
 
-      
+
+
       </div>
     </header>
 

@@ -17,6 +17,11 @@ import DashRoutes from './DashRoutes.js'
 import Overview from '../Pages/Overview/Overview.js'
 import Dashboard from '../Pages/Dashboard/Dashboard.js'
 import DashSidebar from '../Layout/Sidebar/Sidebar.js'
+import Trails from "../Pages/Trails/Trails.js";
+import EventsTable from "../Pages/DashEvents/Events.js";
+import Locations from "../Pages/Locations/Locations.js";
+import Sites from "../Pages/Sites/Sites.js";
+import Restaurants from "../Pages/Restaurants/Restaurants.js";
 const Router = () => {
     const { user, checkUser } = useContext(UserContext);
 
@@ -68,7 +73,16 @@ const Router = () => {
                             />
                         }>
                         <Route path="/dashboard" element={<Dashboard />}>
-                            <Route path="" index element={<Overview />} />
+                            <Route path="Overview"  element={<Overview />} />
+                            {/* <Route path="" index element={<Overview />} /> */}
+                            <Route path="trails"  element={<Trails />} />
+                            <Route path="events"  element={<EventsTable />}/>
+                            <Route path="locations"  element={<Locations/>} />
+                            <Route path="sites"  element={<Sites/>} />
+                            <Route path="restaurants"  element={<Restaurants />}/>
+                            <Route path="users"  element={<Overview />} />
+                            <Route path="stories"  element={<Overview />} />
+                            <Route path="subscribers"  element={<Overview />} />
                         </Route>
                     </Route>
 

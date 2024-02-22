@@ -13,3 +13,7 @@
 .goHome:hover {
     color: rgb(227, 227, 227);
 }
+.activeLink{
+    background-color: white !important;
+    color: black !important;
+}

@@ -18,17 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PeopleIcon from '@mui/icons-material/People';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import StoreIcon from '@mui/icons-material/Store';
-import ReceiptIcon from '@mui/icons-material/Receipt';
-import BrandingWatermarkIcon from '@mui/icons-material/BrandingWatermark';
-import CategoryIcon from '@mui/icons-material/Category';
-import ModelTrainingIcon from '@mui/icons-material/ModelTraining';
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import PersonIcon from '@mui/icons-material/Person';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import BusinessIcon from '@mui/icons-material/Business';
+
 import { Link, NavLink, useLocation } from "react-router-dom";
 import "./DashSidebar.css"
 import { useContext } from 'react';
@@ -40,6 +30,18 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.minimal.css";
 import axios from 'axios';
 import {LayoutContext} from '../../Context/LayoutContext'
+import river from '../../assets/icons/river-trail.png'
+import old from '../../assets/icons/old.png'
+import calendar from '../../assets/icons/calendar.png'
+import fork from '../../assets/icons/fork.png'
+import location from '../../assets/icons/location.png'
+import user from '../../assets/icons/user (2).png'
+import camera from '../../assets/icons/camera.png'
+import bell from '../../assets/icons/bell.png'
+import off from '../../assets/icons/turn-off.png'
+import LogoutIcon from '@mui/icons-material/Logout';
+import axiosInstance from '../../Utils/AxiosInstance';
+
 
 const drawerWidth = 240;
 
@@ -111,19 +113,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 const menuItems = [
-  { text: '', color: "white", icon: <DashboardIcon /> },
-  { text: 'Orders', icon: <ShoppingCartIcon /> },
-  { text: 'Products', icon: <StoreIcon /> },
-  { text: 'User', icon: <PeopleIcon /> },
-  { text: 'Services', icon: <ReceiptIcon /> },
-  { text: 'Category', icon: <CategoryIcon /> },
-  { text: 'Brand', icon: <BrandingWatermarkIcon /> },
-  { text: 'Model ', icon: <ModelTrainingIcon /> },
-  { text: 'Year', icon: <DateRangeIcon /> },
-  { text: 'Contact', icon: <MailOutlineIcon /> },
-  { text: 'Shipping', icon: <LocalShippingIcon /> },
-  { text: 'Profile', icon: <PersonIcon /> },
-  { text: 'CompanyInfo', icon: <BusinessIcon /> }
+  { text: 'Overview', color: "white", icon: <DashboardIcon /> },
+  { text: 'Trails', icon: <img src={river}/> },
+  { text: 'Events', icon: <img src={calendar}/> },
+  { text: 'Locations', icon: <img src={location}/>},
+  { text: 'Sites', icon: <img src={old}/> },
+  { text: 'Restaurants', icon:<img src={fork}/> },
+  { text: 'Users', icon: <img src={user}/> },
+  { text: 'Stories ', icon:  <img src={camera}/>  },
+  { text: 'Subscribers', icon: <img src={bell}/> },
 ];
 
 export default function MiniDrawer() {
@@ -153,7 +151,7 @@ export default function MiniDrawer() {
   // Logout
   const logout = async () => {
     try {
-      const action = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/logout`, {}, { withCredentials: true });
+      const action = await axiosInstance.post(`logout`, {}, { withCredentials: true });
       if (action) {
         localStorage.removeItem('token')
         setUser(null);
@@ -210,8 +208,9 @@ export default function MiniDrawer() {
           {menuItems.map((menuItem, index) => {
             // console.log('MenuItem:', menuItem);
             return (
-              <ListItem key={menuItem.text} disablePadding sx={{ display: 'block' }}>
-                <NavLink to={`/dashboard/${menuItem.text.toLowerCase()}`} >
+              <ListItem key={menuItem.text} disablePadding sx={{ display: 'block',marginBottom:'15px' }}>
+                <NavLink to={`/dashboard/${menuItem.text.toLowerCase()}`}  activeClassName="activeLink"
+                >
                   <ListItemButton
                     sx={{
                       minHeight: 48,
@@ -254,9 +253,9 @@ export default function MiniDrawer() {
                 mr: open ? 3 : 'auto',
                 justifyContent: 'center',
                 color: "white"
-              }}
+              }}  
             >
-              <DashboardIcon />
+              <LogoutIcon />
             </ListItemIcon>
             <ListItemText primary={"Logout"} sx={{ opacity: open ? 1 : 0 }} />
           </ListItemButton>
