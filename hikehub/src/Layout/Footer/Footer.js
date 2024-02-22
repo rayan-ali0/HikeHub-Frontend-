@@ -66,7 +66,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className={style.copyright}>
-                © 2024 - Global Fairy All Rights Reserved | Powered By: Rayan Ali
+                © 2024 - HIKING All Rights Reserved | Powered By: Rayan Ali
             </div>
         </footer>
     )

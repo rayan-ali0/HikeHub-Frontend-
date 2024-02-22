@@ -1,0 +1,32 @@
+.storyPage{
+    position: relative;
+    height:100%;
+}
+
+.backImg{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: 1;
+}
+.opacity{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(7, 8, 9, 0.8);
+}
+.storiesHolder{
+    width: 80%;
+    height: 100%;
+    z-index: 4;
+    position: absolute;
+
+}
+.oneStory{
+    height: 100vh;
+    z-index: 3;
+    position: relative;
+}

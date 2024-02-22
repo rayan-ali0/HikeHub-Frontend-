@@ -1,0 +1,99 @@
+.story{
+   flex-direction: row;
+
+}
+.story , .flexPage{
+    display: flex;
+
+    width: 100vw;
+    height: 100%;
+    color: white;
+}
+.flexPage{
+    flex-direction: row-reverse;
+}
+.storySection{
+    height: 100%;
+    /* border: 1px solid red; */
+}
+.storyImage{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.imgeSection{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.textSection{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap:2%;
+    padding: 7em 3em 3em 3em;
+    /* justify-content: spa; */
+
+}
+
+.storyTitle{
+    font-size: 4.5em;
+    
+    text-wrap: wrap;
+    /* color: var(--text-color-dark-grey); */
+}
+.title{
+    
+    display: flex;
+    flex-direction: column;
+    gap:0.9em
+}
+.date{
+font-size: 2.3em;
+font-style: italic;
+opacity: 0.9;
+}
+.storyLine{
+    width: 45%;
+    height: 6px;
+    background-color: var(--text-color-grey);
+    border-radius: var(--border-radius);
+}
+.storyDescription{
+    font-size: 1.4em;
+    line-height: 2;
+    /* border: 1px solid white; */
+    height: 35%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.storyTestimonial{
+    border: 1px solid white;
+    width: 55%;
+    border-radius: var(--border-radius);
+    height: 30%;
+    align-self: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:6% ;
+    font-size: 1.3em;
+
+}
+.storyTestimonial::after{
+    position: absolute;
+    content: "";
+    border: 1px solid white;
+    border-radius: var(--border-radius);
+    width: 100%; 
+    height: 100%; 
+    top: 5%;
+    left: 5%;
+    z-index: -1;
+}

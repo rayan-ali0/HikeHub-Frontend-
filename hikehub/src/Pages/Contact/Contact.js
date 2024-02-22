@@ -8,8 +8,18 @@ import locationIcon from '../../assets/icons/pin.png'
 import emailIcon from '../../assets/icons/email.png'
 import phoneIcon from '../../assets/icons/phone-call.png'
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.minimal.css';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    Name: '',
+    Email: '',
+    Phone: '',
+    message: ''
+  })
 
     const variants={
         initial:{
@@ -51,7 +61,43 @@ const Contact = () => {
       }
 
       const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
+    // Use your Email.js service ID, template ID, and user ID
+    const serviceId = 'service_9066nqf';
+    const templateId = 'template_bzei2zv';
+    const userId = '0hfTpSZjEV_kx82CO';
+
+    // Get form data
+    const formData = new FormData(form.current);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+
+    emailjs.send(serviceId, templateId,data, userId)
+    .then((result) => {
+      toast.success("You Message Sent Successfully")
+     setFormData(
+      {
+        Name: '',
+        Email: '',
+        Phone: '',
+        message: ''
+      }
+     )
+    }, (error) => {
+      toast.error("Please Try Again!")
+    });
+  };
+
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+    console.log(formData)
+  }
 
     return (
         <div className={style.contactPage}>
@@ -79,15 +125,22 @@ const Contact = () => {
 
           <motion.form ref={form}  className={style.contactFormInputs} variants={variants}>
             <TextField id="name" label="Your Name" name="Name" variant="outlined"  required  sx={styleField}
-            />
+          onChange={handleInputChange}
+          />
             <TextField id="email" label="Your Email" name="Email" placeholder='Ex: email@gmail.com'  type="email" variant="outlined" required  sx={styleField}
+                      onChange={handleInputChange}
+
             />
             <TextField id="phone" label="Phone Number" placeholder='Ex: 03 000 000' name="Phone" type="tel"  inputMode="numeric" variant="outlined" required  sx={styleField}
-            />
+                     onChange={handleInputChange}
+
+           />
             <TextField id="message" label="Your Message" name="message" variant="outlined" multiline rows={5}  required 
               sx={styleField}
+              onChange={handleInputChange}
+
             />
-            <motion.button variants={variants} className={style.customButton}>Send Message</motion.button>
+            <motion.button variants={variants} className={style.customButton} onClick={sendEmail}>Send Message</motion.button>
           </motion.form>
     
 

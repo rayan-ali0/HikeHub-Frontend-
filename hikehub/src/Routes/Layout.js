@@ -9,9 +9,7 @@ const Layout =()=>{
         <>
         <Navbar/>
         <Outlet />
-        <div style={{marginTop:"4rem"}}>
         <Footer />
-        </div>
         </>
       )
 }

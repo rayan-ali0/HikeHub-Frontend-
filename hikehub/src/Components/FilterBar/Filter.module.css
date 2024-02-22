@@ -1,0 +1,140 @@
+.filterBar{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    border-radius: var(--border-radius);
+
+}
+
+.backImg{
+    position: absolute;
+z-index: 1;
+width: 100%;
+height: 100%;
+/* opacity: 0.6; */
+object-fit: cover;
+border-radius: var(--border-radius);
+
+  }
+
+  .opacity{
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: var(--border-radius);
+    background: rgba(0, 0, 0, 0.9); /* Adjust the opacity by changing the last value (0.1 in this example) */
+  }
+
+
+  .inputBox {
+    display: flex;
+    border: 1px solid white;
+    border-radius: var(--border-radius);
+    color: white;
+    width: 22%;
+    position: relative;
+
+  }
+  .inputBox .emailInput {
+    /* width: 250px; */
+    padding: 14px 16px;
+    /* border: 1px solid var(--grey-grey-400, #9CA3AF); */
+    /* background: #FFF; */
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 15px;
+
+  }
+  .inputBox .emailInput::placeholder {
+    /* color: rgba(0, 0, 0, 0.60); */
+    font-size: 16px;
+    transition: .2s;
+    color: white;
+  }
+  .inputBox .emailInput:focus::placeholder {
+    opacity: 0;
+  }
+  .inputBox .emailInput:focus {
+    outline: none;
+  }
+  .inputBox .submit {
+    /* background: var(--Thulian-pink, #D96093); */
+    background-color: transparent;
+    color: var(--White, #FFF);
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    transition: .2s;
+    cursor: pointer;
+    /* padding: 13px 35px 13px 0px; */
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    right: 4%;
+    top:30%;
+
+  }
+
+  .filters{
+    border-radius: var(--border-radius);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index:2;
+    display: flex;
+    padding: 1em;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+  }
+  .selectInput{
+    color: white;
+    margin:0 15px;
+    /* border: 1px solid white; */
+    font-size: 16px;
+    /* background: white; */
+    width: 100%;
+
+  }
+
+  .selectInput>option{
+    color: var(--text-color-dark-grey);
+
+  }
+  /* .selectInput>option:hover{
+    background-color: var(--text-color-dark-grey);
+  } */
+  .selectInput option:hover {
+    background-color: #e0e0e0; /* Change to your desired hover color */
+    color: #555; /* Change to your desired hover text color */
+  }
+
+.slider{
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+.slideContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sliderValue{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}

@@ -1,0 +1,79 @@
+.notFound {
+    height: 99.73vh;
+    width: 100vw;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.cloud {
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    width: 100%;
+}
+
+.mountain {
+    position: absolute;
+    z-index: 2;
+    top: 20%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.backImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.text {
+    font-size: 25em;
+
+}
+
+.textDiv {
+    position: absolute;
+    z-index: 3;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap:1em */
+}
+
+.textDiv>p {
+    font-size: 4em;
+}
+
+.mountain1 {
+    position: absolute;
+    z-index: 4;
+    top: 60%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.btn {
+    /* border: none; */
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+    border-radius: var(--border-radius);
+    width: 10em;
+    height: 2.2em;
+    text-align: center;
+    justify-self:center;
+    padding: auto;
+    font-size: 1.3em;
+    cursor: pointer;
+    margin-top: 1.5em;
+}

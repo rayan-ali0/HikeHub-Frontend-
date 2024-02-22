@@ -6,14 +6,14 @@ import adventurer from '../../assets/icons/adventurer.png'
 import routes from '../../assets/icons/routes.png'
 import seaLevel from '../../assets/icons/sea-level.png'
 import activity from '../../assets/icons/activity.png'
-const EventNumbers = ({details}) => {
+const EventNumbers = ({details,trail}) => {
     return (
         <div className={style.numbers}>
         
 <section className={style.number}>
 <img src={adventurer}/>
 <h3>
-    {details.trail.difficulty}
+    {trail.difficulty}
 </h3>
 <h5>Difficulty</h5>
 </section>
@@ -29,21 +29,21 @@ const EventNumbers = ({details}) => {
 <section className={style.number}>
 <img src={activity}/>
 <h3>
-{details.trail.walkingTime} h
+{trail.walkingTime} h
 </h3>
 <h5>Of Walking</h5>
 </section>
 <section className={style.number}>
 <img src={routes}/>
 <h3>
-{details.trail.length}km
+{trail.length}km
 </h3>
 <h5>Distance</h5>
 </section>
 <section className={style.number}>
 <img src={seaLevel}/>
 <h3>
-{details.trail.seaLevel}
+{trail.seaLevel}
 </h3>
 <h5>Elevation</h5>
 </section>

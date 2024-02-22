@@ -1,18 +1,21 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import toast from "react-hot-toast"
 import styles from "./Navbar.module.css";
 import logo from '../../assets/images/cloud1.png';
 import { AiOutlineMenu, AiOutlineClose, AiOutlineShoppingCart } from 'react-icons/ai';
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { UserContext } from "../../Context/UserContext";
+import axiosInstance from "../../Utils/AxiosInstance";
 // import Avatar from '@mui/material/Avatar';
-
-
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.minimal.css';
 
 
 const Navbar = () => {
-
+const {user,setUser}=useContext(UserContext)
     const [nav, setNav] = useState({
     isOpen: false,
     isCartOpen: false,
@@ -23,34 +26,37 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
+const openProfile=()=>{
+  navigate('/profile')
+}
+  const logout = async () => {
+    try {
+      const action = await axiosInstance.post(`logout`);
+      if (action) {
+        localStorage.removeItem('token')
+        setUser(null);
+        toast.success("Logout successful!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        navigate('/')
 
-  // const logout = async () => {
-  //   try {
-  //     const action = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/logout`, {}, { withCredentials: true });
-  //     if (action) {
-  //       localStorage.removeItem('token')
-  //       setUser(null);
-  //       toast.success("Logout successful!", {
-  //         position: "top-center",
-  //         autoClose: 3000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //       });
-
-  //     }
-  //   } catch (error) {
-  //     toast.error("An unexpected error occurred. Please try again.", {
-  //       position: "top-center",
-  //       autoClose: 3000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //     });
-  //   }
-  // };
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred. Please try again.", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
+  };
 
   const handleCartIconClick = () => {
     // Navigate to the cart page
@@ -80,14 +86,14 @@ const Navbar = () => {
               {/* NavLink for Home */}
             {nav ? <span className={styles.closeMenu} onClick={() => setNav(!nav)}><AiOutlineClose size={25 } /></span> : ""}
               <li>
-                <NavLink to='/' activeclassname={styles.activeLink} className={`${styles.menuItem} ${location.pathname === '/' ? styles.activeNavItem : ''} ${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname === '/profile' || location.pathname === "/cart" ? styles.blue : styles.white}`} >
+                <NavLink to='/' activeclassname={styles.activeLink}  className={`${styles.menuItem} ${styles.white} ${location.pathname === '/' ? styles.activeNavItem : ''} `} >
                   Home
                 </NavLink>
               </li>
 
               {/* NavLink for Services */}
               <li >
-                <NavLink to='/events' activeclassname={styles.activeLink} className={`${styles.menuItem} ${location.pathname === '/services' ? styles.activeNavItem : ''} ${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname === '/profile' || location.pathname === "/cart" ? styles.blue : styles.white}`}>
+                <NavLink to='/events' activeclassname={styles.activeLink} className={`${styles.menuItem} ${styles.white} ${location.pathname === '/events' ? styles.activeNavItem : ''} `}>
                   Events
                 </NavLink>
               </li>
@@ -95,7 +101,7 @@ const Navbar = () => {
               {/* NavLink for Product page */}
               <li >
 
-                <NavLink to='/stories' activeclassname={styles.activeLink} className={`${styles.menuItem} ${location.pathname === '/product' ? styles.activeNavItem : ''} ${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname === '/profile' || location.pathname === "/cart" ? styles.blue : styles.white}`}>
+                <NavLink to='/stories' activeclassname={styles.activeLink} className={`${styles.menuItem} ${styles.white} ${location.pathname === '/stories' ? styles.activeNavItem : ''} `}>
                   Stories
                 </NavLink>
               </li>
@@ -103,7 +109,7 @@ const Navbar = () => {
               {/* NavLink for About Us */}
               <li >
 
-                <NavLink to='/about' activeclassname={styles.activeLink} className={`${styles.menuItem} ${location.pathname === '/about' ? styles.activeNavItem : ''} ${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname === '/profile' || location.pathname === "/cart" ? styles.blue : styles.white}`}>
+                <NavLink to='/about' activeclassname={styles.activeLink} className={`${styles.menuItem} ${styles.white} ${location.pathname === '/about' ? styles.activeNavItem : ''} `}>
                   About
                 </NavLink>
               </li>
@@ -111,7 +117,7 @@ const Navbar = () => {
               {/* NavLink for Contact Us */}
               <li >
 
-              <NavLink to='/contact' activeclassname={styles.activeLink} className={`${styles.menuItem} ${location.pathname === '/contact' ? styles.activeNavItem : ''} ${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname==='/profile' || location.pathname==="/cart"?styles.blue:styles.white}`}>
+              <NavLink to='/contact' activeclassname={styles.activeLink} className={`${styles.menuItem} ${styles.white} ${location.pathname === '/contact' ? styles.activeNavItem : ''}`}>
                 Contact
               </NavLink>
               </li>
@@ -119,13 +125,26 @@ const Navbar = () => {
 
               {
                 <li>
-                  <NavLink
-                    to="/sign"
+                  {user?
+                  (
+                    <>
+                     <button  className={`${styles.menuItem} ${styles.logoutBtn}`} onClick={logout}>logout</button>
+                    <button  className={`${styles.menuItem} ${styles.profileBtn}`} onClick={openProfile}>P</button>
+
+                    </>
+                   
+                  )
+                :(
+<NavLink
+                    to="/signin"
                     activeclassname={styles.activeLink}
-                    className={`${styles.menuItem} ${location.pathname === '/login' ? styles.activeNavItem : ''} ${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname === '/profile' || location.pathname === '/cart' ? styles.blue : styles.white}`}
+                    className={`${styles.menuItem} ${styles.white}`}
                   >
+                  
                     Sign In
                   </NavLink>
+                )}
+                  
                 </li>
               }
             </ul>
@@ -161,21 +180,9 @@ const Navbar = () => {
             </ul> */}
           </nav>
 
-          <div onClick={() => setNav(!nav)} className={location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname === "/profile" || location.pathname === "/cart" ? styles.mobile_btn_blue : styles.mobile_btn}>
+          <div onClick={() => setNav(!nav)} className={styles.mobile_btn}>
             {nav ? <AiOutlineMenu size={25} style={{visibility: "hidden"}} />  : <AiOutlineMenu size={25} />}
           </div>
-
-          {/* Cart Icon */}
-          {/* <div className={`${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname==='/profile' || location.pathname==="/cart"?styles.cartIconBlue:styles.cartIcon} ${styles.count}`} onClick={handleCartIconClick} count={cartItemCount}>
-            <AiOutlineShoppingCart size={25} className={styles.shopIcon} />
-          </div> */}
-          {/* {user &&    <NavLink to="/profile" >
-                <Avatar
-                alt={user.name}
-                src={user}  
-                sx={{ cursor:"pointer" , backgroundColor:"lightGrey" ,color:"#163357", height:"2.2rem", width:"2.2rem"}}
-              />
-                          </NavLink>} */}
         </div>
         
 
