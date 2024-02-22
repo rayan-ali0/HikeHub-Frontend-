@@ -16,6 +16,7 @@ import Stories from '../Pages/Stories/Stories';
 import DashRoutes from './DashRoutes.js'
 import Overview from '../Pages/Overview/Overview.js'
 import Dashboard from '../Pages/Dashboard/Dashboard.js'
+import DashSidebar from '../Layout/Sidebar/Sidebar.js'
 const Router = () => {
     const { user, checkUser } = useContext(UserContext);
 
@@ -60,14 +61,14 @@ const Router = () => {
                     {/*Protected Routes*/}
 
                     <Route
-                        element={   
+                        element={
                             <DashRoutes
-                                isAllowed={user && user.role==="organizer"}
+                                isAllowed={user && user.role === "organizer"}
                                 redirectPath="/unauthorized"
                             />
                         }>
-                 <Route path="/dashboard" element={<Dashboard />}>
-                        <Route path="" index element={<Overview />} />
+                        <Route path="/dashboard" element={<Dashboard />}>
+                            <Route path="" index element={<Overview />} />
                         </Route>
                     </Route>
 

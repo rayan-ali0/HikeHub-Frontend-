@@ -145,6 +145,7 @@ object-fit: cover;
     /* background: #FFF; */
     background-color: transparent;
     border: none;
+    color: white;
 
   }
   .inputBox .emailInput::placeholder {

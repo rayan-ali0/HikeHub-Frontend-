@@ -5,9 +5,7 @@ import { Outlet } from 'react-router-dom'
 const Overview = () => {
   return (
     <div className={Styles.container}>
-
-Overview
-     
+     Overrrrnr
     </div>
   )
 }

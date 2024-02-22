@@ -1,14 +1,14 @@
 .container{
-    /* background-color: #0a213d; */
     height: 100vh;
     width: 100%;
     color: white;
     position: relative;
+    background-color: black;
 }   
 .dashImg{
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 1;
     object-fit: cover;
 
@@ -16,22 +16,38 @@
 .opacity{
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 2;
     object-fit: cover;
     background-color: rgba(0, 0, 0, 0.85);
 }
-.outlet{
+.outletClose{
     position: absolute;
-    width: 90%;
-    float: right;
+    width: calc(100% - 65px); /* Adjusted width calculation */
+    left: 65px;
+    top: 70px;
+    height: calc(100% - 70px); /* Adjusted height calculation */
+    /* border: 2px solid red; */
+    padding: 3em;
     z-index: 3;
+    transition: all .3s;
+
+}
+.outletOpen{
+    position: absolute;
+    width: calc(100% - 240px); /* Adjusted width calculation */
+    left: 240px;
+    top: 70px;
+    height: calc(100% - 70px); /* Adjusted height calculation */
+    padding: 3em;
+    z-index: 3;
+    transition: all .3s;
 }
 
 @media screen and (max-width: 390px) {
-    .outlet {
+    /* .outlet {
       width: 80%;
       float: right;
       height: 100%;
-    }
+    } */
   }

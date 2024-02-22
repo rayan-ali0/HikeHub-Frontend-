@@ -16,44 +16,30 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import PeopleIcon from '';
-import DashboardIcon from '';
-import StoreIcon from '';
-import ReceiptIcon from '';
-import BrandingWatermarkIcon from '';
-import CategoryIcon from '';
-import ModelTrainingIcon from '';
-import DateRangeIcon from '';
-import ShoppingCartIcon from '';
-import MailOutlineIcon from '';
-import PersonIcon from '';
-import LocalShippingIcon from 'LocalShipping';
-import BusinessIcon from 'Business';
-
-// import PeopleIcon from '@mui/icons-material/People';
-// import DashboardIcon from '@mui/icons-material/Dashboard';
-// import StoreIcon from '@mui/icons-material/Store';
-// import ReceiptIcon from '@mui/icons-material/Receipt';
-// import BrandingWatermarkIcon from '@mui/icons-material/BrandingWatermark';
-// import CategoryIcon from '@mui/icons-material/Category';
-// import ModelTrainingIcon from '@mui/icons-material/ModelTraining';
-// import DateRangeIcon from '@mui/icons-material/DateRange';
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import MailOutlineIcon from '@mui/icons-material/MailOutline';
-// import PersonIcon from '@mui/icons-material/Person';
-// import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-// import BusinessIcon from '@mui/icons-material/Business';
+import PeopleIcon from '@mui/icons-material/People';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import StoreIcon from '@mui/icons-material/Store';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import BrandingWatermarkIcon from '@mui/icons-material/BrandingWatermark';
+import CategoryIcon from '@mui/icons-material/Category';
+import ModelTrainingIcon from '@mui/icons-material/ModelTraining';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PersonIcon from '@mui/icons-material/Person';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import BusinessIcon from '@mui/icons-material/Business';
 import { Link, NavLink, useLocation } from "react-router-dom";
 import "./DashSidebar.css"
 import { useContext } from 'react';
-// import Styles from "./DashSidebar.module.css"
-import { UserContext} from "../../Context/UserContext"
+import Styles from "./SideBar.module.css"
+import { UserContext } from "../../Context/UserContext"
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.minimal.css";
 import axios from 'axios';
-
+import {LayoutContext} from '../../Context/LayoutContext'
 
 const drawerWidth = 240;
 
@@ -118,14 +104,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     ...(!open && {
       ...closedMixin(theme),
       '& .MuiDrawer-paper': closedMixin(theme),
-      
+
     }),
-    backgroundColor: "#163357",
-    color:"red"
+    // backgroundColor: "black",
+    color: "red"
   }),
 );
 const menuItems = [
-  { text: '', color:"white",icon: <DashboardIcon /> },
+  { text: '', color: "white", icon: <DashboardIcon /> },
   { text: 'Orders', icon: <ShoppingCartIcon /> },
   { text: 'Products', icon: <StoreIcon /> },
   { text: 'User', icon: <PeopleIcon /> },
@@ -136,21 +122,23 @@ const menuItems = [
   { text: 'Year', icon: <DateRangeIcon /> },
   { text: 'Contact', icon: <MailOutlineIcon /> },
   { text: 'Shipping', icon: <LocalShippingIcon /> },
-  { text: 'Profile', icon: <PersonIcon />   },
+  { text: 'Profile', icon: <PersonIcon /> },
   { text: 'CompanyInfo', icon: <BusinessIcon /> }
 ];
 
 export default function MiniDrawer() {
+  const {open,setOpen}=useContext(LayoutContext)
+
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, setUser } =useContext(UserContext)
-  
+  const { user, setUser } = useContext(UserContext)
+
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  
-//   const activeMenuItem = menuItems.find((menuItem) =>
-//   location.pathname.toLowerCase().includes(menuItem.text.toLowerCase())
-// );
+  // const [open, setOpen] = React.useState(false);
+
+  //   const activeMenuItem = menuItems.find((menuItem) =>
+  //   location.pathname.toLowerCase().includes(menuItem.text.toLowerCase())
+  // );
 
   const lastSegment = location.pathname.split('/').filter(Boolean).pop();
 
@@ -184,7 +172,7 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{backgroundColor:"#163357"}}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -196,11 +184,11 @@ export default function MiniDrawer() {
               ...(open && { display: 'none' }),
             }}
           >
-            <MenuIcon sx={{color:"white"}} />
+            <MenuIcon sx={{ color: "white" }} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{display:"flex", justifyContent:"space-between" ,alignItems:"center",width:"100%", margin:"1rem" }}>
+          <Typography variant="h6" noWrap component="div" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", margin: "1rem" }}>
             <div className="profile">
-              <h3>Welcome { user && user.name}</h3>
+              <h3>Welcome {user && user.name}</h3>
             </div>
             <Link to={"/"}>
               <h3 className='goHome'>
@@ -211,39 +199,39 @@ export default function MiniDrawer() {
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader sx={{backgroundColor:"#163357", height:"4.4rem"}} >
-          <h2 style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100%",fontSize:"25px", fontWeight:"1200",color:"white" }}>{lastSegment || 'Unknown Page'}</h2>
-          <IconButton onClick={handleDrawerClose} sx={{color:"white"}}>
+        <DrawerHeader sx={{ backgroundColor:'rgba(0, 0, 0, 0.7)' , height: "4.4rem" }} >
+          <h2 style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", fontSize: "25px", fontWeight: "1200", color: "white" }}>{lastSegment || 'Unknown Page'}</h2>
+          <IconButton onClick={handleDrawerClose} sx={{ color: "white" }}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List sx={{color:"white"}}>
+        <List sx={{ color: "white" }}>
           {menuItems.map((menuItem, index) => {
             // console.log('MenuItem:', menuItem);
             return (
-              <ListItem key={menuItem.text} disablePadding sx={{ display: 'block'}}>
+              <ListItem key={menuItem.text} disablePadding sx={{ display: 'block' }}>
                 <NavLink to={`/dashboard/${menuItem.text.toLowerCase()}`} >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                    color:"white"
-                  }}
-                >
-                  <ListItemIcon
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                      color:"white"
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                      color: "white"
                     }}
                   >
-                    {menuItem.icon}
-                  </ListItemIcon>
-                  <ListItemText primary={menuItem.text} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                        color: "white"
+                      }}
+                    >
+                      {menuItem.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={menuItem.text} sx={{ opacity: open ? 1 : 0 }} />
+                  </ListItemButton>
                 </NavLink>
               </ListItem>
             );
@@ -251,13 +239,13 @@ export default function MiniDrawer() {
         </List>
 
         {/* This is for the logout */}
-        <ListItem onClick={logout} disablePadding sx={{ display: 'block', marginTop: "10px", paddingTop: "10px", borderTop:"1px solid white"}}>
+        <ListItem onClick={logout} disablePadding sx={{ display: 'block', marginTop: "10px", paddingTop: "10px", borderTop: "1px solid white" }}>
           <ListItemButton
             sx={{
               minHeight: 48,
               justifyContent: open ? 'initial' : 'center',
               px: 2.5,
-              color:"white"
+              color: "white"
             }}
           >
             <ListItemIcon
@@ -265,7 +253,7 @@ export default function MiniDrawer() {
                 minWidth: 0,
                 mr: open ? 3 : 'auto',
                 justifyContent: 'center',
-                color:"white"
+                color: "white"
               }}
             >
               <DashboardIcon />
@@ -277,7 +265,7 @@ export default function MiniDrawer() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 
       </Box>
-    <DrawerHeader />
+      <DrawerHeader />
     </Box>
   );
 }

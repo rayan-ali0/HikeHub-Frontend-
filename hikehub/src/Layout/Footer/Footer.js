@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './Footer.module.css';
 import style from './Footer.module.css'
@@ -9,8 +9,32 @@ import twitter from '../../assets/icons/twitter.svg'
 import tiktok from '../../assets/icons/tiktok.svg'
 import subscribeIcon from '../../assets/icons/send.png'
 import nature from '../../assets/images/background.jpg'
+import axiosInstance from '../../Utils/AxiosInstance'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.minimal.css';
 
 const Footer = () => {
+const [email,SetEmail]=useState()
+
+    const addSubscribtion=async()=>{
+        try {
+            const response = await axiosInstance.post(`subscribe`,{email:email})
+            if (response.status===200) {
+                console.log(response.data.message)
+                SetEmail()
+                toast.success(response.data.message || "Please try again.")
+            }
+            else {
+                console.log(response.data.message)
+                toast.error(response.data.message || "Please try again.")
+            }
+        } catch (error) {
+            console.log(error.message)
+            toast.error(error.message|| "Please try again.")
+
+        }
+    }
     return (
         <footer className={style.footer}>
             <img src={nature} className={style.backImg}></img>
@@ -55,12 +79,15 @@ const Footer = () => {
                         <li><a href="#"><img src={facebook} alt="Facebook Icon" /></a></li>
                         <li><a href="#"><img src={twitter} alt="Twitter Icon" /></a></li>
                     </ul>
-                    <form className={style.signUp}>
+                    <form className={style.signUp} >
                         <label htmlFor="em">KEEP IN TOUCH</label>
                         <div className={style.inputBox}>
-                            <input type="email" name="Email" id="em" placeholder="Your e-mail to subscribe" className={style.emailInput} />
+                            <input type="email" name="Email" id="em" placeholder="Your e-mail to subscribe" className={style.emailInput} 
+                            onChange={(e)=>SetEmail(e.target.value)}
+                            value={email||''}
+                            />
                             {/* <input type="submit" value="Subscribe" className={style.submit} /> */}
-                            <img src={subscribeIcon} className={style.submit}></img>
+                            <img src={subscribeIcon}  className={style.submit} onClick={addSubscribtion}></img>
                         </div>
                     </form>
                 </div>
