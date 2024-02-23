@@ -1,0 +1,22 @@
+.actionDiv{
+    display: flex;
+    /* border: 1px solid red; */
+    justify-content: space-between ;
+    align-items: center;
+    padding: 20px;
+}
+.btnAdd{
+    color: white;
+    cursor: pointer;
+    width: auto;
+
+    height: 2.8rem;
+    font-size: 1em;
+    /* background-color: #C62507; */
+    background-color: transparent;
+    border-radius: var(--border-radius);
+    border: 1px solid white;
+    font-weight: bold;
+    padding: 15px;
+}
+

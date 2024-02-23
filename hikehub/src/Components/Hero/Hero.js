@@ -5,31 +5,31 @@ import cloud from '../../assets/images/cloud1.png'
 import cloud2 from '../../assets/images/cloud2.png'
 import { motion } from "framer-motion"
 
-const slider={
-    initial:{
-        x:0
+const slider = {
+    initial: {
+        x: 0
     },
-    animate:{
-        x:"-15%",
-        transition:{
-            repeat:Infinity,
-            repeatType:"mirror",
-            duration:20
+    animate: {
+        x: "-15%",
+        transition: {
+            repeat: Infinity,
+            repeatType: "mirror",
+            duration: 20
 
         }
     }
 }
 
-const slider1={
-    initial:{
-        x:-200
+const slider1 = {
+    initial: {
+        x: -200
     },
-    animate:{
-        x:"-35%",
-        transition:{
-            repeat:Infinity,
-            repeatType:"mirror",
-            duration:20
+    animate: {
+        x: "-35%",
+        transition: {
+            repeat: Infinity,
+            repeatType: "mirror",
+            duration: 20
 
         }
     }
@@ -46,14 +46,13 @@ const Hero = () => {
                 {/* <div className={style.transparentTextContainer}> */}
 
                 <h1 className={style.transparentText}>Mountain and beyond</h1>
-{/* </div> */}
+                {/* </div> */}
             </section>
             <div className={style.cloudHolders}>
 
-            <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds}/>
-
-<motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds}/>
-</div>
+                <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds}/>
+                <motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds}/>
+            </div>
         </div>
     )
 }

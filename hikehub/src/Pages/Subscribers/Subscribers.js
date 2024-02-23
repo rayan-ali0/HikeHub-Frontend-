@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+// import styles from "./Subscribers.module.css";
 import styles from "../Trails/Trails.module.css";
+
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,29 +15,23 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axiosInstance from '../../Utils/AxiosInstance';
-import ModelAddLocation from './AddLocation.js'
+
 /************************************* */
 
-export default function Locations() {
+export default function Subscribers() {
     const [item, setItem] = useState([]);
-    const [locations, setLocations] = useState([]);
+    const [subscribers, setSubscribers] = useState([]);
     const [isloading, setIsLoading] = useState(true);
     const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
     const [isUpdateCategoryOpen, setIsUpdateCategoryOpen] = useState(false);
-    const [selectedLocation, setSelectedLocation] = useState(null);
-    const [isAddFormOpen, setIsAddFormOpen] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
     const [formData, setFormData] = useState({
         title: "",
         description: "",
         image: null,
     });
 
-    const [type, setType] = useState({
-        add: false,
-        edit: false,
-        delete: false
-    })
-    console.log("oennnnnnnnnnnnnnnnnnn", isAddFormOpen)
 
 
     const handleSubmit = async () => {
@@ -75,41 +71,31 @@ export default function Locations() {
 
 
 
-    const handleEdit = (location) => {
-        // setIsUpdateCategoryOpen(true)
-        // setSelectedCategory(category);
-        setSelectedLocation(location)
-        setType({
-            add: false,
-            edit: true,
-            delete: false
-        })
+    const handleEdit = (category) => {
+        setIsUpdateCategoryOpen(true)
+        setSelectedCategory(category);
     }
 
     const handleAddFormClose = () => {
-        setType({
-            add: false,
-            edit: false,
-            delete: false
-        })
-        fetchLocations()
+        setIsAddCategoryOpen(false);
+        setIsUpdateCategoryOpen(false)
     };
-
     const columns = [
-        { field: '_id', headerName: 'ID', width: 300 },
+        { field: '_id', headerName: 'ID', flex:1 },
         {
-            field: "name", headerName: "Name", width: 300
+            field: "email", headerName: "Email", flex:1
         },
         {
             field: 'Action',
             headerName: 'Actions',
-            width: 200,
+            width: 100,
             renderCell: (params) => (
                 <div style={{ display: "flex", gap: "10px" }}>
                     <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
                         <EditIcon />
                     </div>
-                    <div onClick={() => handleDelete(params.row)} style={{ cursor: "pointer" }}>
+
+                    <div onClick={() => handleDelete(params.row._id)} style={{ cursor: "pointer" }}>
                         <DeleteIcon />
                     </div>
                 </div>
@@ -118,16 +104,12 @@ export default function Locations() {
     ];
 
 
+
+
     // post data
-    const handleAdd = () => {
-        // e.();
-        console.log("opene Clicked")
-        setType({
-            add: true,
-            edit: false,
-            delete: false
-        })
-        // setIsAddCategoryOpen(true)
+    const handleAdd = (e) => {
+        e.preventDefault();
+        setIsAddCategoryOpen(true)
     };
     const emptyRow = { id: -1, name: "Loading..." };
 
@@ -135,53 +117,43 @@ export default function Locations() {
 
 
     /************************************** */
-    const fetchLocations = async () => {
+    const fetchsubscribers = async () => {
         try {
 
-            const response = await axiosInstance.get(`location/read`, { withCredentials: true });
+            const response = await axiosInstance.get(`subscribe`, { withCredentials: true });
             if (response) {
-                setLocations(response.data)
+                setSubscribers(response.data)
             }
         } catch (error) {
-            console.log(error.message);
+            console.log(error.message); 
         }
     }
 
-    const handleDelete = (location) => {
-        setSelectedLocation(location)
-        setType({
-            add: false,
-            edit: false,
-            delete: true
-        })
-    }
+    const handleDelete = async (id) => {
+        try {
+            const response = await axiosInstance.delete(`subscribe/${id}`, { withCredentials: true });
+            if (response) {
+                toast.success("Subscribtion deleted successfully", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    toastId: 3,
+                });
+
+                fetchsubscribers()
+            }
 
 
-    // const handleDelete = async (id) => {
-    //     try {
-    //         const response = await axiosInstance.delete(`location/delete/${id}`, { withCredentials: true });
-    //         if (response) {
-    //             toast.success("Location deleted successfully", {
-    //                 position: "top-center",
-    //                 autoClose: 3000,
-    //                 hideProgressBar: false,
-    //                 closeOnClick: true,
-    //                 pauseOnHover: true,
-    //                 draggable: true,
-    //                 toastId: 3,
-    //             });
-
-    //             fetchLocations()
-    //         }
-
-    //     } catch (error) {
-    //         console.error("Error deleting item:", error.message);
-    //     }
-    // };
-
+        } catch (error) {
+            console.error("Error deleting subsribtion:", error.message);
+        }
+    };
 
     useEffect(() => {
-        fetchLocations()
+        fetchsubscribers()
     }, []);
     /******************************* */
     return (
@@ -194,19 +166,19 @@ export default function Locations() {
                 marginBottom: "7rem",
             }} >
 
-            <div className={styles.actionDiv}>
-                <h1 style={{ fontSize: 30, fontWeight: "bold" }}>
-                    Locations</h1>
-                <button
-                    className={styles.btnAdd}
-                    onClick={handleAdd}
-                >
-                    Add Location
-                </button>
-            </div>
+<div className={styles.actionDiv}>
+        <h1 style={{ fontSize: 30, fontWeight: "bold"}}>
+          Subscribers</h1>
+        <button
+          className={styles.btnAdd}
+          onClick={handleAdd}
+        >
+          Add Subscriber
+        </button>
+      </div>
             <DataGrid
-                getRowId={(locations) => locations._id}
-                rows={locations || []}
+                getRowId={(subscribers) => subscribers._id}
+                rows={subscribers || []}
                 columns={columns}
                 pagination
                 pageSize={5}
@@ -272,15 +244,21 @@ export default function Locations() {
                 }}
             />
 
+            {/* {isAddCategoryOpen && (
+        <CategoryAdd
+        onClose={handleAddFormClose}
+              />
+      )}
+      {isUpdateCategoryOpen && (
+        < UpdateCategory
+        onClose={() => setIsUpdateCategoryOpen(false)}
+        category={selectedCategory}
+        data={data}
 
-
-            <section>
-                {/* {isModelFormOpen && <ModelForm model={selectedModel} onClose={() => setIsModelFormOpen(false)}   />} */}
-                {type.add && <ModelAddLocation onClose={handleAddFormClose} isAddFormOpen={isAddFormOpen} type={"Add"}   />}
-                {type.edit && selectedLocation && <ModelAddLocation onClose={handleAddFormClose} location={selectedLocation}  isAddFormOpen={isAddFormOpen} type={"Edit"} />}
-                {type.delete && selectedLocation && <ModelAddLocation onClose={handleAddFormClose} location={selectedLocation} isAddFormOpen={isAddFormOpen} type={"Delete"} />}
-
-            </section>
+        />
+      )}
+     */}
+            <ToastContainer />
         </div>
     );
 }

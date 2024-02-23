@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Sites.module.css";
+import styles from "../Trails/Trails.module.css";
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axiosInstance from '../../Utils/AxiosInstance';
-
+import SiteForm from './AddSite'
 /************************************* */
 
 export default function Sites() {
@@ -23,13 +23,20 @@ export default function Sites() {
     const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
     const [isUpdateCategoryOpen, setIsUpdateCategoryOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [isFormOpen, setIsAddFormOpen] = useState(false);
+    const [selectedSite, setSelectSite] = useState(null);
 
     const [formData, setFormData] = useState({
-        title: "",
+        name: "",
         description: "",
         image: null,
     });
 
+    const [type, setType] = useState({
+        add: false,
+        edit: false,
+        delete: false
+    })
 
 
     const handleSubmit = async () => {
@@ -69,14 +76,24 @@ export default function Sites() {
 
 
 
-    const handleEdit = (category) => {
-        setIsUpdateCategoryOpen(true)
-        setSelectedCategory(category);
+    const handleEdit = (site) => {
+        setSelectSite(site)
+        setType({
+            add: false,
+            edit: true,
+            delete: false
+        })
     }
 
     const handleAddFormClose = () => {
-        setIsAddCategoryOpen(false);
-        setIsUpdateCategoryOpen(false)
+        // setIsAddCategoryOpen(false);
+        // setIsUpdateCategoryOpen(false)
+        setType({
+            add: false,
+            edit: false,
+            delete: false
+        })
+        fetchSites()
     };
     const columns = [
         {
@@ -134,39 +151,21 @@ export default function Sites() {
                     <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
                         <EditIcon />
                     </div>
-                    <div onClick={() => handleDeletee(params.row._id)} style={{ cursor: "pointer" }}>
+                    <div onClick={() => handleDelete(params.row)} style={{ cursor: "pointer" }}>
                         <DeleteIcon />
                     </div>
                 </div>
             ),
         },
     ];
-
-    const handleDeletee = async (id) => {
-        try {
-            const response = await axios.delete(
-                `http://localhost:5000/category/deleteCategory/${id}`,
-            );
-
-            toast.success("category plan deleted successfully", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-
-        } catch (error) {
-            console.error("Error deleting item:", error.message);
-        }
-    };
-
-
     // post data
     const handleAdd = (e) => {
-        e.preventDefault();
-        setIsAddCategoryOpen(true)
+        // setSelectedLocation(location)
+        setType({
+            add: true,
+            edit: false,
+            delete: false
+        })
     };
     const emptyRow = { id: -1, name: "Loading..." };
 
@@ -185,6 +184,39 @@ export default function Sites() {
             console.log(error.message);
         }
     }
+   
+    const handleDelete =  (site) => {
+        setSelectSite(site)
+        setType({
+            add: false,
+            edit: false,
+            delete: true
+        })
+    }
+    // const handleDelete = async (id) => {
+        
+    //     try {
+    //         const response = await axiosInstance.delete(`site/delete/${id}`, { withCredentials: true });
+    //         if (response) {
+    //             toast.success("Site deleted successfully", {
+    //                 position: "top-center",
+    //                 autoClose: 3000,
+    //                 hideProgressBar: false,
+    //                 closeOnClick: true,
+    //                 pauseOnHover: true,
+    //                 draggable: true,
+    //                 toastId: 3,
+    //             });
+
+    //             fetchSites()
+    //         }
+
+
+    //     } catch (error) {
+    //         console.error("Error deleting item:", error.message);
+    //     }
+    // };
+
     useEffect(() => {
         fetchSites()
     }, []);
@@ -199,23 +231,17 @@ export default function Sites() {
                 marginBottom: "7rem",
             }} >
 
-            <h1 style={{ fontSize: 30, fontWeight: "bold", marginBottom: 30 }}> Sites</h1>
-            <button
-                className={styles.btnAdd}
-                style={{
-                    color: "white",
-                    marginBottom: "1rem",
-                    cursor: "pointer",
-                    width: "7rem",
-                    height: "2.5rem",
-                    backgroundColor: "#C62507",
-                    borderRadius: "5px",
-                    fontWeight: "bold",
-                }}
-                onClick={handleAdd}
-            >
-                Add Sites
-            </button>
+<div className={styles.actionDiv}>
+        <h1 style={{ fontSize: 30, fontWeight: "bold"}}>
+          Sites</h1>
+        <button
+          className={styles.btnAdd}
+          onClick={handleAdd}
+        >
+          Add Site
+        </button>
+      </div>
+
             <DataGrid
                 getRowId={(sites) => sites._id}
                 rows={sites || []}
@@ -284,21 +310,10 @@ export default function Sites() {
                 }}
             />
 
-            {/* {isAddCategoryOpen && (
-        <CategoryAdd
-        onClose={handleAddFormClose}
-              />
-      )}
-      {isUpdateCategoryOpen && (
-        < UpdateCategory
-        onClose={() => setIsUpdateCategoryOpen(false)}
-        category={selectedCategory}
-        data={data}
+                     {type.add && <SiteForm onClose={handleAddFormClose}  type={"Add"}   />}
+                {type.edit && selectedSite && <SiteForm onClose={handleAddFormClose} site={selectedSite}   type={"Edit"} />}
+                {type.delete && selectedSite && <SiteForm onClose={handleAddFormClose} site={selectedSite}   type={"Delete"} />}
 
-        />
-      )}
-     */}
-            <ToastContainer />
         </div>
     );
 }

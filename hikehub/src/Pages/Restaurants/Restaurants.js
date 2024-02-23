@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Restaurants.module.css";
+// import styles from "./Restaurants.module.css";
+import styles from "../Trails/Trails.module.css";
+
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
@@ -134,7 +136,7 @@ export default function Restaurants() {
                     <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
                         <EditIcon />
                     </div>
-                    <div onClick={() => handleDeletee(params.row._id)} style={{ cursor: "pointer" }}>
+                    <div onClick={() => handleDelete(params.row._id)} style={{ cursor: "pointer" }}>
                         <DeleteIcon />
                     </div>
                 </div>
@@ -142,25 +144,6 @@ export default function Restaurants() {
         },
     ];
 
-    const handleDeletee = async (id) => {
-        try {
-            const response = await axios.delete(
-                `http://localhost:5000/category/deleteCategory/${id}`,
-            );
-
-            toast.success("category plan deleted successfully", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-
-        } catch (error) {
-            console.error("Error deleting item:", error.message);
-        }
-    };
 
 
     // post data
@@ -185,6 +168,30 @@ export default function Restaurants() {
             console.log(error.message);
         }
     }
+
+    const handleDelete = async (id) => {
+        try {
+            const response = await axiosInstance.delete(`restaurant/delete/${id}`, { withCredentials: true });
+            if (response) {
+                toast.success("Location deleted successfully", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    toastId: 3,
+                });
+
+                fetchrestaurants()
+            }
+
+
+        } catch (error) {
+            console.error("Error deleting item:", error.message);
+        }
+    };
+
     useEffect(() => {
         fetchrestaurants()
     }, []);
@@ -199,23 +206,16 @@ export default function Restaurants() {
                 marginBottom: "7rem",
             }} >
 
-            <h1 style={{ fontSize: 30, fontWeight: "bold", marginBottom: 30 }}> restaurants</h1>
-            <button
-                className={styles.btnAdd}
-                style={{
-                    color: "white",
-                    marginBottom: "1rem",
-                    cursor: "pointer",
-                    width: "7rem",
-                    height: "2.5rem",
-                    backgroundColor: "#C62507",
-                    borderRadius: "5px",
-                    fontWeight: "bold",
-                }}
-                onClick={handleAdd}
-            >
-                Add restaurants
-            </button>
+<div className={styles.actionDiv}>
+        <h1 style={{ fontSize: 30, fontWeight: "bold"}}>
+          Restaurants</h1>
+        <button
+          className={styles.btnAdd}
+          onClick={handleAdd}
+        >
+          Add Restaurant
+        </button>
+      </div>
             <DataGrid
                 getRowId={(restaurants) => restaurants._id}
                 rows={restaurants || []}

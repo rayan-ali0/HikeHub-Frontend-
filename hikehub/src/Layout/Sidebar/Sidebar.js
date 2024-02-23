@@ -29,7 +29,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.minimal.css";
 import axios from 'axios';
-import {LayoutContext} from '../../Context/LayoutContext'
+import { LayoutContext } from '../../Context/LayoutContext'
 import river from '../../assets/icons/river-trail.png'
 import old from '../../assets/icons/old.png'
 import calendar from '../../assets/icons/calendar.png'
@@ -41,6 +41,7 @@ import bell from '../../assets/icons/bell.png'
 import off from '../../assets/icons/turn-off.png'
 import LogoutIcon from '@mui/icons-material/Logout';
 import axiosInstance from '../../Utils/AxiosInstance';
+import edit from '../../assets/icons/edit.png'
 
 
 const drawerWidth = 240;
@@ -97,7 +98,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   ({ theme, open }) => ({
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap',
+    blackSpace: 'nowrap',
     boxSizing: 'border-box',
     ...(open && {
       ...openedMixin(theme),
@@ -113,19 +114,19 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 const menuItems = [
-  { text: 'Overview', color: "white", icon: <DashboardIcon /> },
-  { text: 'Trails', icon: <img src={river}/> },
-  { text: 'Events', icon: <img src={calendar}/> },
-  { text: 'Locations', icon: <img src={location}/>},
-  { text: 'Sites', icon: <img src={old}/> },
-  { text: 'Restaurants', icon:<img src={fork}/> },
-  { text: 'Users', icon: <img src={user}/> },
-  { text: 'Stories ', icon:  <img src={camera}/>  },
-  { text: 'Subscribers', icon: <img src={bell}/> },
+  { text: 'Overview', color: "black", icon: <DashboardIcon /> },
+  { text: 'Trails', icon: <img src={river} /> },
+  { text: 'Events', icon: <img src={calendar} /> },
+  { text: 'Locations', icon: <img src={location} /> },
+  { text: 'Sites', icon: <img src={old} /> },
+  { text: 'Restaurants', icon: <img src={fork} /> },
+  { text: 'Users', icon: <img src={user} /> },
+  { text: 'Stories ', icon: <img src={camera} /> },
+  { text: 'Subscribers', icon: <img src={bell} /> },
 ];
 
 export default function MiniDrawer() {
-  const {open,setOpen}=useContext(LayoutContext)
+  const { open, setOpen } = useContext(LayoutContext)
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -170,7 +171,7 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: 'black' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -197,7 +198,11 @@ export default function MiniDrawer() {
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader sx={{ backgroundColor:'rgba(0, 0, 0, 0.7)' , height: "4.4rem" }} >
+{        /****************************** */
+}     
+   <DrawerHeader sx={{ backgroundColor: 'rgba(0, 0, 0, 0.7)', height: "4.4rem" }} >
+   {/* <DrawerHeader sx={{ backgroundColor: 'white', height: "4.4rem" }} > */}
+
           <h2 style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", fontSize: "25px", fontWeight: "1200", color: "white" }}>{lastSegment || 'Unknown Page'}</h2>
           <IconButton onClick={handleDrawerClose} sx={{ color: "white" }}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -208,8 +213,8 @@ export default function MiniDrawer() {
           {menuItems.map((menuItem, index) => {
             // console.log('MenuItem:', menuItem);
             return (
-              <ListItem key={menuItem.text} disablePadding sx={{ display: 'block',marginBottom:'15px' }}>
-                <NavLink to={`/dashboard/${menuItem.text.toLowerCase()}`}  activeClassName="activeLink"
+              <ListItem key={menuItem.text} disablePadding sx={{ display: 'block', marginBottom: '15px' }}>
+                <NavLink to={`/dashboard/${menuItem.text.toLowerCase()}`} activeClassName="activeLink"
                 >
                   <ListItemButton
                     sx={{
@@ -238,6 +243,34 @@ export default function MiniDrawer() {
         </List>
 
         {/* This is for the logout */}
+
+        <ListItem disablePadding sx={{ display: 'block', marginBottom: '15px' }}>
+          <NavLink to={`/profile`} activeClassName="activeLink"
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+                color: "white"
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                  color: "white"
+                }}
+              >
+                {/* <LogoutIcon /> */}
+                <img src={edit} />  
+              </ListItemIcon>
+              <ListItemText primary={"Profile"} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </NavLink>
+        </ListItem>
+        
         <ListItem onClick={logout} disablePadding sx={{ display: 'block', marginTop: "10px", paddingTop: "10px", borderTop: "1px solid white" }}>
           <ListItemButton
             sx={{
@@ -253,13 +286,14 @@ export default function MiniDrawer() {
                 mr: open ? 3 : 'auto',
                 justifyContent: 'center',
                 color: "white"
-              }}  
+              }}
             >
               <LogoutIcon />
             </ListItemIcon>
             <ListItemText primary={"Logout"} sx={{ opacity: open ? 1 : 0 }} />
           </ListItemButton>
         </ListItem>
+  
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 

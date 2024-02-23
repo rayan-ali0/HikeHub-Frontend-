@@ -15,7 +15,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axiosInstance from '../../Utils/AxiosInstance';
 
 /************************************* */
- 
+
 export default function Trails() {
   const [item, setItem] = useState([]);
   const [trails, setTrails] = useState([]);
@@ -30,7 +30,7 @@ export default function Trails() {
     image: null,
   });
 
- 
+
 
   const handleSubmit = async () => {
     try {
@@ -46,7 +46,7 @@ export default function Trails() {
 
       setItem((prevItems) => [...prevItems, response.data.data]);
 
-      
+
       setFormData({
         title: "",
         description: "",
@@ -67,9 +67,9 @@ export default function Trails() {
     }
   };
 
- 
 
-  const handleEdit=(category)=>{
+
+  const handleEdit = (category) => {
     setIsUpdateCategoryOpen(true)
     setSelectedCategory(category);
   }
@@ -79,14 +79,13 @@ export default function Trails() {
     setIsUpdateCategoryOpen(false)
   };
   const columns = [
-    { field: '_id', headerName: 'ID', width:250 },
-    { field: "title", headerName: "Title",width:250 },
-    { field: "description", headerName: "Description",width:250 },
-    { field: "length", headerName: "Length",width:100 },
-    { field: "seaLevel", headerName: "Sea Level",width:100 },
-    { field: "walkingTime", headerName: "walkingTime",width:150 },
-    { field: "difficulty", headerName: "Difficulty",width:100 },
-
+    { field: '_id', headerName: 'ID', width: 250 },
+    { field: "title", headerName: "Title", width: 250 },
+    { field: "description", headerName: "Description", width: 250 },
+    { field: "length", headerName: "Length", width: 100 },
+    { field: "seaLevel", headerName: "Sea Level", width: 100 },
+    { field: "walkingTime", headerName: "walkingTime", width: 150 },
+    { field: "difficulty", headerName: "Difficulty", width: 100 },
     // {
     //   field: "image",
     //   headerName: "Image",
@@ -101,47 +100,29 @@ export default function Trails() {
     // },
     {
       field: 'Action',
-    headerName: 'Actions',
-    width: 100,
-    renderCell: (params) => (
-      <div style={{display :"flex",gap:"10px"}}>
-        <div onClick={() => handleEdit(params.row)} style={{cursor:"pointer"}}>
-          <EditIcon />
+      headerName: 'Actions',
+      width: 100,
+      renderCell: (params) => (
+        <div style={{ display: "flex", gap: "10px" }}>
+          <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
+            <EditIcon />
           </div>
-      
-          <div onClick={() => handleEdit(params.row)} style={{cursor:"pointer"}}>
-          <RemoveRedEyeIcon />
+
+          <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
+            <RemoveRedEyeIcon />
           </div>
-      
-          <div onClick={() => handleDeletee(params.row._id)} style={{cursor:"pointer"}}>
-          <DeleteIcon />
+
+          <div onClick={() => handleDelete(params.row._id)} style={{ cursor: "pointer" }}>
+            <DeleteIcon />
           </div>
         </div>
       ),
     },
   ];
 
- 
 
-  const handleDeletee = async (id) => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:5000/category/deleteCategory/${id}`,
-      );
-  
-        toast.success("category plan deleted successfully", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
-    
-    } catch (error) {
-      console.error("Error deleting item:", error.message);
-    }
-  };
+
+
 
 
   // post data
@@ -151,23 +132,45 @@ export default function Trails() {
   };
   const emptyRow = { id: -1, name: "Loading..." };
 
-//   const rowsWithEmptyRow = isloading ? [emptyRow] : data;
+  //   const rowsWithEmptyRow = isloading ? [emptyRow] : data;
 
 
   /************************************** */
-  const fetchTrails=async()=>{
+  const fetchTrails = async () => {
     try {
 
-        const response = await axiosInstance.get(`trail/read`, { withCredentials: true });
-        if (response) {
-            setTrails(response.data)
-        }
-      } catch (error) {
-        console.log(error.message);
+      const response = await axiosInstance.get(`trail/read`, { withCredentials: true });
+      if (response) {
+        setTrails(response.data)
       }
+    } catch (error) {
+      console.log(error.message);
+    }
   }
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axiosInstance.delete(`trail/delete/${id}`, { withCredentials: true });
+      if (response) {
+        toast.success("category plan deleted successfully", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        fetchTrails()
+      }
+
+
+    } catch (error) {
+      console.error("Error deleting item:", error.message);
+    }
+  };
+
   useEffect(() => {
-   fetchTrails()
+    fetchTrails()
   }, []);
   /******************************* */
   return (
@@ -177,30 +180,22 @@ export default function Trails() {
         float: "left",
         margin: "auto",
         height: "650px",
-        marginBottom: "7rem",    
+        marginBottom: "7rem",
       }} >
+      <div className={styles.actionDiv}>
+        <h1 style={{ fontSize: 30, fontWeight: "bold"}}>
+          Trails</h1>
+        <button
+          className={styles.btnAdd}
+          onClick={handleAdd}
+        >
+          Add Trail
+        </button>
+      </div>
 
-      <h1 style={{ fontSize: 30, fontWeight: "bold", marginBottom: 30 }}>
-Category</h1>
-      <button
-        className={styles.btnAdd}
-        style={{
-          color: "white",
-          marginBottom: "1rem",
-          cursor:"pointer",
-          width: "7rem",
-          height: "2.5rem",
-          backgroundColor: "#C62507",
-          borderRadius: "5px",
-          fontWeight: "bold",
-        }}
-        onClick={handleAdd}
-      >
-        Add Trail
-      </button>
       <DataGrid
-        getRowId={(trails)=>trails._id}
-        rows={trails||[]}
+        getRowId={(trails) => trails._id}
+        rows={trails || []}
         columns={columns}
         pagination
         pageSize={5}
@@ -213,11 +208,11 @@ Category</h1>
           // border:"none",
           paddingTop: "1rem",
           border: "1px solid white",
-          padding:"20px",
-          borderRadius:"10px",
-          height:"90%",
-        //   borderRadius: "17px",
-        // margin:"10rem",
+          padding: "20px",
+          borderRadius: "10px",
+          height: "90%",
+          //   borderRadius: "17px",
+          // margin:"10rem",
           "& .MuiDataGrid-root": {
             backgroundColor: "white",
           },
@@ -226,7 +221,7 @@ Category</h1>
             color: "white",
             fontFamily: "Outfit",
             fontSize: "20px",
-                fontWeight: 'bold', // Make the text bold
+            fontWeight: 'bold', // Make the text bold
 
             // Text color of column headers
           },

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Restaurants.module.css";
+// import styles from "./Users.module.css";
+import styles from "../Trails/Trails.module.css";
+
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import 'react-toastify/dist/ReactToastify.minimal.css';
+
 // import CategoryAdd from "./CategoryAdd";
 //  import UpdateCategory from "./CategoryUpdate";
 
@@ -16,9 +20,9 @@ import axiosInstance from '../../Utils/AxiosInstance';
 
 /************************************* */
 
-export default function Restaurants() {
+export default function Users() {
     const [item, setItem] = useState([]);
-    const [restaurants, setRestaurants] = useState([]);
+    const [users, setUsers] = useState([]);
     const [isloading, setIsLoading] = useState(true);
     const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
     const [isUpdateCategoryOpen, setIsUpdateCategoryOpen] = useState(false);
@@ -79,52 +83,31 @@ export default function Restaurants() {
         setIsUpdateCategoryOpen(false)
     };
     const columns = [
-        {
-            field: "image",
-            headerName: "Image",
-            width:150 ,
-            renderCell: (params) => (
-              <img
-              src={`${process.env.REACT_APP_BACKEND_PATH}${params.value}`}
-              alt="Image"
-                style={{ width: 60, height: 60 }}
-              />
-            ),
-          },
+        // {
+        //     field: "image",
+        //     headerName: "Image",
+        //     width:150 ,
+        //     renderCell: (params) => (
+        //       <img
+        //       src={`${process.env.REACT_APP_BACKEND_PATH}${params.value}`}
+        //       alt="Image"
+        //         style={{ width: 60, height: 60 }}
+        //       />
+        //     ),
+        //   },
         { field: '_id', headerName: 'ID', width: 300 },
         {
-            field: "name", headerName: "Name", width: 300
+            field: "name", headerName: "Name", width: 250
         },
         {
-            field: "description", headerName: "Description", width: 350,
-            renderCell: (params) => {
-
-                return (
-                  <div style={{
-                    maxHeight: '100%',
-                    overflow: 'scroll',
-                    WebkitOverflowScrolling: 'touch',
-        
-                  }}>
-                    <style>
-                      {`
-                            ::-webkit-scrollbar {
-                              width: 1px;
-                            }
-              
-                            ::-webkit-scrollbar-thumb {
-                              background-color: transparent;
-                            }
-              
-                            ::-webkit-scrollbar-track {
-                              background-color: transparent;
-                            }
-                          `}
-                    </style>
-                    {params.value}
-                  </div>)}
+            field: "email", headerName: "Email", width: 250
         },
-  
+        {
+            field: "role", headerName: "Role", width: 150
+        },
+        {
+            field: "phone", headerName: "Phone", width: 300
+        },
         {
             field: 'Action',
             headerName: 'Actions',
@@ -134,7 +117,7 @@ export default function Restaurants() {
                     <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
                         <EditIcon />
                     </div>
-                    <div onClick={() => handleDeletee(params.row._id)} style={{ cursor: "pointer" }}>
+                    <div onClick={() => handleDelete(params.row._id)} style={{ cursor: "pointer" }}>
                         <DeleteIcon />
                     </div>
                 </div>
@@ -142,25 +125,6 @@ export default function Restaurants() {
         },
     ];
 
-    const handleDeletee = async (id) => {
-        try {
-            const response = await axios.delete(
-                `http://localhost:5000/category/deleteCategory/${id}`,
-            );
-
-            toast.success("category plan deleted successfully", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-
-        } catch (error) {
-            console.error("Error deleting item:", error.message);
-        }
-    };
 
 
     // post data
@@ -174,19 +138,44 @@ export default function Restaurants() {
 
 
     /************************************** */
-    const fetchrestaurants = async () => {
+    const fetchUsers = async () => {
         try {
 
-            const response = await axiosInstance.get(`restaurant/read`, { withCredentials: true });
+            const response = await axiosInstance.get(`user/all`, { withCredentials: true });
             if (response) {
-                setRestaurants(response.data)
+                setUsers(response.data)
             }
         } catch (error) {
             console.log(error.message);
         }
     }
+
+    const handleDelete = async (id) => {
+        try {
+            const response = await axiosInstance.delete(`user/${id}`, { withCredentials: true });
+            if (response) {
+                toast.success("user plan deleted successfully", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    toastId: 3,
+                });
+
+                fetchUsers()
+            }
+
+
+        } catch (error) {
+            console.error("Error deleting item:", error.message);
+        }
+    };
+
+
     useEffect(() => {
-        fetchrestaurants()
+        fetchUsers()
     }, []);
     /******************************* */
     return (
@@ -199,26 +188,19 @@ export default function Restaurants() {
                 marginBottom: "7rem",
             }} >
 
-            <h1 style={{ fontSize: 30, fontWeight: "bold", marginBottom: 30 }}> restaurants</h1>
-            <button
-                className={styles.btnAdd}
-                style={{
-                    color: "white",
-                    marginBottom: "1rem",
-                    cursor: "pointer",
-                    width: "7rem",
-                    height: "2.5rem",
-                    backgroundColor: "#C62507",
-                    borderRadius: "5px",
-                    fontWeight: "bold",
-                }}
-                onClick={handleAdd}
-            >
-                Add restaurants
-            </button>
+<div className={styles.actionDiv}>
+        <h1 style={{ fontSize: 30, fontWeight: "bold"}}>
+          Users</h1>
+        <button
+          className={styles.btnAdd}
+          onClick={handleAdd}
+        >
+          Add Users
+        </button>
+      </div>
             <DataGrid
-                getRowId={(restaurants) => restaurants._id}
-                rows={restaurants || []}
+                getRowId={(users) => users._id}
+                rows={users || []}
                 columns={columns}
                 pagination
                 pageSize={5}
@@ -298,7 +280,6 @@ export default function Restaurants() {
         />
       )}
      */}
-            <ToastContainer />
         </div>
     );
 }

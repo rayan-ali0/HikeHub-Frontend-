@@ -22,6 +22,9 @@ import EventsTable from "../Pages/DashEvents/Events.js";
 import Locations from "../Pages/Locations/Locations.js";
 import Sites from "../Pages/Sites/Sites.js";
 import Restaurants from "../Pages/Restaurants/Restaurants.js";
+import Users from "../Pages/Users/Users.js";
+import StoriesTable from "../Pages/DashStories/StoriesTable.js";
+import Subscribers from "../Pages/Subscribers/Subscribers.js";
 const Router = () => {
     const { user, checkUser } = useContext(UserContext);
 
@@ -73,16 +76,16 @@ const Router = () => {
                             />
                         }>
                         <Route path="/dashboard" element={<Dashboard />}>
-                            <Route path="Overview"  element={<Overview />} />
-                            {/* <Route path="" index element={<Overview />} /> */}
+                            <Route path="Overview" index element={<Overview />} />
+                            <Route path="" index element={<Overview />} />
                             <Route path="trails"  element={<Trails />} />
                             <Route path="events"  element={<EventsTable />}/>
                             <Route path="locations"  element={<Locations/>} />
                             <Route path="sites"  element={<Sites/>} />
                             <Route path="restaurants"  element={<Restaurants />}/>
-                            <Route path="users"  element={<Overview />} />
-                            <Route path="stories"  element={<Overview />} />
-                            <Route path="subscribers"  element={<Overview />} />
+                            <Route path="users"  element={<Users/>} />
+                            <Route path="stories"  element={<StoriesTable/>} />
+                            <Route path="subscribers"  element={<Subscribers/>} />
                         </Route>
                     </Route>
 

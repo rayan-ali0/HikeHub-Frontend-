@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Events.module.css";
+import styles from "../Trails/Trails.module.css";
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 // import CategoryAdd from "./CategoryAdd";
 //  import UpdateCategory from "./CategoryUpdate";
+import 'react-toastify/dist/ReactToastify.minimal.css';
 
 /*********************************** */
 
@@ -118,7 +119,7 @@ export default function EventsTable() {
                         <RemoveRedEyeIcon />
                     </div>
 
-                    <div onClick={() => handleDeletee(params.row._id)} style={{ cursor: "pointer" }}>
+                    <div onClick={() => handleDelete(params.row._id)} style={{ cursor: "pointer" }}>
                         <DeleteIcon />
                     </div>
                 </div>
@@ -126,25 +127,6 @@ export default function EventsTable() {
         },
     ];
 
-    const handleDeletee = async (id) => {
-        try {
-            const response = await axios.delete(
-                `http://localhost:5000/category/deleteCategory/${id}`,
-            );
-
-            toast.success("category plan deleted successfully", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-
-        } catch (error) {
-            console.error("Error deleting item:", error.message);
-        }
-    };
 
 
     // post data
@@ -169,6 +151,31 @@ export default function EventsTable() {
             console.log(error.message);
         }
     }
+
+    const handleDelete = async (id) => {
+        try {
+            const response = await axiosInstance.delete(`event/delete/${id}`, { withCredentials: true });
+            if (response) {
+                toast.success("Event deleted successfully", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    toastId: 3,
+                });
+
+                fetchEvents()
+            }
+
+
+        } catch (error) {
+            console.error("Error deleting item:", error.message);
+        }
+    };
+
+
     useEffect(() => {
         fetchEvents()
     }, []);
@@ -183,7 +190,17 @@ export default function EventsTable() {
                 marginBottom: "7rem",
             }} >
 
-            <h1 style={{ fontSize: 30, fontWeight: "bold", marginBottom: 30 }}> Events</h1>
+<div className={styles.actionDiv}>
+        <h1 style={{ fontSize: 30, fontWeight: "bold"}}>
+          Events</h1>
+        <button
+          className={styles.btnAdd}
+          onClick={handleAdd}
+        >
+          Add Event
+        </button>
+      </div>
+            {/* <h1 style={{ fontSize: 30, fontWeight: "bold", marginBottom: 30 }}> Events</h1>
             <button
                 className={styles.btnAdd}
                 style={{
@@ -199,7 +216,7 @@ export default function EventsTable() {
                 onClick={handleAdd}
             >
                 Add Event
-            </button>
+            </button> */}
             <DataGrid
                 getRowId={(events) => events._id}
                 rows={events || []}

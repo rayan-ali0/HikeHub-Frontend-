@@ -127,7 +127,7 @@ const Navbar = () => {
                     <NavLink
                       to="/dashboard"
                       activeclassname={styles.activeLink}
-                      className={`${styles.menuItem} ${location.pathname === '/dashboard' ? styles.activeNavItem : ''} ${location.pathname === '/checkout' || location.pathname === '/confirmed' || location.pathname === '/developers' || location.pathname === '/profile' || location.pathname === '/cart' ? styles.blue : styles.white}`}
+                      className={`${styles.menuItem} ${location.pathname === '/dashboard' ? styles.activeNavItem : ''} ${styles.white}`}
                     >
                       Dashboard
                     </NavLink>

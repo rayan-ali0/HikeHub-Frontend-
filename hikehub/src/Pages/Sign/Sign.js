@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import TextField from '@mui/material/TextField';
 import style from "./Sign.module.css"
-// import background from '../../assets/images/background.jpg'
-import background from '../../assets/images/toomas-tartes-Yizrl9N_eDA-unsplash (1).jpg'
+import background from '../../assets/images/background.jpg'
+// import background from '../../assets/images/toomas-tartes-Yizrl9N_eDA-unsplash (1).jpg'
 import google from '../../assets/icons/google-removebg-preview.png'
 import axiosInstance from '../../Utils/AxiosInstance';
 import { UserContext } from '../../Context/UserContext';
@@ -25,6 +25,7 @@ const Sign = () => {
 
   const navigate = useNavigate()
   const location = useLocation()
+  
   const styleField = {
     '& .MuiOutlinedInput-root': {
       borderColor: 'white', // Default border color
