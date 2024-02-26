@@ -72,7 +72,7 @@ const Details = ({ details, seats, trail }) => {
                     ) : !Array.isArray(data[activeLink]) && activeLink !== "meetingPoints" ? (
 
                         <p>
-                            {data[activeLink]}
+                            {data[activeLink]+"Darb El Mseilha, also known as the Mseilha Walkway, is a captivating hiking trail offering stunning scenery and historical charm in the Batroun region of Lebanon. Winding alongside the Nahr el-Joz river, the trail unveils enchanting landscapes."}
                         </p>
                     )
                         : activeLink === "meetingPoints" && (
@@ -94,7 +94,6 @@ const Details = ({ details, seats, trail }) => {
                         ) : (
                             <button disabled>{bookStatus}</button>
                         )}
-                    {/* <button onClick={() => setBook(true)} >{seats===0?"Fully Booked":"Book Your Seat"}</button> */}
                 </div>
 
             </section>

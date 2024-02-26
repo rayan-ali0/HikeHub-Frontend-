@@ -15,16 +15,19 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axiosInstance from '../../Utils/AxiosInstance';
+import RestaurantForm from "./RestaurantForm";
 
 /************************************* */
 
 export default function Restaurants() {
     const [item, setItem] = useState([]);
     const [restaurants, setRestaurants] = useState([]);
-    const [isloading, setIsLoading] = useState(true);
-    const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
-    const [isUpdateCategoryOpen, setIsUpdateCategoryOpen] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [isFormOpen, setIsFormOpen] = useState({
+        add:false,
+        edit:false,
+        delete:false
+    });
+    const [selectedRestaurant, setSelectedRestaurants] = useState([]);
 
     const [formData, setFormData] = useState({
         title: "",
@@ -70,16 +73,6 @@ export default function Restaurants() {
     };
 
 
-
-    const handleEdit = (category) => {
-        setIsUpdateCategoryOpen(true)
-        setSelectedCategory(category);
-    }
-
-    const handleAddFormClose = () => {
-        setIsAddCategoryOpen(false);
-        setIsUpdateCategoryOpen(false)
-    };
     const columns = [
         {
             field: "image",
@@ -133,10 +126,10 @@ export default function Restaurants() {
             width: 200,
             renderCell: (params) => (
                 <div style={{ display: "flex", gap: "10px" }}>
-                    <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
+                    <div onClick={() => handleOpen("Edit",params.row)} style={{ cursor: "pointer" }}>
                         <EditIcon />
                     </div>
-                    <div onClick={() => handleDelete(params.row._id)} style={{ cursor: "pointer" }}>
+                    <div onClick={() => handleOpen("Delete",params.row)} style={{ cursor: "pointer" }}>
                         <DeleteIcon />
                     </div>
                 </div>
@@ -145,17 +138,27 @@ export default function Restaurants() {
     ];
 
 
-
-    // post data
-    const handleAdd = (e) => {
-        e.preventDefault();
-        setIsAddCategoryOpen(true)
-    };
-    const emptyRow = { id: -1, name: "Loading..." };
-
     //   const rowsWithEmptyRow = isloading ? [emptyRow] : data;
+const handleClose=()=>{
+    setIsFormOpen({add:false,edit:false,delete:false})
+    setSelectedRestaurants()
+    fetchrestaurants()
+}
 
+const handleOpen=(action,data)=>{
+    setSelectedRestaurants(data)
+    if(action==="Add"){
+        setIsFormOpen({add:true,edit:false,delete:false})
+    }
+    else if(action==="Edit"){
+        setIsFormOpen({add:false,edit:true,delete:false})
+    }
+    else{
+        setIsFormOpen({add:false,edit:false,delete:true})
 
+    }
+
+}
     /************************************** */
     const fetchrestaurants = async () => {
         try {
@@ -211,8 +214,8 @@ export default function Restaurants() {
           Restaurants</h1>
         <button
           className={styles.btnAdd}
-          onClick={handleAdd}
-        >
+          onClick={() => handleOpen("Add")}     
+             >
           Add Restaurant
         </button>
       </div>
@@ -284,21 +287,15 @@ export default function Restaurants() {
                 }}
             />
 
-            {/* {isAddCategoryOpen && (
-        <CategoryAdd
-        onClose={handleAddFormClose}
-              />
-      )}
-      {isUpdateCategoryOpen && (
-        < UpdateCategory
-        onClose={() => setIsUpdateCategoryOpen(false)}
-        category={selectedCategory}
-        data={data}
-
-        />
-      )}
-     */}
-            <ToastContainer />
+{
+    isFormOpen.add &&<RestaurantForm onClose={handleClose} type={"Add"}/>
+}
+{
+    isFormOpen.edit && selectedRestaurant &&<RestaurantForm onClose={handleClose}  restaurant={selectedRestaurant} type={"Edit"}/>
+}
+{
+    isFormOpen.delete && selectedRestaurant &&<RestaurantForm onClose={handleClose}  restaurant={selectedRestaurant} type={"Delete"}/>
+}
         </div>
     );
 }

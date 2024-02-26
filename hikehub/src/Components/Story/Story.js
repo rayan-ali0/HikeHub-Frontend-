@@ -8,7 +8,7 @@ console.log(index%2===0)
 <section className={`${style.storySection} ${style.textSection}`}>
     <div className={style.title}>
     <h1 className={style.storyTitle}>{story.title}</h1>
-<h4 className={style.date}>{story.date.split('T')[0]}</h4>
+<h4 className={style.date}>{story.eventId.date.split('T')[0]}</h4>
     </div>
 
 <div className={style.storyLine}></div>

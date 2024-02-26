@@ -6,8 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-// import CategoryAdd from "./CategoryAdd";
-//  import UpdateCategory from "./CategoryUpdate";
 
 /*********************************** */
 
@@ -99,15 +97,15 @@ export default function Sites() {
         {
             field: "image",
             headerName: "Image",
-            width:150,
+            width: 150,
             renderCell: (params) => (
-              <img
-                src={`${process.env.REACT_APP_BACKEND_PATH}${params.value}`}
-                alt="Image"
-                style={{ width: 60, height: 60 }}
-              />
+                <img
+                    src={`${process.env.REACT_APP_BACKEND_PATH}${params.value}`}
+                    alt="Image"
+                    style={{ width: 60, height: 60 }}
+                />
             ),
-          },
+        },
         { field: '_id', headerName: 'ID', width: 250 },
         {
             field: "name", headerName: "Name", width: 250
@@ -117,14 +115,14 @@ export default function Sites() {
             renderCell: (params) => {
 
                 return (
-                  <div style={{
-                    maxHeight: '100%',
-                    overflow: 'scroll',
-                    WebkitOverflowScrolling: 'touch',
-        
-                  }}>
-                    <style>
-                      {`
+                    <div style={{
+                        maxHeight: '100%',
+                        overflow: 'scroll',
+                        WebkitOverflowScrolling: 'touch',
+
+                    }}>
+                        <style>
+                            {`
                             ::-webkit-scrollbar {
                               width: 1px;
                             }
@@ -137,11 +135,12 @@ export default function Sites() {
                               background-color: transparent;
                             }
                           `}
-                    </style>
-                    {params.value}
-                  </div>)}
+                        </style>
+                        {params.value}
+                    </div>)
+            }
         },
-  
+
         {
             field: 'Action',
             headerName: 'Actions',
@@ -184,8 +183,8 @@ export default function Sites() {
             console.log(error.message);
         }
     }
-   
-    const handleDelete =  (site) => {
+
+    const handleDelete = (site) => {
         setSelectSite(site)
         setType({
             add: false,
@@ -194,7 +193,7 @@ export default function Sites() {
         })
     }
     // const handleDelete = async (id) => {
-        
+
     //     try {
     //         const response = await axiosInstance.delete(`site/delete/${id}`, { withCredentials: true });
     //         if (response) {
@@ -231,16 +230,16 @@ export default function Sites() {
                 marginBottom: "7rem",
             }} >
 
-<div className={styles.actionDiv}>
-        <h1 style={{ fontSize: 30, fontWeight: "bold"}}>
-          Sites</h1>
-        <button
-          className={styles.btnAdd}
-          onClick={handleAdd}
-        >
-          Add Site
-        </button>
-      </div>
+            <div className={styles.actionDiv}>
+                <h1 style={{ fontSize: 30, fontWeight: "bold" }}>
+                    Sites</h1>
+                <button
+                    className={styles.btnAdd}
+                    onClick={handleAdd}
+                >
+                    Add Site
+                </button>
+            </div>
 
             <DataGrid
                 getRowId={(sites) => sites._id}
@@ -310,9 +309,9 @@ export default function Sites() {
                 }}
             />
 
-                     {type.add && <SiteForm onClose={handleAddFormClose}  type={"Add"}   />}
-                {type.edit && selectedSite && <SiteForm onClose={handleAddFormClose} site={selectedSite}   type={"Edit"} />}
-                {type.delete && selectedSite && <SiteForm onClose={handleAddFormClose} site={selectedSite}   type={"Delete"} />}
+            {type.add && <SiteForm onClose={handleAddFormClose} type={"Add"} />}
+            {type.edit && selectedSite && <SiteForm onClose={handleAddFormClose} site={selectedSite} type={"Edit"} />}
+            {type.delete && selectedSite && <SiteForm onClose={handleAddFormClose} site={selectedSite} type={"Delete"} />}
 
         </div>
     );

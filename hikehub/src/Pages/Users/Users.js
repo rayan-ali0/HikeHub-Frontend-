@@ -17,16 +17,18 @@ import 'react-toastify/dist/ReactToastify.minimal.css';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axiosInstance from '../../Utils/AxiosInstance';
+import ModelEditUser from "./EditUser";
+import AddUser from "./AddUser";
 
 /************************************* */
 
 export default function Users() {
     const [item, setItem] = useState([]);
     const [users, setUsers] = useState([]);
-    const [isloading, setIsLoading] = useState(true);
-    const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
-    const [isUpdateCategoryOpen, setIsUpdateCategoryOpen] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [isEditOpen, setIsEditOpen] = useState(false)
+    const [isAddOpen, setIsAddOpen] = useState(false)
+
+    const [selectedUser, setSelectedUser] = useState()
 
     const [formData, setFormData] = useState({
         title: "",
@@ -73,15 +75,17 @@ export default function Users() {
 
 
 
-    const handleEdit = (category) => {
-        setIsUpdateCategoryOpen(true)
-        setSelectedCategory(category);
+    const handleEdit = (user) => {
+        setSelectedUser(user)
+        setIsEditOpen(true)
     }
 
-    const handleAddFormClose = () => {
-        setIsAddCategoryOpen(false);
-        setIsUpdateCategoryOpen(false)
-    };
+    const handleEditClose=()=>{
+        setIsEditOpen(false)
+        setSelectedUser()
+        fetchUsers()
+    }
+
     const columns = [
         // {
         //     field: "image",
@@ -127,15 +131,16 @@ export default function Users() {
 
 
 
-    // post data
-    const handleAdd = (e) => {
-        e.preventDefault();
-        setIsAddCategoryOpen(true)
+    const handleAdd = () => {
+        setIsAddOpen(true)
     };
-    const emptyRow = { id: -1, name: "Loading..." };
+    const handleAddClose=()=>{
+        setIsAddOpen(false)
+        fetchUsers()
 
-    //   const rowsWithEmptyRow = isloading ? [emptyRow] : data;
 
+    }
+    
 
     /************************************** */
     const fetchUsers = async () => {
@@ -188,16 +193,16 @@ export default function Users() {
                 marginBottom: "7rem",
             }} >
 
-<div className={styles.actionDiv}>
-        <h1 style={{ fontSize: 30, fontWeight: "bold"}}>
-          Users</h1>
-        <button
-          className={styles.btnAdd}
-          onClick={handleAdd}
-        >
-          Add Users
-        </button>
-      </div>
+            <div className={styles.actionDiv}>
+                <h1 style={{ fontSize: 30, fontWeight: "bold" }}>
+                    Users</h1>
+                <button
+                    className={styles.btnAdd}
+                    onClick={handleAdd}
+                >
+                    Add User
+                </button>
+            </div>
             <DataGrid
                 getRowId={(users) => users._id}
                 rows={users || []}
@@ -266,20 +271,14 @@ export default function Users() {
                 }}
             />
 
-            {/* {isAddCategoryOpen && (
-        <CategoryAdd
-        onClose={handleAddFormClose}
-              />
-      )}
-      {isUpdateCategoryOpen && (
-        < UpdateCategory
-        onClose={() => setIsUpdateCategoryOpen(false)}
-        category={selectedCategory}
-        data={data}
+{isEditOpen&& selectedUser&&(
+    <ModelEditUser onClose={handleEditClose} userData={selectedUser}/>
+)}
+{isAddOpen&& (
+    <AddUser onClose={handleAddClose}/>
+)}
 
-        />
-      )}
-     */}
+
         </div>
     );
 }

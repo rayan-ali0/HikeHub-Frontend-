@@ -25,6 +25,8 @@ import Restaurants from "../Pages/Restaurants/Restaurants.js";
 import Users from "../Pages/Users/Users.js";
 import StoriesTable from "../Pages/DashStories/StoriesTable.js";
 import Subscribers from "../Pages/Subscribers/Subscribers.js";
+import TrailForm from "../Pages/Trails/TrailForm.js";
+import ViewEvent from "../Pages/DashEvents/ViewEvents.js";
 const Router = () => {
     const { user, checkUser } = useContext(UserContext);
 
@@ -79,7 +81,10 @@ const Router = () => {
                             <Route path="Overview" index element={<Overview />} />
                             <Route path="" index element={<Overview />} />
                             <Route path="trails"  element={<Trails />} />
+                            <Route path="trails/:action"  element={<TrailForm/> } />
                             <Route path="events"  element={<EventsTable />}/>
+                            <Route path="eventDetails"  element={<ViewEvent />}/>
+
                             <Route path="locations"  element={<Locations/>} />
                             <Route path="sites"  element={<Sites/>} />
                             <Route path="restaurants"  element={<Restaurants />}/>

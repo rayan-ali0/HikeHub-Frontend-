@@ -1,4 +1,4 @@
-// SiteForm.js
+// RestaurantForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
@@ -9,16 +9,14 @@ import img from '../../assets/images/default.jpg'
 import axiosInstance from '../../Utils/AxiosInstance';
 import { toast } from 'react-toastify';
 
-const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
-    console.log("soteeeee", site)
+const RestaurantForm = ({ onClose, restaurant, type }) => {
+    console.log("ress", restaurant)
     const [formData, setFormData] = useState({
-        name: site ? site.name : '',
-        description: site ? site.description : '',
+        name: restaurant ? restaurant.name : '',
+        description: restaurant ? restaurant.description : '',
         image: null,
     });
     const [message, setMessage] = useState()
-
-    const { name, description, image } = formData
 
     const handleChange = (e) => {
         setFormData((prevData) => ({
@@ -34,10 +32,9 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
         }));
     };
 
-    const handleEdit = async (data) => {
-        console.log(data)
+    const handleEdit = async () => {
         try {
-            const response = await axiosInstance.patch(`site/update/${site._id}`, formData, {
+            const response = await axiosInstance.patch(`restaurant/update/${restaurant._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -47,7 +44,7 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
             );
             // Close the form after successful add
             if (response) {
-                toast.success("Site edited successfully", {
+                toast.success("restaurant edited successfully", {
                     position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -62,15 +59,14 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
             onClose();
         } catch (error) {
             // setMessage( error.response.data.error)
-            console.error('Error editing site:', error);
+            console.error('Error editing restaurant:', error);
             // Handle error (show error message, etc.)
         }
     }
 
     const handleAdd = async (data) => {
-
         try {
-            const response = await axiosInstance.post(`site/create`, formData, {
+            const response = await axiosInstance.post(`restaurant/create`, formData, {
                 headers: { "Content-Type": 'multipart/form-data' }
             }
                 ,
@@ -78,7 +74,7 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
             );
             // Close the form after successful add
             if (response) {
-                toast.success("Site deleted successfully", {
+                toast.success("restaurant deleted successfully", {
                     position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -93,7 +89,7 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
             onClose();
         } catch (error) {
             setMessage(error.response)
-            console.error('Error adding site:', error.response);
+            console.error('Error adding restaurant:', error.response);
             // Handle error (show error message, etc.)
         }
     }
@@ -101,14 +97,7 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // const formDataToSend = new FormData();
-        // formDataToSend.append('name', name);
-        // formDataToSend.append('description', description);
-        // if (image != null) {
-        //     formDataToSend.append('image', image);
-        // }
-        // console.log(formDataToSend)
-        console.log(formData)
+        console.log("dormmmmmmmmmmmmmmmmmm",formData)
         if (type === "Add") {
             handleAdd()
         }
@@ -121,9 +110,9 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
     const handleDelete = async () => {
 
         try {
-            const response = await axiosInstance.delete(`site/delete/${site._id}`, { withCredentials: true });
+            const response = await axiosInstance.delete(`restaurant/delete/${restaurant._id}`, { withCredentials: true });
             if (response) {
-                toast.success("Site deleted successfully", {
+                toast.success("restaurant deleted successfully", {
                     position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -148,7 +137,7 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
     return (
         <Dialog open={true} onClose={onClose}>
             <Box sx={{ p: 2, width: 400, backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-                <h2 style={{ color: '#163357' }}>{type + " "}Site</h2>
+                <h2 style={{ color: '#163357' }}>{type + " "}Restaurant</h2>
                 {(type === "Add" || type === "Edit") && (
                     <form onSubmit={handleSubmit}>
                         <TextField
@@ -178,41 +167,6 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
                             rows={4}
                         />
 
-
-                        {/* {type === "Edit" && (
-                <img
-                  style={{
-                    margin: "1rem auto",
-                  }}
-                  src={
-                    formData.image
-                      ? 
-                      URL.createObjectURL(formData.image)
-                      : `${process.env.REACT_APP_BACKEND_PATH}${site.image}`
-                  }
-                  alt={formData.title}
-                  width={"100%"}
-                  height={"300px"}
-                />
-              )}
-
-{type === "Add" && (
-                <img
-                  style={{
-                    margin: "1rem auto",
-                  }}
-                  src={
-                    formData.image
-                      ? 
-                      URL.createObjectURL(formData.image)
-                      :img
-                  }
-                  alt={formData.title}
-                  width={"100%"}
-                  height={"300px"}
-                />
-              )} */}
-
                         <img
                             style={{
                                 margin: "1rem auto",
@@ -221,7 +175,7 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
                             src={
                                 formData.image && (type === "Add" || type === "Edit")
                                     ? URL.createObjectURL(formData.image)
-                                    : type === "Edit" ? `${process.env.REACT_APP_BACKEND_PATH}${site.image}`
+                                    : type === "Edit" ? `${process.env.REACT_APP_BACKEND_PATH}${restaurant.image}`
                                         : img
                             } alt={formData.title}
                             width={"100%"}
@@ -239,7 +193,7 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
                             type="submit"
                             style={{ backgroundColor: '#163357', color: 'white', marginTop: '10px' }}
                         >
-                            {type + " "} Site
+                            {type + " "} restaurant
                         </Button>
                     </form>
                 )}
@@ -247,7 +201,7 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
                 {
                     type === "Delete" && (
                         <>
-                            <p> Are You Sure Delete {site?.name}</p>
+                            <p> Are You Sure Delete {restaurant?.name}</p>
                             <Button
                                 variant="contained"
                                 onClick={handleDelete}
@@ -273,4 +227,4 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
     );
 };
 
-export default SiteForm;
+export default RestaurantForm;

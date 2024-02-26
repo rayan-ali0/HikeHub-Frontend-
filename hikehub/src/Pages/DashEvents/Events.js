@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.minimal.css';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axiosInstance from '../../Utils/AxiosInstance';
+import { useNavigate } from "react-router-dom";
 
 /************************************* */
 
@@ -30,8 +31,11 @@ export default function EventsTable() {
         description: "",
         image: null,
     });
+const navigate=useNavigate()
 
-
+    const handleView=(data)=>{
+        navigate('/dashboard/EventDetails',{state:{event: data}})
+    }
 
     const handleSubmit = async () => {
         try {
@@ -115,7 +119,7 @@ export default function EventsTable() {
                         <EditIcon />
                     </div>
 
-                    <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
+                    <div onClick={() => handleView(params.row)} style={{ cursor: "pointer" }}>
                         <RemoveRedEyeIcon />
                     </div>
 

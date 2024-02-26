@@ -20,7 +20,7 @@ const Contact = () => {
     Phone: '',
     message: ''
   })
-
+  
     const variants={
         initial:{
             y:50,

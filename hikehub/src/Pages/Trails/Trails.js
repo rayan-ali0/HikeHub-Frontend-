@@ -13,6 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axiosInstance from '../../Utils/AxiosInstance';
+import { useNavigate } from "react-router-dom";
 
 /************************************* */
 
@@ -124,15 +125,14 @@ export default function Trails() {
 
 
 
-
+const navigate=useNavigate()
   // post data
-  const handleAdd = (e) => {
-    e.preventDefault();
-    setIsAddCategoryOpen(true)
+  const handleAdd = () => {
+    // e.preventDefault();
+    // setIsAddCategoryOpen(true)
+    navigate('Add')
   };
-  const emptyRow = { id: -1, name: "Loading..." };
 
-  //   const rowsWithEmptyRow = isloading ? [emptyRow] : data;
 
 
   /************************************** */

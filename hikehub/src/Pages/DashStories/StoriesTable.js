@@ -16,6 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axiosInstance from '../../Utils/AxiosInstance';
 import { display } from "@mui/system";
+import StoryForm from "./StoriesForm";
 
 /************************************* */
 
@@ -27,48 +28,20 @@ export default function StoriesTable() {
     const [isUpdateCategoryOpen, setIsUpdateCategoryOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
 
+    const [isFormOpen, setIsFormOpen] = useState({
+        add:false,
+        edit:false,
+        delete:false
+    });
+    const [selectedStory, setSelectedStory] = useState([]);
+
+
     const [formData, setFormData] = useState({
         title: "",
         description: "",
         image: null,
     });
 
-
-
-    const handleSubmit = async () => {
-        try {
-            const formDataToSend = new FormData();
-            Object.entries(formData).forEach(([key, value]) => {
-                formDataToSend.append(key, value);
-            });
-
-            const response = await axios.post(
-                `${process.env.REACT_APP_PATH}regime/add`,
-                formDataToSend
-            );
-
-            setItem((prevItems) => [...prevItems, response.data.data]);
-
-
-            setFormData({
-                title: "",
-                description: "",
-            });
-            toast.success("Regime plan added successfully", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-
-
-
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
 
 
 
@@ -98,11 +71,11 @@ export default function StoriesTable() {
         {
             field: "title", headerName: "Tilte", width: 250
         },
-        {
-            field: "date", headerName: "Date", width: 250, renderCell: (params) => (
-                params.value.split('T')[0]
-            )
-        },
+        // {
+        //     field: "eventId", headerName: "Date", width: 250, renderCell: (params) => (
+        //         params.value.date.split('T')[0]
+        //     )
+        // },
         {
             field: "description", headerName: "Description", width: 400,
             renderCell: (params) => {
@@ -160,10 +133,10 @@ export default function StoriesTable() {
             width: 200,
             renderCell: (params) => (
                 <div style={{ display: "flex", gap: "10px" }}>
-                    <div onClick={() => handleEdit(params.row)} style={{ cursor: "pointer" }}>
+                    <div onClick={()=>handleOpen("Edit",params.row)} style={{ cursor: "pointer" }}>
                         <EditIcon />
                     </div>
-                    <div onClick={() => handleDelete(params.row._id)} style={{ cursor: "pointer" }}>
+                    <div onClick={()=>handleOpen("Delete",params.row)} style={{ cursor: "pointer" }}>
                         <DeleteIcon />
                     </div>
                 </div>
@@ -181,12 +154,28 @@ export default function StoriesTable() {
     //   const rowsWithEmptyRow = isloading ? [emptyRow] : data;
 
 
+    const handleOpen=(action,data)=>{
+        setSelectedStory(data)
+        if(action==="Add"){
+            setIsFormOpen({add:true,edit:false,delete:false})
+        }
+        else if(action==="Edit"){
+            setIsFormOpen({add:false,edit:true,delete:false})
+        }
+        else{
+            setIsFormOpen({add:false,edit:false,delete:true})
+    
+        }
+    
+    }
+
     /************************************** */
     const fetchstories = async () => {
         try {
             const response = await axiosInstance.get(`story/read`, { withCredentials: true });
             if (response) {
                 setStories(response.data)
+                console.log("datee",response.data[0].eventId.date)
             }
         } catch (error) {
             console.log(error.message);
@@ -216,6 +205,12 @@ export default function StoriesTable() {
         }
     };
 
+    const handleClose=()=>{
+        setIsFormOpen({add:false,edit:false,delete:false})
+        setSelectedStory()
+        fetchstories()
+    }
+
     useEffect(() => {
         fetchstories()
     }, []);
@@ -235,7 +230,7 @@ export default function StoriesTable() {
           Stories</h1>
         <button
           className={styles.btnAdd}
-          onClick={handleAdd}
+          onClick={()=>handleOpen("Add")}
         >
           Add Story
         </button>
@@ -308,21 +303,15 @@ export default function StoriesTable() {
                 }}
             />
 
-            {/* {isAddCategoryOpen && (
-        <CategoryAdd
-        onClose={handleAddFormClose}
-              />
-      )}
-      {isUpdateCategoryOpen && (
-        < UpdateCategory
-        onClose={() => setIsUpdateCategoryOpen(false)}
-        category={selectedCategory}
-        data={data}
-
-        />
-      )}
-     */}
-            <ToastContainer />
+{
+    isFormOpen.add &&<StoryForm onClose={handleClose} type={"Add"}/>
+}
+{
+    isFormOpen.edit && selectedStory &&<StoryForm onClose={handleClose}  story={selectedStory} type={"Edit"}/>
+}
+{
+    isFormOpen.delete && selectedStory &&<StoryForm onClose={handleClose}  story={selectedStory} type={"Delete"}/>
+}
         </div>
     );
 }
