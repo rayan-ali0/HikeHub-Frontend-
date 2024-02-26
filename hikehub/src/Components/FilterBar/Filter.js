@@ -14,7 +14,7 @@ const Filter = ({ setEvents, allEvents }) => {
     const [locations, setLocations] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
     const [filterBY, setFilterBY] = useState({
-        lengthInterval: [0, 200]
+        lengthInterval: [0, 50]
     })
 
 

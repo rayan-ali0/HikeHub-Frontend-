@@ -2,7 +2,9 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import TextField from '@mui/material/TextField';
 import style from "./Sign.module.css"
-import background from '../../assets/images/background.jpg'
+// import background from '../../assets/images/background.jpg'
+import background from '../../assets/images/hikeman.jpg'
+
 // import background from '../../assets/images/toomas-tartes-Yizrl9N_eDA-unsplash (1).jpg'
 import google from '../../assets/icons/google-removebg-preview.png'
 import axiosInstance from '../../Utils/AxiosInstance';
@@ -81,7 +83,7 @@ const Sign = () => {
     catch (error) {
       console.log(error)
       toast.error(" Error Logged in. Please Try Again")
-      console.log("error signingggup")
+      console.log("error signinggginnnn")
     }
   }
 
@@ -104,7 +106,7 @@ const Sign = () => {
     }
     catch (error) {
       console.log(error)
-      console.log("error signingggup")
+      console.log("error signinggguuuup")
     }
   }
 
@@ -120,6 +122,7 @@ const Sign = () => {
   return (
     <div className={style.signPage}>
       <img src={background} className={style.signImage} />
+      <div className={style.opacity}></div>
       <div className={style.textStyle}>
         <span>TREKKING</span>
         <span>THROUGH</span>
@@ -163,8 +166,9 @@ const Sign = () => {
 
         />
         <section className={style.signBtns}>
-          <button className={`${style.customButton} ${style.normalSign}`} onClick={(e) =>
-            location.pathname === "signup" ? signup(e) : signin(e)}>
+          <button className={`${style.customButton} ${style.normalSign}`}
+           onClick={(e) =>
+            location.pathname === "/signup" ? signup(e) : signin(e)}>
             {location.pathname.slice(1).split('/').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}            </button>
           <span className={`${style.customButton} ${style.oauth}`}></span>
         </section>

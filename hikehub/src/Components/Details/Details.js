@@ -89,11 +89,12 @@ const Details = ({ details, seats, trail }) => {
                 <div className={style.bookSection}>
 
                     {
-                        !bookStatus ? (
+                        !bookStatus  ? (
                             <button onClick={() => setBook(true)}>Book Your Seat</button>
                         ) : (
                             <button disabled>{bookStatus}</button>
-                        )}
+                        )
+                        }
                 </div>
 
             </section>

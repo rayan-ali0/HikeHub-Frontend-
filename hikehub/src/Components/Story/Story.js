@@ -3,6 +3,7 @@ import imgB from '../../assets/images/pexels-mirsad-mujanovic-691034.jpg'
 
 const Story=({story,index})=>{
 console.log(index%2===0)
+console.log(story)
     return(
 <div className={`${index%2===0 ?style.story:style.flexPage}`}>
 <section className={`${style.storySection} ${style.textSection}`}>

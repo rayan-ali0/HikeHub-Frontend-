@@ -54,8 +54,8 @@
 }
 .eventIcons{
     
-    height: 70%;
-    width: 20%;
+    height: 60%;
+    width: 18%;
 }
 
 .date{
@@ -85,4 +85,20 @@
     border-radius: var(--border-radius);
 
 
+}
+
+.titles{
+    /* width: 80%;
+    margin: 0 auto; */
+    padding: 0.5em 1.2em;
+    display: flex;
+    /* border: 1px solid green; */
+    justify-content: space-between;
+}
+.titles>h3{
+    /* border: 1px solid red; */
+    padding: 0em 1.5em;
+    font-size: 1.3em;
+    width: 45%;
+    height: 50%;
 }

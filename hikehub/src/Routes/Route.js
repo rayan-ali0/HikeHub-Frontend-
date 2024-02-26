@@ -84,7 +84,6 @@ const Router = () => {
                             <Route path="trails/:action"  element={<TrailForm/> } />
                             <Route path="events"  element={<EventsTable />}/>
                             <Route path="eventDetails"  element={<ViewEvent />}/>
-
                             <Route path="locations"  element={<Locations/>} />
                             <Route path="sites"  element={<Sites/>} />
                             <Route path="restaurants"  element={<Restaurants />}/>
