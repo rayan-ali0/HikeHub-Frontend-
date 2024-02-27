@@ -3,6 +3,10 @@ import akroum from '../../assets/images/akroum.jpeg'
 import hikeman from '../../assets/images/hikeman.jpg'
 import cloud from '../../assets/images/cloud1.png'
 import cloud2 from '../../assets/images/cloud2.png'
+import cloud3 from '../../assets/images/cloud3.png'
+import cloud4 from '../../assets/images/cloud4.png'
+import cloud5 from '../../assets/images/cloud5.png'
+
 import { motion } from "framer-motion"
 
 const slider = {
@@ -52,6 +56,11 @@ const Hero = () => {
 
                 <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds}/>
                 <motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds}/>
+                <motion.img src={cloud3} variants={slider} initial="initial" animate="animate" className={style.clouds}/>
+
+                {/* <motion.img src={cloud4} variants={slider} initial="initial" animate="animate" className={style.cloudss}/> */}
+                {/* <motion.img src={cloud5} variants={slider} initial="initial" animate="animate" className={style.cloudss}/> */}
+
             </div>
         </div>
     )

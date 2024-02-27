@@ -43,6 +43,7 @@
 }
 
 
+
 /*  
 .clouds{
     position: absolute;
@@ -82,14 +83,15 @@
 
 .heading1 {
     font-size: 5em;
+    font-weight: 350;
 }
 
 .transparentText {
-    font-size: 4.5em;
+    font-size: 5em;
     color: white;
     display: inline-block;
     /* color: black; */
-
+font-weight: 550;
 
 }
 

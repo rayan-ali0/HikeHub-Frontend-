@@ -3,13 +3,28 @@ import Title from '../Title/Title.js'
 import Button from '../Button/Button'
 import mountain from '../../assets/images/akroum.jpeg'
 import { Link, useNavigate } from 'react-router-dom'
+import video from '../../assets/Video/video.mp4'
+import { useState,useRef } from 'react'
+import play from '../../assets/icons/play.png'
+import pause from '../../assets/icons/pause.png'
 
 const About = () => {
 const navigate=useNavigate()
+const [isVideoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
 
-    const getMore=()=>{
-        navigate('/about')
-    }
+
+    const toggleVideo = () => {
+        const videoElement = videoRef.current;
+        if (videoElement) {
+          if (isVideoPlaying) {
+            videoElement.pause();
+          } else {
+            videoElement.play();
+          }
+          setVideoPlaying(!isVideoPlaying);
+        }
+      };
 
     return (
         <div className={style.aboutSectionHolder} >
@@ -24,7 +39,12 @@ const navigate=useNavigate()
 
             </section>
             <section className={`${style.aboutSection} ${style.imgSection}`}>
-                <img src={mountain} className={style.imgAbout} />
+                <span onClick={toggleVideo} className={style.play}><img  src={isVideoPlaying?pause:play} className={style.playIcong}/></span>
+                <video  ref={videoRef}  className={style.imgAbout} >
+                    <source type='video/mp4' src={video}/>
+                    your browser does not support this type of video
+                </video>
+                {/* <img src={mountain} className={style.imgAbout} /> */}
             </section>
         </div>
     )

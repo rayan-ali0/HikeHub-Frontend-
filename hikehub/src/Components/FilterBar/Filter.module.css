@@ -6,6 +6,7 @@
     justify-content: space-between;
     /* border: 1px solid red; */
     border-radius: var(--border-radius);
+    background-color:var(--dark-green) ;
 
 }
 
@@ -137,4 +138,19 @@ border-radius: var(--border-radius);
     justify-content: space-between;
     width: 80%;
     margin: 0 auto;
+}
+.resetBtn{
+  color: white;
+  border-radius: var(--border-radius);
+  border: 1px solid white;
+  width: 3em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.resetX{
+  width: 40%;
+  height: 40%;
+
 }

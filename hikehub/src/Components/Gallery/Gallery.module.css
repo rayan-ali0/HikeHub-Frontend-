@@ -1,0 +1,8 @@
+.Story {
+    border: 2px solid red;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(209, 207, 207);
+    /* margin-top: 5em; */
+}

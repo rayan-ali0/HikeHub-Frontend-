@@ -1,6 +1,6 @@
 .bodyContainer{
     width: 85%;
-    margin: 0 auto;
+    margin: 0 auto 3em auto;
     display: flex;
     flex-direction: column;
     gap: 6em;
@@ -10,11 +10,33 @@
 .upcomingSection{
     display: flex;
     flex-direction: column;
-    gap:3em ;
+    gap:1em ;
+}
+
+.events{
+    /* border: 2px solid black; */
+    display: flex;
+    gap:2em
+}
+.comingDesc{
+    /* border: 1px solid red; */
+    width: 30%;
+    font-size: 1.7em;
+    /* text-align: center; */
+    color: var(--text-color-dark-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.comingDesc>p{
+    /* border: 1px solid black; */
+    height: auto;
+    line-height: 2;
+    font-style: italic;
 }
 .upcoming{
-    /* border: 1px solid red; */
-    width: 100%;
+    /* border: 1px solid pink; */
+    width: 70%;
     height: auto;
     display: flex;
     justify-content: space-between;

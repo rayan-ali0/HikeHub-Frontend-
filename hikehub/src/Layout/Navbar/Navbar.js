@@ -142,7 +142,7 @@ const Navbar = () => {
                     (
                       <>
                         <button className={`${styles.menuItem} ${styles.logoutBtn}`} onClick={logout}>logout</button>
-                        <button className={`${styles.menuItem} ${styles.profileBtn}`} onClick={openProfile}>P</button>
+                        <button className={`${styles.menuItem} ${styles.profileBtn}`} onClick={openProfile}>{user.name[0]}</button>
 
                       </>
 

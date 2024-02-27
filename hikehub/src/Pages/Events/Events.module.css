@@ -1,16 +1,18 @@
 .eventsPage{
-    /* border:2px solid black */
+    /* border:2px solid black; */
     position: relative;
 
 }
 
 .eventsBody{
-    width: 80%;
+    width: 85%;
     margin: 3em auto;
     display: flex;
     flex-direction: column;
     gap: 2em;
+    /* border: 1px solid black; */
     /* position: relative; */
+    min-height: 60vh;
 
 
     

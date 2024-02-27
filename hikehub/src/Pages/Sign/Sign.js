@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef, useContext } from 'react'
 import TextField from '@mui/material/TextField';
 import style from "./Sign.module.css"
 // import background from '../../assets/images/background.jpg'
-import background from '../../assets/images/hikeman.jpg'
+// import background from '../../assets/images/hikeman.jpg'
+import background from '../../assets/images/hikewomen.jpg'
 
 // import background from '../../assets/images/toomas-tartes-Yizrl9N_eDA-unsplash (1).jpg'
 import google from '../../assets/icons/google-removebg-preview.png'
@@ -15,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.minimal.css';
 import leftArrow from '../../assets/icons/left-arrow.png'
 import './profile.css'
-
+import OAuth from '../../Utils/Oauth';
 const Sign = () => {
   const { user, setUser } = useContext(UserContext)
   const [formData, setFormData] = useState({
@@ -169,8 +170,12 @@ const Sign = () => {
           <button className={`${style.customButton} ${style.normalSign}`}
            onClick={(e) =>
             location.pathname === "/signup" ? signup(e) : signin(e)}>
-            {location.pathname.slice(1).split('/').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}            </button>
-          <span className={`${style.customButton} ${style.oauth}`}></span>
+            {location.pathname.slice(1).split('/').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}    
+                    </button>
+                    {/* <OAuth signup={true}/> */}
+          {/* <span className={`${style.customButton} ${style.oauth}`}><OAuth signup={true}/></span> */}
+          <span className={`${style.customButton} ${style.oauth}`}><OAuth signup={true} className={style.authProvider}/></span>
+
         </section>
 
         <section className={style.textSection}>
@@ -182,7 +187,7 @@ const Sign = () => {
               <p>Don't Have an account? <Link to={'/signup'} className={style.signLink} >
                 <Link to={{ pathname: '/signup', state:  location.state}}  className={style.signLink}></Link>
                 Sign Up</Link> 
-              for free</p>
+              </p>
 
             )
           }

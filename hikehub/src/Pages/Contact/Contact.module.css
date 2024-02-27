@@ -11,10 +11,9 @@
     margin: 0 auto;
     position: relative;
     /* z-index: 4; */
-    height: 60vh;
+    /* height: 60vh; */
+    min-height: 70vh;
     padding: 5em;
-
-
 }
 
 .leavesImg {

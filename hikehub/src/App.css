@@ -4,11 +4,13 @@
 /* Variables */
 :root {
   /* Colors */
-  --dark-green: #142800;
+  /* --dark-green: #142800; */
+  --dark-green:#386935;
+  /* --dark-green:#031C1D; */
   --lighter-green: #064402;
   --black-color: #000000;
   --white-color: #FFFFFF;
-  --gray-blue: #5D616F
+  --gray-blue: #5D616F;
     /* Backgound-colors */
   /* --background-color-white: #ffffff; */
 
@@ -34,6 +36,8 @@
 
   --border-radius: 25px;
 
+  --nav-white-color:#fff;
+  --nav-green-color:#386935
 }
 
 

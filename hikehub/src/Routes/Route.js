@@ -27,6 +27,7 @@ import StoriesTable from "../Pages/DashStories/StoriesTable.js";
 import Subscribers from "../Pages/Subscribers/Subscribers.js";
 import TrailForm from "../Pages/Trails/TrailForm.js";
 import ViewEvent from "../Pages/DashEvents/ViewEvents.js";
+import Gallery from '../Components/Gallery/Gallery.js'
 const Router = () => {
     const { user, checkUser } = useContext(UserContext);
 
@@ -41,6 +42,7 @@ const Router = () => {
                         <Route index path="/events" element={<Events />} />
                         <Route index path="/event/:slug" element={<Event />} />
                         <Route index path="/stories" element={<Stories />} />
+                        <Route index path="/story" element={<Gallery/>} />
 
                         {/* <Route index path="/profile" element={<Profile/>
                     } /> */}

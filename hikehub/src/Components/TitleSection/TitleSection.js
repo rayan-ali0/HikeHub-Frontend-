@@ -1,9 +1,12 @@
 import style from './TitleSection.module.css'
-import nature from '../../assets/images/background.jpg'
+// import nature from '../../assets/images/background.jpg'
+import nature from  '../../assets/images/nature.jpg'
+import cloudss from  '../../assets/images/cloudss.jpg'
+
 const TitleSection = ({ text, date }) => {
     return (
         <div className={style.titleSection}>
-            <img src={nature} className={style.titleSectionImage} />
+            <img src={cloudss} className={style.titleSectionImage} />
             <div className={style.opacityLayer} />
             <div className={style.title}>
             <h1 >

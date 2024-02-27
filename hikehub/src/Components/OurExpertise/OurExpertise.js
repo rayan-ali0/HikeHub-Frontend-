@@ -1,7 +1,7 @@
 // import style from './OurExpertise.module.css'
 import style from '../OurStory/OurStory.module.css'
 import Title from '../../Components/Title/Title'
-import storyImg from '../../assets/images/hikeman2.jpg'
+import storyImg from '../../assets/images/toomas-tartes-Yizrl9N_eDA-unsplash (1).jpg'
 
 const OurExpertise = () => {
     return(

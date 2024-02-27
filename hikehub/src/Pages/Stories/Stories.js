@@ -3,6 +3,7 @@ import Story from '../../Components/Story/Story'
 import backgrd from '../../assets/images/felix-rostig-UmV2wr-Vbq8-unsplash.jpg'
 import axiosInstance from '../../Utils/AxiosInstance';
 import { useEffect, useState } from 'react';
+import ImageSlider from '../../Components/ImageSlider/ImageSlider';
 
 const Stories=()=>{
 const [stories,setStories]=useState()
@@ -34,22 +35,25 @@ fetchStories()
     return(
         !loading?(
 <div className={style.storyPage}>
-    <img src={backgrd} className={style.backImg}></img>
-    <div className={style.opacity}></div>
-    {
+    {/* <img src={backgrd} className={style.backImg}></img> */}
+    {/* <div className={style.opacity}></div> */}
+    {/* {
         stories.length>0 &&(
             stories.map((story,index)=>(
                 <div className={style.oneStory} key={index}>
-                                    {console.log(index)}
-
                 <Story story={story} index={index+1}/>
                 </div>
             ))
         )
-    }
+    } */}
+
+    <ImageSlider sliders={stories}/>
 </div>
         ):(
-            <h1>Loadinnggg,,,,</h1>
+            <div className={style.loadingDiv}>
+            <h1 className={style.loader}></h1>
+
+            </div>
         )
 
     )

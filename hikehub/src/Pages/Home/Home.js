@@ -9,6 +9,7 @@ import style from './Home.module.css'
 import axios from 'axios'
 import axiosInstance from '../../Utils/AxiosInstance'
 import { useEffect, useState } from 'react'
+import Journeys from '../../Components/Journeys/Journeys'
 const Home = () => {
   const [recents, setRecents] = useState([])
   const fetchRecents = async () => {
@@ -43,17 +44,27 @@ const Home = () => {
         <Offering />
         <div className={style.upcomingSection}>
           <Title text={"Upcoming Events"} />
+          <div className={style.events}>
+          <section  className={style.comingDesc}>
+            <p>
+            Discover the excitement that awaits! Explore our handpicked selection of upcoming events and embark on unforgettable journeys with fellow adventurers.
+            </p>
+          </section>
           {
             recents.length > 0 && (
-              <div className={style.upcoming}>
+              <section className={style.upcoming}>
                 {recents.map(event => (
                   <EventCart key={event.id} event={event} />
                 ))}
-              </div>
+              </section>
             )
           }
+           </div>
         </div>
-        <HomeStories />
+        {/* <HomeStories /> */}
+        <Journeys/>
+
+        
         <Benefits />
       </div>
     </div>

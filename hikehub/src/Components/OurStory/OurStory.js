@@ -2,6 +2,8 @@ import TitleSection from '../../Components/TitleSection/TitleSection'
 import style from './OurStory.module.css'
 import Title from '../../Components/Title/Title'
 import storyImg from '../../assets/images/hikeman2.jpg'
+import story from '../../assets/images/pexels-simon-migaj-951076.jpg'
+
 const OurStory = () => {
     return(
         <div className={style.storyContainer}>
@@ -13,7 +15,7 @@ Founded in 2020, HikeHub was born out of a love for exploration. From our humble
 </p>
     </section>    
     <section>
-<img src={storyImg} className={style.myImg}></img>
+<img src={story} className={style.myImg}></img>
     </section>
         </div>
     )

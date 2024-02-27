@@ -99,7 +99,7 @@ const Details = ({ details, seats, trail }) => {
 
             </section>
             <section className={style.detailsImg}>
-                <img src={`http://localhost:5000/${trail.images[1]}`} className={style.img} />
+                <img src={`${process.env.REACT_APP_BACKEND_PATH}${trail.images[1]}`} className={style.img} />
             </section>
             {book && <Book book={book} setBook={setBook} event={details} setBookStatus={setBookStatus} />}
         </div>

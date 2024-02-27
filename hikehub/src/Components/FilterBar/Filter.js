@@ -7,16 +7,22 @@ import down from '../../assets/icons/down-arrow.png'
 import up from '../../assets/icons/up-arrow.png'
 // import { Slider, sliderClasses } from '@mui/base/Slider';
 import Slider from '@mui/material/Slider';  // Importing Slider from Material-UI
-
 import axiosInstance from '../../Utils/AxiosInstance'
+import delt from '../../assets/icons/delete.png'
 
 const Filter = ({ setEvents, allEvents }) => {
     const [locations, setLocations] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
     const [filterBY, setFilterBY] = useState({
-        lengthInterval: [0, 50]
+        lengthInterval: [0, 30]
     })
 
+    const reset=()=>{ 
+        setFilterBY({
+            lengthInterval: [0, 30]
+        })
+        setSearchTerm('')
+    }
 
     const handleFilter = (e) => {
         setFilterBY({
@@ -85,7 +91,7 @@ const Filter = ({ setEvents, allEvents }) => {
     }
     return (
         <div className={style.filterBar}>
-            <img src={nature} className={style.backImg}></img>
+            {/* <img src={nature} className={style.backImg}></img> */}
             <div className={style.opacity}></div>
             <div className={style.filters}>
                 <section className={style.inputBox} >
@@ -156,8 +162,13 @@ const Filter = ({ setEvents, allEvents }) => {
                 </section>
 
                 <section className={style.inputBox} >
-                    <input type="title" name="title" id="title" placeholder="Search By Title" className={style.emailInput} onChange={handleSearch} />
+                    <input type="title" name="title" id="title" placeholder="Search By Title" className={style.emailInput} onChange={handleSearch} 
+                    value={searchTerm}
+                    />
                     <img src={magnifier} className={style.submit} onClick={Search}></img>
+                </section>
+                <section className={style.resetBtn}  onClick={reset}>
+                   <img src={delt} className={style.resetX}/>
                 </section>
             </div>
         </div>

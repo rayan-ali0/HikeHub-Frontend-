@@ -1,4 +1,229 @@
-.story{
+.gallery {
+    --webkit-column-count: 3;
+    --moz-column-count: 3;
+    column-count: 3;
+    --webkit-column-width: 33%;
+    --moz-column-width: 33%;
+    column-width: 33%;
+    padding: 0 12px;
+    width: 50%;
+    height: 100%;
+    /* display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; */
+    /* border: 2px solid red; */
+    /* column-gap: 24px; */
+    /* Adjust the gap as needed */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3em;
+    gap: 2em;
+}
+.img1 , .img3 {
+    margin-top: 3em;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.pics {
+    --webkit-transition: all 350ms ease;
+    transition: all 350ms ease;
+    cursor: pointer;
+    margin-bottom: 12px;
+    height: auto;
+    width: 40%;
+    height: 45%;
+    /* width: calc(33.33% - 8px); */
+    /* width: 100%; */
+    /* Adjust the width as needed, considering the column gap */
+    /* border: 2px solid red; */
+}
+
+.pics:hover {
+    filter: opacity(0.8);
+}
+
+.model,
+.modelClose {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    overflow: hidden;
+    z-index: 100;
+    transition: opacity 0.4s ease, visibility .4s ease, transform .5s ease-in-out;
+}
+
+.modelOpen {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1)
+}
+
+.closeModel {
+    position: fixed;
+    top: 12%;
+    right: 5%;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+}
+
+.showIMg {
+    width: auto;
+    max-width: 100%;
+    height:auto;
+    display: block;
+    /* box-sizing: border-box; */
+    padding: 20px;
+    margin: 0 auto;
+}
+
+@media (max-width:991px) {
+    .gallery {
+        --webkit-column-count: 2;
+        --moz-column-count: 2;
+        column-count: 2;
+
+    }
+}
+
+@media (max-width:480px) {
+    .gallery {
+        --webkit-column-count: 1;
+        --moz-column-count: 1;
+        column-count: 1;
+        --webkit-column-width: 100%;
+        --moz-column-width: 100%;
+        column-width: 100%;
+
+    }
+}
+
+.story {
+    flex-direction: row;
+   
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+.story,
+.flexPage {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    color: black;
+    border: 2px solid black;
+    /* padding-top: 5.4em; */
+    /* opacity: 0; */
+    animation: fadeIn 0.5s ease-in-out;
+
+}
+
+.flexPage {
+    flex-direction: row-reverse;
+}
+
+.storySection {
+    height: 100%;
+}
+
+.storyImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.textSection {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    padding: 7em 3em 3em 3em;
+
+}
+
+.storyTitle {
+    font-size: 4.5em;
+
+    text-wrap: wrap;
+}
+
+.title {
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.9em
+}
+
+.date {
+    font-size: 2.3em;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.storyLine {
+    width: 45%;
+    height: 6px;
+    background-color: var(--text-color-grey);
+    border-radius: var(--border-radius);
+}
+
+.storyDescription {
+    font-size: 1.4em;
+    line-height: 2;
+    height: 35%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.storyTestimonial {
+    border: 1px solid white;
+    width: 55%;
+    border-radius: var(--border-radius);
+    height: 30%;
+    align-self: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6%;
+    font-size: 1.3em;
+
+}
+
+.storyTestimonial::after {
+    position: absolute;
+    content: "";
+    border: 1px solid white;
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: 100%;
+    top: 5%;
+    left: 5%;
+    z-index: -1;
+}
+
+/***********************************************/
+/* .story{
    flex-direction: row;
 
 }
@@ -14,7 +239,6 @@
 }
 .storySection{
     height: 100%;
-    /* border: 1px solid red; */
 }
 .storyImage{
     width: 50%;
@@ -35,7 +259,6 @@
     flex-direction: column;
     gap:2%;
     padding: 7em 3em 3em 3em;
-    /* justify-content: spa; */
 
 }
 
@@ -43,7 +266,6 @@
     font-size: 4.5em;
     
     text-wrap: wrap;
-    /* color: var(--text-color-dark-grey); */
 }
 .title{
     
@@ -65,7 +287,6 @@ opacity: 0.9;
 .storyDescription{
     font-size: 1.4em;
     line-height: 2;
-    /* border: 1px solid white; */
     height: 35%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -96,4 +317,7 @@ opacity: 0.9;
     top: 5%;
     left: 5%;
     z-index: -1;
-}
+} */
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+
