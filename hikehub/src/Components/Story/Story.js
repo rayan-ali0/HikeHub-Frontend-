@@ -2,6 +2,23 @@ import style from './Story.module.css'
 import imgB from '../../assets/images/pexels-mirsad-mujanovic-691034.jpg'
 import { useState } from 'react'
 import dlt from '../../assets/icons/delete.png'
+import { motion } from 'framer-motion'
+
+const variants = [
+    {
+        initial: {
+            opacity:0
+        },
+
+        animate: {
+            opacity:1
+            
+        },
+        transition: { duration: 0.5, delay: 1 },
+    }
+
+]
+
 const Story = ({ story, index }) => {
     console.log(index % 2 === 0)
     console.log(story)
@@ -13,14 +30,14 @@ setTempImg(story.images[index])
 setModel(true)
     }
     return (
-        <div className={`${index % 2 === 0 ? style.story : style.flexPage}`}>
-            <section className={`${style.storySection} ${style.textSection}`}>
+        <motion.div className={`${index % 2 === 0 ? style.story : style.flexPage}`} variants={variants} animate="animate" initial="initial">
+            <motion.section className={`${style.storySection} ${style.textSection}`} variants={variants} animate="animate" initial="initial">
         
 
-            <div className={style.title}>
+            <motion.div className={style.title} variants={variants} animate="animate" initial="initial">
                      <h1 className={style.storyTitle}>{story.title}</h1>
                      <h4 className={style.date}>{story.eventId.date.split('T')[0]}</h4>
-                 </div>
+                 </motion.div>
 
                  <div className={style.storyLine}></div>
                  <p className={style.storyDescription}>
@@ -30,13 +47,13 @@ setModel(true)
                  <div className={style.storyTestimonial}>
                      <p>{story.testimonials[0]}</p>
                  </div>
-            </section>
+            </motion.section>
             {/******************************** */}
-            <section className={`${model?style.modelOpen:style.modelClose} ${style.model}`}>
+            <motion.section className={`${model?style.modelOpen:style.modelClose} ${style.model}`} variants={variants} animate="animate" initial="initial">
                 <img src={`${process.env.REACT_APP_BACKEND_PATH}${tempimgSrc}`} className={style.showIMg}/>
                 <img src={dlt} className={style.closeModel} onClick={()=>setModel(false)}></img>
-            </section>
-            <section className={`${style.storySection} ${style.gallery}`}>
+            </motion.section>
+            <motion.section className={`${style.storySection} ${style.gallery}`} variants={variants} animate="animate" initial="initial">
             <div className={style.pics} onClick={()=>getImg(0)}>
             <img
                             key={0}
@@ -74,8 +91,8 @@ setModel(true)
                         />
                </div>
 
-            </section>
-        </div>
+            </motion.section>
+        </motion.div>
     )
 }
 export default Story

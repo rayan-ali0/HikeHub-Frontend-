@@ -9,17 +9,19 @@ import Filter from '../../Components/FilterBar/Filter'
 const Events = () => {
     const [events, setEvents] = useState([])
     const [allEvents, setAll] = useState([])
-
+const [loading,setLoading]=useState(true)
     const fetchEvents = async () => {
         try {
             const response = await axiosInstance.get(`event/ongoing`)
             if (response) {
                 setEvents(response.data)
                 setAll(response.data)
+                setLoading(false)
                 console.log("Traillllllllssssssssss", response.data)
             }
             else {
                 console.log(response)
+                setLoading(false)
                 console.log("Error fetching events")
             }
         }
@@ -36,23 +38,34 @@ const Events = () => {
     return (
         <div className={style.eventsPage}>
             <TitleSection text={"Upcoming Hikes"} />
-            <div className={style.eventsBody}>
+            {
+                !loading?(
+                    <div className={style.eventsBody}>
 
-                <section className={style.events}>
-                    {events && events.length > 0 ? (
-                        events.map((event, index) => (
-                            <EventCart key={index} event={event} />
-                        ))
-                    )
-                    :(
-                        <h1>no data</h1>
-                    )}
-                </section>
-                <section className={style.filterContainer}>
-                    <Filter allEvents={allEvents} setEvents={setEvents} />
-                </section>
-
-            </div>
+                    <section className={style.events}>
+                        {events && events.length > 0 ? (
+                            events.map((event, index) => (
+                                <EventCart key={index} event={event} />
+                            ))
+                        )
+                        :(
+                            <h1>no data</h1>
+                        )
+                        }
+                    </section>
+                    <section className={style.filterContainer}>
+                        <Filter allEvents={allEvents} setEvents={setEvents} setLoading={setLoading} />
+                    </section>
+    
+                </div>
+                ):(
+                    <div className={style.loadingDiv}>
+                    <h1 className={style.loader}></h1>
+        
+                    </div>
+                )
+            }
+       
         </div>
     )
 }

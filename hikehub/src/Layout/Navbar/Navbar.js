@@ -70,7 +70,7 @@ const Navbar = () => {
   return (
     // Header Container
     // <header className={styles.headerContainer} >
-    <header className={`${styles.headerContainer} ${location.pathname.startsWith('/productdetails') ? styles.headerBule : styles.headerTransparent}`} >
+    <header className={`${styles.headerContainer} ${location.pathname.startsWith('/stories') ? styles.backgrd : styles.headerTransparent}`} >
       <div className={styles.navbar} >
         {/* Logo */}
         <NavLink to="/">

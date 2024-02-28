@@ -54,7 +54,6 @@
   
   }
   .loader:before {
-    content:"Loading..."
-    
+    content:"Loading..." 
   }
   @keyframes l2 {to{background-size: 100% 3px}}

@@ -11,6 +11,10 @@
     background-color:transparent;
   /* background-color: rgba(0,0,0,0.7); */
   }
+  .backgrd{
+    background-image: url('../../assets/images/cloudss.jpg');
+    background-position: center;
+  }
   .imagee{
     width: 180px;
     margin-top: 1rem;

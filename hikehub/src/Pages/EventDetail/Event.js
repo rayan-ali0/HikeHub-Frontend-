@@ -14,6 +14,7 @@ const Event = () => {
     console.log(slug)
     const [trail, setTrail] = useState()
     const[event,setEvent]=useState()
+    const [loading,setLoading]=useState(true)
     const[availableSeat,setAvailableSeat]=useState()
     const location = useLocation()
     const fetchTrail = async (id) => {
@@ -21,15 +22,20 @@ const Event = () => {
             const response = await axiosInstance.get(`trail/read/${id}`)
             if (response) {
                 setTrail(response.data)
+                setLoading(false)
                 console.log("Traillllllll", response.data)
             }
             else {
                 console.log(response)
+                setLoading(false)
+
                 console.log("Error fetching upcoming events")
             }
         }
         catch (error) {
             console.log(error.message)
+            setLoading(false)
+
         }
     }
 
@@ -65,7 +71,7 @@ const Event = () => {
     }, [slug])
 
     return (
-   event && trail?(
+   event && trail && !loading?(
     <div className={style.eventPage}>
     <TitleSection text={trail.title}  date={event.date}/>
     <div className={style.eventHolder}>
@@ -100,8 +106,9 @@ const Event = () => {
    )
      
 :(
-    <p>loadingggggggggg...</p>
-)
+    <div className={style.loadingDiv}>
+    <h1 className={style.loader}></h1>
+    </div>)
       
 
     )

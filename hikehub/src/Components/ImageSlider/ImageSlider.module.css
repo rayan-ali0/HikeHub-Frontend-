@@ -1,7 +1,7 @@
 .Slider{
     width: 100%;
     height: calc(100ch - 3em);
-    border: 2px solid black;
+    /* border: 2px solid black; */
     margin-top: 5.4em;
     position: relative;
 }
@@ -13,9 +13,9 @@
     z-index: 2;
     cursor: pointer;
     /* border: 2px solid red; */
-    background-color: rgba(0,0,0,0.8);
-    width: 4em;
-    height: 4em;
+    /* background-color: rgba(0,0,0,0.8); */
+    width: 4.5em;
+    height: 4.5em;
 }
 .leftarrow{
     position: absolute;
@@ -25,10 +25,9 @@
     z-index: 2;
     cursor: pointer;
     /* border: 2px solid red; */
-    background-color: rgba(0,0,0,0.8);
-    width: 4em;
-    height: 4em;
-    transform: rotate(180deg);
+    /* background-color: rgba(0,0,0,0.8); */
+    width: 4.5em;
+    height: 4.5em;
 }
 
 .animated{

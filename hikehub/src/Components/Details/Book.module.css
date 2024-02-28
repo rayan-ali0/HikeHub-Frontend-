@@ -6,9 +6,10 @@
     max-width: 500px;
     width: 90%;
     padding: 20px;
-    background-image: url('../../assets/images/background.jpg');
+    /* background-image: url('../../assets/images/background.jpg'); */
     background-position: bottom;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(100px);
+    /* background-color: var(--lighter-green); */
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.495); 
      border: 1px solid #ccc;
     border-radius: 5px;

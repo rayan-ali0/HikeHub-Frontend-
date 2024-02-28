@@ -74,56 +74,54 @@ const Book = ({ setBook, event, setBookStatus }) => {
 
 
     return (
-        
-            user && user.role==="organizer"?(
-                <div className={Styles.container}>
 
-                 <h2 className={Styles.h2}>{"You Are An Organizer"}</h2>
+        user && user.role === "organizer" ? (
+            <div className={Styles.container}>
+                <h2 className={Styles.h2}>{"You Are An Organizer"}</h2>
                 <button className={Styles.cancelButton} onClick={onclose}>Cancel</button>
+            </div>
 
-                </div>
-               
-            ):(
-                <>
+        ) : (
+            <>
                 <div className={Styles.overlay}></div>
                 <div className={Styles.container}>
-                    <h2 className={Styles.h2}>{!confirmation?"Book Your Seat":"Please Confirm Your booking"}</h2>
+                    <h2 className={Styles.h2}>{!confirmation ? "Book Your Seat" : "Please Confirm Your booking"}</h2>
                     {
                         confirmation ? (
                             <form onSubmit={handleSubmit}>
-                            {/* <h4 className={Styles.h2}>Please Confirm Your booking</h4> */}
-                            <button className={Styles.submitButton}>Confirm</button>
-                        </form>
-                        ):(
+                                {/* <h4 className={Styles.h2}>Please Confirm Your booking</h4> */}
+                                <button className={Styles.submitButton}>Confirm</button>
+                            </form>
+                        ) : (
                             <form onSubmit={confirmBook}>
-                            <div className={Styles.formGroup}>
-                                <label className={Styles.label}>Meeting Point:</label>
-                                <select
-                                    name="meetingPoint" // Change name to "category"
-                                    value={formData.meetingPoint} // Update value to formData.category
-                                    onChange={handleChange}
-                                    className={Styles.inputField}
-                                    required
-                                >
-                                    <option value="">Choose Your Meeting Point</option>
-                                    {event.meetingPoints.map(point => (
-                                        <option key={point.meetingPoint} value={point.meetingPoint}>{point.meetingPoint + " at " + point.time}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <button className={Styles.submitButton}>Book</button>
-                            {error && <p className={Styles.errorText}>You Have To <a onClick={redirectToSignIn}> Log In</a> </p>}
-                        </form>
+                                <div className={Styles.formGroup}>
+                                    <label className={Styles.label}>Meeting Point:</label>
+                                    <select
+                                        name="meetingPoint" // Change name to "category"
+                                        value={formData.meetingPoint} // Update value to formData.category
+                                        onChange={handleChange}
+                                        className={Styles.inputField}
+                                        required
+                                    >
+                                        <option value="">Choose Your Meeting Point</option>
+                                        {event.meetingPoints.map(point => (
+                                            <option key={point.meetingPoint} value={point.meetingPoint}>{point.meetingPoint + " at " + point.time}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <button className={Styles.submitButton}>Book</button>
+                                {error && <p className={Styles.errorText}>You Have To <a onClick={redirectToSignIn}> Log In</a> </p>}
+                            </form>
                         )
                     }
-                  
-                 
+
+
                     <button className={Styles.cancelButton} onClick={onclose}>Cancel</button>
                 </div>
             </>
-            )
-        
-       
+        )
+
+
     );
 };
 
