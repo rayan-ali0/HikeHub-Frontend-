@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 // import toast from "react-hot-toast"
 import styles from "./Navbar.module.css";
-import logo from '../../assets/images/cloud1.png';
+// import logo from '../../assets/images/cloud1.png';
 import { AiOutlineMenu, AiOutlineClose, AiOutlineShoppingCart } from 'react-icons/ai';
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -12,6 +12,7 @@ import axiosInstance from "../../Utils/AxiosInstance";
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.minimal.css';
+import logo from '../../assets/images/Trailz.svg'
 
 
 const Navbar = () => {
