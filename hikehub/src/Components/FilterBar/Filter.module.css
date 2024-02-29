@@ -1,145 +1,210 @@
-.filterBar{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    /* border: 1px solid red; */
-    border-radius: var(--border-radius);
-    background-color:var(--dark-green) ;
+.filterBar {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  border-radius: var(--border-radius);
+  background-color: var(--dark-green);
+  flex-direction: column-reverse;
+  /* gap:0.2em; */
+  min-height: 5.3em;
+  /* padding-bottom: 1em; */
+  /* align-items: center; */
+  overflow: hidden;
+
+}
+.resetText{
+  /* border: 1px solid red; */
+  justify-self: center;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+ 
+.filters  , .filtersOpen, .filterRes{
+  /* border: 2px solid white; */
+  /* margin: auto; */
+  /* z-index: 2; */
+  
+}
+.backImg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /* opacity: 0.6; */
+  object-fit: cover;
+  border-radius: var(--border-radius);
 
 }
 
-.backImg{
-    position: absolute;
-z-index: 1;
-width: 100%;
-height: 100%;
-/* opacity: 0.6; */
-object-fit: cover;
-border-radius: var(--border-radius);
-
-  }
-
-  .opacity{
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    border-radius: var(--border-radius);
-    background: rgba(0, 0, 0, 0.9); /* Adjust the opacity by changing the last value (0.1 in this example) */
-  }
+.opacity {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background: rgba(0, 0, 0, 0.9);
+  /* Adjust the opacity by changing the last value (0.1 in this example) */
+}
 
 
-  .inputBox {
-    display: flex;
-    border: 1px solid white;
-    border-radius: var(--border-radius);
-    color: white;
-    width: 22%;
-    position: relative;
+.inputBox {
+  display: flex;
+  border: 1px solid white;
+  border-radius: var(--border-radius);
+  color: white;
+  width: 22%;
+  position: relative;
+  min-height: 3em;
 
-  }
-  .inputBox .emailInput {
-    /* width: 250px; */
-    padding: 14px 16px;
-    /* border: 1px solid var(--grey-grey-400, #9CA3AF); */
-    /* background: #FFF; */
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 15px;
+}
 
-  }
-  .inputBox .emailInput::placeholder {
-    /* color: rgba(0, 0, 0, 0.60); */
-    font-size: 16px;
-    transition: .2s;
-    color: white;
-  }
-  .inputBox .emailInput:focus::placeholder {
-    opacity: 0;
-  }
-  .inputBox .emailInput:focus {
-    outline: none;
-  }
-  .inputBox .submit {
-    /* background: var(--Thulian-pink, #D96093); */
-    background-color: transparent;
-    color: var(--White, #FFF);
-    text-align: center;
-    font-size: 16px;
-    border: none;
-    transition: .2s;
-    cursor: pointer;
-    /* padding: 13px 35px 13px 0px; */
-    position: absolute;
-    width: 1.2em;
-    height: 1.2em;
-    right: 4%;
-    top:30%;
+.inputBox .emailInput {
+  /* width: 250px; */
+  padding: 14px 16px;
+  /* border: 1px solid var(--grey-grey-400, #9CA3AF); */
+  /* background: #FFF; */
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 15px;
 
-  }
+}
 
-  .filters{
-    border-radius: var(--border-radius);
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index:2;
-    display: flex;
-    padding: 1em;
-    justify-content: space-between;
-    /* border: 1px solid red; */
-  }
-  .selectInput{
-    color: white;
-    margin:0 15px;
-    /* border: 1px solid white; */
-    font-size: 16px;
-    /* background: white; */
-    width: 100%;
+.inputBox .emailInput::placeholder {
+  /* color: rgba(0, 0, 0, 0.60); */
+  font-size: 16px;
+  transition: .2s;
+  color: white;
+}
 
-  }
+.inputBox .emailInput:focus::placeholder {
+  opacity: 0;
+}
 
-  .selectInput>option{
-    color: var(--text-color-dark-grey);
+.inputBox .emailInput:focus {
+  outline: none;
+}
 
-  }
-  /* .selectInput>option:hover{
+.inputBox .submit {
+  /* background: var(--Thulian-pink, #D96093); */
+  background-color: transparent;
+  color: var(--White, #FFF);
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  transition: .2s;
+  cursor: pointer;
+  /* padding: 13px 35px 13px 0px; */
+  position: absolute;
+  width: 1.2em;
+  height: 1.2em;
+  right: 4%;
+  top: 30%;
+
+}
+
+.filters {
+  border-radius: var(--border-radius);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  /* padding: 1em; */
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid white; */
+}
+
+
+/* .filtersClose {
+  border-radius: var(--border-radius);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  padding: 1em;
+} */
+
+.filtersOpen {
+  border-radius: var(--border-radius);
+  width: 100%;
+  z-index: 2;
+  padding: 1em;
+  justify-content: space-between;
+  height: 90%;
+  gap:0.8em;
+  display: flex;
+}
+
+/* .show{
+  display: flex;
+
+}
+.hide{
+  display:none ;
+} */
+.selectInput {
+  color: white;
+  margin: 0 15px;
+  /* border: 1px solid white; */
+  font-size: 16px;
+  /* background: white; */
+  width: 100%;
+
+}
+
+.selectInput>option {
+  color: var(--text-color-dark-grey);
+
+}
+
+/* .selectInput>option:hover{
     background-color: var(--text-color-dark-grey);
   } */
-  .selectInput option:hover {
-    background-color: #e0e0e0; /* Change to your desired hover color */
-    color: #555; /* Change to your desired hover text color */
-  }
+.selectInput option:hover {
+  background-color: #e0e0e0;
+  /* Change to your desired hover color */
+  color: #555;
+  /* Change to your desired hover text color */
+}
 
-.slider{
-    width: 85%;
-    margin: 0 auto;
-    display: flex;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
-    /* border: 1px solid red; */
+.slider {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
 }
-.slideContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+.slideContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.sliderValue{
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
+
+.sliderValue {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
 }
-.resetBtn{
+
+.resetBtn {
   color: white;
   border-radius: var(--border-radius);
   border: 1px solid white;
@@ -149,8 +214,166 @@ border-radius: var(--border-radius);
   justify-content: center;
   align-items: center;
 }
-.resetX{
+
+.resetX {
   width: 40%;
   height: 40%;
 
+}
+
+@media (max-width: 992px) {
+  header {
+    position: relative;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .container .content {
+    gap: 20px;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .open .content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  /* height: 100%;
+  width: 100%; */
+  /* position: absolute; */
+  z-index: 2;
+  display: flex;
+  padding: 1em;
+  /* border: 2px solid white; */
+  /* justify-content: space-between; */
+
+}
+
+
+.filterRes {
+
+  width: 100%;
+  /* height: 100%; */
+  /* display: flex; */
+  /* position: absolute; */
+  /* z-index: 2; */
+  /* border: 2px solid white; */
+  justify-content: space-around;
+  align-items: center;
+  display: none;
+  /* border: 1px solid white; */
+  color: white;
+  z-index: 2; 
+  margin: auto;
+  margin-bottom: 1em;
+  /* padding: 0 5em; */
+
+}
+
+.burger,
+.filterText {
+  /* width: 40%; */
+  /* height: 100%; */
+  text-align: center;
+  color: white;
+}
+
+.filterText {
+  color: white;
+  /* border: 1px solid white; */
+  font-size: 1.4em;
+}
+
+.bar {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.resetBTnRes{
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .content {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container .logo img {
+    width: 110px;
+  }
+
+  .container .content {
+    gap: 20px;
+  }
+}
+
+@media (max-width:830px) {
+  .filterRes {
+    display: flex;
+  }
+
+  .filters {
+    /* flex-direction: column;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center; */
+    display: none;
+
+  }
+  .show{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: space-between;
+    /* border: 2px solid white; */
+  
+  }
+  .hide{
+    display:none ;
+  }
+
+  .filtersOpen {
+
+    /* display: ;none
+   */
+   
+  }
+
+  .inputBox {
+    width: 90%;
+    margin: 0 auto;
+
+  }
+
+  .resetBTnRes{
+    display: flex;
+    border: 1px solid white;
+    border-radius: var(--border-radius);
+    color: white;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 2.5em; 
+
+   }
+   .resetBtn{
+    display: none;
+   }
 }

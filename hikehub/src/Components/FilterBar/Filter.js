@@ -9,15 +9,21 @@ import up from '../../assets/icons/up-arrow.png'
 import Slider from '@mui/material/Slider';  // Importing Slider from Material-UI
 import axiosInstance from '../../Utils/AxiosInstance'
 import delt from '../../assets/icons/delete.png'
+import { Divide as Hamburger } from 'hamburger-react'
 
-const Filter = ({ setEvents, allEvents }) => {
+const Filter = ({ setEvents, allEvents, open, setOpen }) => {
     const [locations, setLocations] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
     const [filterBY, setFilterBY] = useState({
         lengthInterval: [0, 30]
     })
+    const toggleNav = () => {
+        setOpen(!open);
+        console.log("opennnnn",open)
+    };
 
-    const reset=()=>{ 
+
+    const reset = () => {
         setFilterBY({
             lengthInterval: [0, 30]
         })
@@ -48,7 +54,7 @@ const Filter = ({ setEvents, allEvents }) => {
     const Search = () => {
         let searchResults = []
         allEvents.filter((event) => {
-            if(event.trail.title.toLowerCase().includes(searchTerm.toLowerCase())){
+            if (event.trail.title.toLowerCase().includes(searchTerm.toLowerCase())) {
                 searchResults.push(event)
             }
         });
@@ -60,7 +66,6 @@ const Filter = ({ setEvents, allEvents }) => {
             const response = await axiosInstance.get(`location/read`)
             if (response) {
                 setLocations(response.data)
-                console.log("locationsnsss", response.data)
             }
             else {
                 console.log(response)
@@ -81,7 +86,6 @@ const Filter = ({ setEvents, allEvents }) => {
                 console.log("fileterrrsssssssssrrrr", response.data)
             }
             else {
-                console.log(response)
                 console.log("Error fetching events")
             }
         }
@@ -91,86 +95,104 @@ const Filter = ({ setEvents, allEvents }) => {
     }
     return (
         <div className={style.filterBar}>
-            {/* <img src={nature} className={style.backImg}></img> */}
             <div className={style.opacity}></div>
-            <div className={style.filters}>
-                <section className={style.inputBox} >
-                    <select type="location" name="location" id="location" placeholder="location" className={`${style.emailInput} ${style.selectInput}`}
-                        onChange={handleFilter}
-                    >
-                        <option value="">Location</option>
-                        {
-                            locations && locations.map((location, index) => (
-                                <option value={location._id} key={index}>{location.name}</option>
+            
+                    <section className={`${style.filterRes}`}>
+                        <span className={style.filterText}> Filter : </span>
+                        {/* <div className={style.burger} onClick={toggleNav} >
+                            <div className={`${style.bar} ${open ? style.open : ''}`}></div>
+                            <div className={`${style.bar} ${open ? style.open : ''}`}></div>
+                            <div className={`${style.bar} ${open ? style.open : ''}`}></div>
+                        </div> */}
+                        <Hamburger toggled={open} toggle={setOpen} />
+                    </section>
 
-                            ))
-                        }
-                        {/* <option value="tripoli">Tripoli</option>
-                        <option value="batroun">Batroun</option> */}
-                    </select>
-                    {/* <img src={down} className={style.submit}></img> */}
-                </section>
-                <section className={style.inputBox} >
-                    <select type="difficulty" name="difficulty" id="difficulty" placeholder="Difficulty" className={`${style.emailInput} ${style.selectInput}`}
-                        onChange={handleFilter}
+                
+                        {/* <div className={`${open ? style.filtersOpen: style.filters}`}> */}
+                        <div className={`${ style.filtersOpen} ${open?style.show:style.hide}` }>
 
-                    >
-                        <option value="">difficulty</option>
-                        <option value="Easy">Easy</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Hard">Hard</option>
+                            <section className={style.inputBox} >
+                                <select type="location" name="location" id="location" placeholder="location" className={`${style.emailInput} ${style.selectInput}`}
+                                    onChange={handleFilter}
+                                >
+                                    <option value="">Location</option>
+                                    {
+                                        locations && locations.map((location, index) => (
+                                            <option value={location._id} key={index}>{location.name}</option>
 
-                    </select>
-                    {/* <img src={down} className={style.submit}></img> */}
-                </section>
-                <section className={`${style.inputBox} ${style.slideContainer}`}>
-                    {/* <label for="lengthInterval">Length Interval:</label>
-                    <input type="range" id="lengthInterval" name="lengthInterval" min="0" max="100" step="1" className={style.customSlider}  />
-                    <output for="lengthInterval" id="lengthOutput">0 - 100</output> */}
-                    {/* <div className={style.sliderValue}>
-                   <p>{filterBY.lengthInterval.join(',')}</p>
-<p>km</p>
-                   </div> */}
+                                        ))
+                                    }
 
-                    <div className={style.slider}
-                    >
-                        <p>{filterBY.lengthInterval[0]}</p>
-                        <Slider
-                            value={filterBY.lengthInterval}
-                            name="lengthInterval"
-                            onChange={handleFilter}
-                            getAriaLabel={() => 'Length range'}
-                            min={0}
-                            max={200}
-                            style={{
-                                color: 'rgba(255, 255, 255, 0.5)',
-                                '& .MuiSlider-thumb': {
-                                    backgroundColor: 'white',
-                                },
-                                '& .MuiSlider-track': {
-                                    color: 'rgba(255, 255, 255, 0.5)',
-                                },
-                                '& .MuiSlider-rail': {
-                                    color: 'rgba(255, 255, 255, 0.1)',
-                                },
-                            }}
-                        />
-                        <p>{filterBY.lengthInterval[1] + "Km"}</p>
+                                </select>
+                            </section>
+                            <section className={style.inputBox} >
+                                <select type="difficulty" name="difficulty" id="difficulty" placeholder="Difficulty" className={`${style.emailInput} ${style.selectInput}`}
+                                    onChange={handleFilter}
 
-                    </div>
+                                >
+                                    <option value="">difficulty</option>
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Hard">Hard</option>
 
-                </section>
+                                </select>
+                            </section>
+                            <section className={`${style.inputBox} ${style.slideContainer}`}>
 
-                <section className={style.inputBox} >
-                    <input type="title" name="title" id="title" placeholder="Search By Title" className={style.emailInput} onChange={handleSearch} 
-                    value={searchTerm}
-                    />
-                    <img src={magnifier} className={style.submit} onClick={Search}></img>
-                </section>
-                <section className={style.resetBtn}  onClick={reset}>
-                   <img src={delt} className={style.resetX}/>
-                </section>
-            </div>
+                                <div className={style.slider}
+                                >
+                                    <p>{filterBY.lengthInterval[0]}</p>
+                                    <Slider
+                                        value={filterBY.lengthInterval}
+                                        name="lengthInterval"
+                                        onChange={handleFilter}
+                                        getAriaLabel={() => 'Length range'}
+                                        min={0}
+                                        max={200}
+                                        style={{
+                                            color: 'rgba(255, 255, 255, 0.5)',
+                                            '& .MuiSlider-thumb': {
+                                                backgroundColor: 'white',
+                                            },
+                                            '& .MuiSlider-track': {
+                                                color: 'rgba(255, 255, 255, 0.5)',
+                                            },
+                                            '& .MuiSlider-rail': {
+                                                color: 'rgba(255, 255, 255, 0.1)',
+                                            },
+                                        }}
+                                    />
+                                    <p>{filterBY.lengthInterval[1] + "Km"}</p>
+
+                                </div>
+                                
+
+                            </section>
+
+                            <section className={style.inputBox} >
+                                <input type="title" name="title" id="title" placeholder="Search By Title" className={style.emailInput} onChange={handleSearch}
+                                    value={searchTerm}
+                                />
+                                <img src={magnifier} className={style.submit} onClick={Search}></img>
+                            </section>
+                            <section className={style.resetBTnRes} onClick={reset}>
+                                    <span className={style.resetText}> Reset</span>
+                                </section>
+
+                                    <section className={style.resetBtn} onClick={reset}>
+                                    <img src={delt} className={style.resetX} />
+                                </section>
+                                
+                                    {/* <section className={style.resetBTnRes} onClick={reset}>
+                                    <span className={style.resetText}> Reset</span>
+                                </section> */}
+                        
+                          
+                        </div>
+                    
+            
+
+
         </div>
     )
 }

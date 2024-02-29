@@ -4,19 +4,10 @@ import Title from '../../Components/Title/Title'
 import OurStory from '../../Components/OurStory/OurStory'
 import OurExpertise from '../../Components/OurExpertise/OurExpertise'
 import Team from '../../Components/Team/Team'
-import {useSpring , animated} from "react-spring"
+import { useSpring, animated } from "react-spring"
 import CountUp from 'react-countup';
 
 const About = () => {
-    // function Number(n) {
-    //     const { numberProps } = useSpring({
-    //         from: { number: 0 },
-    //         number: 50,
-    //         delay: 200,
-    //         config: { mass: 1, tension: 20, friction: 10 }
-    //     })
-    //     // return <animated.div>{number.to((m)=>m.toFixed(0))}</animated.div>
-    // // }
 
     return (
         <div className={style.aboutPage}>
@@ -36,15 +27,10 @@ const About = () => {
 
                         <div className={style.number}>
                             <span className={style.nb}>
-                                {/* 50 */}
-                                {/* <Number n={50}/> */}
                                 <CountUp start={0}
-  end={50}
-  duration={5}
-//   delay={1}
-  />
-
-                                {/* {number ? number.to((n) => n.toFixed(0)) : "Loading..."} */}
+                                    end={50}
+                                    duration={5}
+                                />
                             </span>
                             <p>
                                 curated trails
@@ -52,14 +38,12 @@ const About = () => {
                         </div>
                         <div className={style.number}>
                             <span className={style.nb}>
-                            {/* <Number n={100}/> */}
                                 <CountUp start={0}
-  end={100}
-  duration={5}
-  suffix="+"
-
-//   delay={1}
-  />
+                                    end={100}
+                                    duration={5}
+                                    suffix="+"
+                                //   delay={1}
+                                />
 
                             </span>
                             <p>
@@ -70,13 +54,12 @@ const About = () => {
                         <div className={style.number}>
                             <span className={style.nb}>
 
-                            <CountUp start={0}
-  end={100}
-  duration={5}
-  suffix="K+"
-
-//   delay={1}
-  />                            </span>
+                                <CountUp start={0}
+                                    end={100}
+                                    duration={5}
+                                    suffix="K+"
+                                //   delay={1}
+                                />                            </span>
                             <p>
                                 logged kilometers
                             </p>
@@ -84,15 +67,10 @@ const About = () => {
 
                     </div>
                 </section>
-
-                {/**Numbers Section */}
                 <OurStory />
-
                 <OurExpertise />
                 <Team />
-
             </div>
-
         </div>
     )
 }

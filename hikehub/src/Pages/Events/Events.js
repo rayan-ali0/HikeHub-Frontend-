@@ -9,7 +9,8 @@ import Filter from '../../Components/FilterBar/Filter'
 const Events = () => {
     const [events, setEvents] = useState([])
     const [allEvents, setAll] = useState([])
-const [loading,setLoading]=useState(true)
+    const [loading, setLoading] = useState(true)
+    const [open,setOpen]=useState(false)
     const fetchEvents = async () => {
         try {
             const response = await axiosInstance.get(`event/ongoing`)
@@ -17,7 +18,6 @@ const [loading,setLoading]=useState(true)
                 setEvents(response.data)
                 setAll(response.data)
                 setLoading(false)
-                console.log("Traillllllllssssssssss", response.data)
             }
             else {
                 console.log(response)
@@ -32,40 +32,41 @@ const [loading,setLoading]=useState(true)
 
     useEffect(() => {
         fetchEvents()
+        console.log("opennnnnnnnnnnnnnnnnnnnn",open)
     }, [])
 
-    console.log("eventttttttttttttttts", events)
     return (
         <div className={style.eventsPage}>
             <TitleSection text={"Upcoming Hikes"} />
             {
-                !loading?(
+                !loading ? (
                     <div className={style.eventsBody}>
 
-                    <section className={style.events}>
-                        {events && events.length > 0 ? (
-                            events.map((event, index) => (
-                                <EventCart key={index} event={event} />
-                            ))
-                        )
-                        :(
-                            <h1>no data</h1>
-                        )
-                        }
-                    </section>
-                    <section className={style.filterContainer}>
-                        <Filter allEvents={allEvents} setEvents={setEvents} setLoading={setLoading} />
-                    </section>
-    
-                </div>
-                ):(
+                        <section className={style.events}>
+                            {events && events.length > 0 ? (
+                                events.map((event, index) => (
+                                    <EventCart key={index} event={event} />
+                                ))
+                            )
+                                : (
+                                    <h1>no data</h1>
+                                )
+                            }
+                        </section>
+                        {/* <section className={`${style.filterContainer} ${open?style.filterContainerClose:style.filterContainerOpen} `}> */}
+
+                        <section className={`${style.filterContainer} ${open?style.filterContainerOpen:style.filterContainerClose} `}>
+                            <Filter allEvents={allEvents} setEvents={setEvents} setLoading={setLoading} open={open} setOpen={setOpen}/>
+                        </section>
+
+                    </div>
+                ) : (
                     <div className={style.loadingDiv}>
-                    <h1 className={style.loader}></h1>
-        
+                        <h1 className={style.loader}></h1>
                     </div>
                 )
             }
-       
+
         </div>
     )
 }

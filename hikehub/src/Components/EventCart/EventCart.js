@@ -17,14 +17,14 @@ const EventCart = ({ event }) => {
     return (
         <div className={style.eventCart}>
             <section className={style.eventImg} >
-            {/* <div className={style.opacity}></div> */}
+                {/* <div className={style.opacity}></div> */}
 
-            <img src={`${process.env.REACT_APP_BACKEND_PATH}${event.trail.images[0]}`} className={style.eventImg} />
+                <img src={`${process.env.REACT_APP_BACKEND_PATH}${event.trail.images[0]}`} className={style.eventImg} />
 
             </section>
             <section className={style.titles}>
-            <h3>{event.trail.title+" Dkdk k dk ndnd dkdkdkd"}</h3>
-<h3> {event.date.split('T')[0]}</h3>
+                <h3>{event.trail.title + " Dkdk k dk ndnd dkdkdkd"}</h3>
+                <h3 className={style.datee}> {event.date.split('T')[0]}</h3>
             </section>
             <section className={style.details}>
                 <div className={style.detail}>

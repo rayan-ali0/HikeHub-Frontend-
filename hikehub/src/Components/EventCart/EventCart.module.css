@@ -1,7 +1,7 @@
 .eventCart {
     /*  */
     /* border: 1px solid red; */
-    height: 32em;
+    height: 34em;
     width: 28em;
     min-width: 30em;
     border-radius: var(--border-radius);
@@ -24,6 +24,10 @@
     z-index: 1;
 
 }
+.eventCart>section{
+    /* border: 2px solid red;
+     */
+}
 .eventImg {
     /* border: 2px solid black; */
     width: 100%;
@@ -40,6 +44,10 @@ position: relative;
 
 }
 
+.datee{
+    opacity: 0.7;
+    text-align: left;
+}
 .eventCart>h3 {
     /* border: 1px solid red; */
     padding: 0em 1.5em;
@@ -113,23 +121,25 @@ position: relative;
 .titles {
     /* width: 80%;
     margin: 0 auto; */
-    padding: 0.5em 1em;
+    padding: 0em 1em;
     display: flex;
+    flex-direction: column;
     /* border: 1px solid green; */
     justify-content: space-between;
-    height: 10%;
+    height: 15%;
 }
 
 .titles>h3 {
     /* border: 1px solid red; */
     /* padding: 0em 1em; */
-    text-align: center;
+    /* text-align: center; */
     font-size: 1.3em;
-    width: 48%;
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     height: 100%;
-    white-space: nowrap;         /* Prevent text from wrapping */
+    white-space: nowrap; 
+            /* Prevent text from wrapping */
 
     /* max-height: 70%; */
 }
