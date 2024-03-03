@@ -42,9 +42,7 @@ const About = () => {
                                     end={100}
                                     duration={5}
                                     suffix="+"
-                                //   delay={1}
                                 />
-
                             </span>
                             <p>
                                 fellow explorers
@@ -58,8 +56,8 @@ const About = () => {
                                     end={100}
                                     duration={5}
                                     suffix="K+"
-                                //   delay={1}
-                                />                            </span>
+                                />
+                            </span>
                             <p>
                                 logged kilometers
                             </p>
@@ -67,9 +65,17 @@ const About = () => {
 
                     </div>
                 </section>
-                <OurStory />
+                <section className={`${style.storySection} ${style.aboutSections}`}>
+                    <OurStory />
+
+                </section>
+
+                <section className={`${style.expertise} ${style.aboutSections}`}>
                 <OurExpertise />
+                </section>
+                <section className={`${style.team} ${style.aboutSections}`}>
                 <Team />
+                </section>
             </div>
         </div>
     )

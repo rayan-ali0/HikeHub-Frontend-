@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './Footer.module.css';
 import style from './Footer.module.css'
-import logo from '../../assets/icons/tiktok.svg'
+// import logo from '../../assets/icons/tiktok.svg'
 import facebook from '../../assets/icons/facebook.svg'
 import instagram from '../../assets/icons/instagram.svg'
 import twitter from '../../assets/icons/twitter.svg'
@@ -13,6 +13,7 @@ import axiosInstance from '../../Utils/AxiosInstance'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.minimal.css';
+import logo from '../../assets/images/Trailz.svg'
 
 const Footer = () => {
 const [email,SetEmail]=useState()
@@ -68,7 +69,7 @@ const [email,SetEmail]=useState()
                     <ul className={style.links}>
                         <li><Link to="/events">Events</Link></li>
                         <li><Link to="/about">About us</Link></li>
-                        <li>Stories</li>
+                        <li><Link to="/stories">Stories</Link></li>
                     </ul>
                 </div>
                 <div className={style.social}>
@@ -93,7 +94,7 @@ const [email,SetEmail]=useState()
                 </div>
             </div>
             <div className={style.copyright}>
-                © 2024 - HIKING All Rights Reserved | Powered By: Rayan Ali
+                © 2024 - TRAILZ All Rights Reserved | Powered By: Rayan Ali
             </div>
         </footer>
     )

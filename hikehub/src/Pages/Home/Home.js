@@ -10,6 +10,7 @@ import axios from 'axios'
 import axiosInstance from '../../Utils/AxiosInstance'
 import { useEffect, useState } from 'react'
 import Journeys from '../../Components/Journeys/Journeys'
+import { Slider } from '@mui/base'
 const Home = () => {
   const [recents, setRecents] = useState([])
   const fetchRecents = async () => {
@@ -35,10 +36,44 @@ const Home = () => {
 
     fetchRecents()
   }, [])
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
   return (
     <div className={style.homeContainer}>
-      <Hero />
+      {/* <Hero /> */}
       <div className={style.bodyContainer}>
         <About />
         <Offering />
@@ -50,15 +85,22 @@ const Home = () => {
             Discover the excitement that awaits! Explore our handpicked selection of upcoming events and embark on unforgettable journeys with fellow adventurers.
             </p>
           </section>
+{/* 
           {
             recents.length > 0 && (
+              <Slider {...settings}>
+
               <section className={style.upcoming}>
+
                 {recents.map(event => (
                   <EventCart key={event.id} event={event} />
                 ))}
               </section>
+              </Slider>
+
             )
-          }
+          } */}
+
            </div>
         </div>
         {/* <HomeStories /> */}

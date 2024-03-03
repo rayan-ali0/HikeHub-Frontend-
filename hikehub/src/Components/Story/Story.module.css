@@ -56,8 +56,8 @@
 
 .closeModel {
     position: fixed;
-    top: 30%;
-    right: 15%;
+    top: 3%;
+    right: 3%;
     width: 2em;
     height: 2em;
     cursor: pointer;

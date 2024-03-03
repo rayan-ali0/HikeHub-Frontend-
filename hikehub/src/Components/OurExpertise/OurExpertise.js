@@ -5,7 +5,7 @@ import storyImg from '../../assets/images/toomas-tartes-Yizrl9N_eDA-unsplash (1)
 
 const OurExpertise = () => {
     return(
-        <div className={style.storyContainer}>
+        <div className={style.expertiseContainer}>
     <section>
 <img src={storyImg} className={style.myImg}></img>
     </section>

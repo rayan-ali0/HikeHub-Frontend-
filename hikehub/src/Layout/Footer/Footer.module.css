@@ -4,6 +4,11 @@
     /* background-image: url('../../assets/images/background.jpg'); */
     object-fit: cover;
     background-position: center center;
+    /* border: 2px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
   }
   .backgrd{
@@ -22,11 +27,16 @@
     z-index: 4;
     position: relative;
 
+    /* border: 1px solid white; */
     /* position: absolute;
     height: 30rem;
     bottom: 0;
     left: 0; */
 
+  }
+
+  .container>div{
+    /* border: 2px solid yellow; */
   }
   .backImg{
     position: absolute;
@@ -56,10 +66,15 @@ object-fit: cover;
     justify-content: center;
     align-items: center;
     z-index: 19;
+/* border: 1px solid white; */
   }
   .logoDescription img {
-    width: 150px;
+    width: 200px;
+    height: 250px;
     margin-bottom: 20px;
+    height: auto;
+    /* border: 1px solid white; */
+
     
   }
   .logoDescription p {
@@ -103,7 +118,7 @@ object-fit: cover;
   }
   
   .social {
-    height: 188px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -182,9 +197,10 @@ object-fit: cover;
     font-size: 16px;
     font-weight: 400;
     text-align: center;
-    padding: 45px;
+    padding: 35px;
     z-index:4;
     position: relative;
+    /* border: 1px solid white; */
   }
   
   @media (max-width: 992px) {
@@ -240,4 +256,28 @@ object-fit: cover;
         text-align: center;
         font-size: 16px;
     }
+  }
+
+  @media (max-width:350px){
+
+    .inputBox .emailInput {
+      width: 180px;
+  }
+  }
+
+  @media (max-width:400px){
+    .logo-description{
+      /* border: 1px solid wheat; */
+      width: 100%;
+    }
+    .logoDescription p {
+      /* color: rgba(0, 0, 0, 0.60); */
+      color: white;
+      text-align: center;
+      font-size: 17px;
+      width: 100%;
+      font-style: normal;
+      font-weight: 400;
+    }
+ 
   }

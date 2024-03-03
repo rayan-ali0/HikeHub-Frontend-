@@ -3,9 +3,10 @@
     display: flex;
     flex-direction: column;
     gap: 2em;
+    /* border: 2px solid black; */
 }
 .teamContainer>p{
-    font-size: 1.5em;
+    font-size: 1.6em;
 }
 .teamMembers{
     display: flex;
@@ -13,13 +14,14 @@
     gap: 2em;
     width: 100%;
     /* border: 1px solid red; */
+    overflow: scroll;
 
 }
 .member{
     display: flex;
     flex-direction: column;
-    width: 25%;
-    min-width: 25%;
+    width: 23%;
+    min-width: 14em;
     /* border:2px solid red; */
     height: 100%;
     gap: 1.2em;
@@ -34,4 +36,31 @@
 }
 .member>h3{
     font-size: 1.5em;
+}
+
+
+
+@media (max-width:977px) {
+    .teamContainer>p {
+        font-size: 1.6em;
+        line-height: 1.9;
+    }
+}
+
+@media (max-width:915px) {
+    .teamContainer>p {
+        font-size: 1.5em;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width:400px) {
+    .teamContainer>p {
+        font-size: 1.3em;
+        line-height: 1.6;
+    }
+    .member>h3{
+        font-size: 1.4em;
+    }
+    
 }

@@ -41,29 +41,6 @@ fetchTeam()
                     </div>
                     ))
                 }
-                {/* <div className={style.member}>
-                    <img src={storyImg} />
-                    <h3> RAYAN ALI</h3>
-                </div>
-
-                <div className={style.member}>
-                    <img src={storyImg} />
-                    <h3> RAYAN ALI</h3>
-                </div>
-
-                <div className={style.member}>
-                    <img src={storyImg} />
-                    <h3> RAYAN ALI</h3>
-                </div>
-
-                <div className={style.member}>
-                    <img src={storyImg} />
-                    <h3> RAYAN ALI</h3>
-                </div>
-                <div className={style.member}>
-                    <img src={storyImg} />
-                    <h3> RAYAN ALI</h3>
-                </div> */}
                 
             </section>
 

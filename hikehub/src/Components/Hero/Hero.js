@@ -14,7 +14,7 @@ const slider = {
         x: 0
     },
     animate: {
-        x: "-15%",
+        x: "-10%",
         transition: {
             repeat: Infinity,
             repeatType: "mirror",
@@ -29,7 +29,7 @@ const slider1 = {
         x: -200
     },
     animate: {
-        x: "-35%",
+        x: "-30%",
         transition: {
             repeat: Infinity,
             repeatType: "mirror",

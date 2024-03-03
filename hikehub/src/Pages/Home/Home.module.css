@@ -11,6 +11,8 @@
     display: flex;
     flex-direction: column;
     gap:1em ;
+        /* border: 2px solid black; */
+
 }
 
 .events{
@@ -43,4 +45,12 @@
     /* overflow: scroll; */
 gap: 3em;
 
+}
+
+
+@media (max-width:1250px){
+    .bodyContainer{
+        width: 90%;
+    }
+    
 }

@@ -1,38 +1,52 @@
-.aboutSectionHolder{
+.aboutSectionHolder {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    /* border: 1px solid red; */
+    /* margin-top: 1em; */
+
+
 }
-.aboutSection{
+
+.aboutSection {
     width: 50%;
 
 }
-.aboutSection , .imgSection{
-    height: 26em;
+
+.aboutSection,
+.imgSection {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap:35px;
+    gap: 35px;
+    /* border: 1px solid black; */
+
 
 }
-.imgSection{
+
+.imgSection {
     align-items: end;
-    /* border: 1px solid red; */
-    width: 40%;
+    /*border: 1px solid red;*/
+    width: 43%;
     justify-content: end;
     position: relative;
-
-
+    /* height: 100%; */
+    height: auto;
+    object-fit: cover;
 }
-.btnHolder{
-    width: 20%;
-    height: 3.2em;
+
+.btnHolder {
+    width: 24%;
+    height: 3.4em;
+    /* border: 3px solid green; */
 }
-.aboutText{
+
+.aboutText {
     font-size: 1.6em;
     line-height: 1.7;
 }
 
-.imgAbout{
+.imgAbout {
     /* border: 1px solid red; */
     height: 100%;
     width: 100%;
@@ -40,13 +54,16 @@
     object-fit: cover;
     border-radius: var(--border-radius);
     /* border: 2px solid red ; */
-    
+    min-height: 25em;
+
+
 }
-.play{
+
+.play {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     z-index: 2;
     color: white;
     cursor: pointer;
@@ -59,8 +76,92 @@
     height: 5em;
     padding: auto;
 }
-.playIcong{
+
+.playIcong {
     opacity: 0.5;
     /* border: 1px solid red; */
     position: relative;
+}
+
+
+@media (max-width:1450px){
+
+   
+.aboutText {
+    font-size: 1.5em;
+    line-height: 1.7;
+}
+
+.imgSection{
+    width: 47%;
+}
+}
+
+@media (max-width:1250px){
+
+.aboutText {
+    font-size: 1.4em;
+    line-height: 1.7;
+}
+    
+.btnHolder {
+    width: 30%;
+    height: 3.4em;
+    /* border: 3px solid green; */
+}
+
+}
+
+
+@media (max-width:1250px){
+  
+    .aboutSectionHolder{
+        flex-direction: column;
+        gap:20px
+
+    }
+
+    .aboutSection,
+.imgSection {
+    width: 100%;
+
+
+}
+}
+
+
+@media (max-width:530px){
+
+    .aboutText {
+        font-size: 1.3em;
+        line-height: 1.7;
+    }
+    .btnHolder{
+        width: 35%;
+    }
+  
+    
+}
+
+
+@media (max-width:415px){
+    .aboutText {
+        font-size: 1.2em;
+        line-height: 1.7;
+    }
+    .btnHolder{
+        width: 45%;
+    }
+
+    
+}
+
+
+@media (max-width:320px){
+
+    .btnHolder{
+        width: 65%;
+    }
+
+    
 }

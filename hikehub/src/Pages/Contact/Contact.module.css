@@ -12,7 +12,7 @@
     position: relative;
     /* z-index: 4; */
     /* height: 60vh; */
-    min-height: 70vh;
+    min-height: 72vh;
     padding: 5em;
 }
 
@@ -174,8 +174,9 @@
 
 @media (max-width:750px) {
     .contactContainer {
-height: 55em;  
-padding: 3em;
+height: 60em;  
+padding: 2em 2em 4em 2em;
+/* border: 2px solid pink; */
 
   }
 
@@ -189,6 +190,17 @@ padding: 3em;
         width: 100%;
         margin: 0 auto;
     }
+    .leavesImg{
+        width: 80%;
+
+    }
 }
 
+
+@media (max-width:350px) {
+    .contactDetails>h1
+{
+font-size: 2.8em;
+}
+}
 /***************************************/

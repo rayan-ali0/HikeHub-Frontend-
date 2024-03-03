@@ -1,8 +1,9 @@
 .titleSection{
     width: 100%;
     /* background-image: url('../../assets/images/akroum.jpeg'); */
-    height: 18em;
+    height: 14em;
     position: relative;
+    /* border: 1px solid red; */
 }
 
 .titleSectionImage{
@@ -27,13 +28,14 @@ object-fit: cover;
     position: absolute;
     color: var(--white-color);
     z-index: 2;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap:1em
+    gap:1em;
+    /* border: 1px solid white; */
 }
 .title>h1{
     font-size: 2.2em;
@@ -42,4 +44,80 @@ object-fit: cover;
 .date{
     font-size: 1.8em;
     font-weight: 400;
+}
+
+@media (max-width:1170px){
+    .title{
+        width: 70%;
+    }
+}
+
+@media (max-width:950px){
+    .title>h1{
+        /* width: 80%; */
+        font-size: 2em;
+
+    }
+    .date{
+        font-size: 1.7em;
+        font-weight: 400;
+    }
+}
+@media (max-width:950px){
+    .title>h1{
+        /* width: 80%; */
+        font-size: 2em;
+
+    }
+    .date{
+        font-size: 1.7em;
+        /* font-weight: 350; */
+    }
+}
+
+@media (max-width:755px){
+    .title{
+        width: 90%;
+        top:58%
+    }
+
+    .title>h1{
+        /* width: 80%; */
+        font-size: 1.7em;
+
+    }
+    .date{
+        font-size: 1.6em;
+        /* font-weight: 350; */
+    }
+
+}
+
+@media (max-width:360px){
+
+    .title>h1{
+        /* width: 80%; */
+        font-size: 1.5em;
+
+    }
+    .date{
+        font-size: 1.4em;
+        /* font-weight: 350; */
+    }
+
+}
+
+
+@media (max-width:310px){
+
+    .title>h1{
+        /* width: 80%; */
+        font-size: 1.4em;
+
+    }
+    .date{
+        font-size: 1.3em;
+        /* font-weight: 350; */
+    }
+
 }

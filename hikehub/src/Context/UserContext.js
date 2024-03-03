@@ -16,10 +16,10 @@ export const UserProvider = ({children})=>{
     },[user, userUpdated])
 
     const fetchUserData= async () => {
-        setCheckUser(true)
         try {
+        setCheckUser(true)
             setCheckUser(true)
-            const response = await axiosInstance.get(`user/read/logged`)
+            const response = await axiosInstance.get(`user/read/logged`,{withCredentials:true})
             // console.log(response.data.user)
             setUser(response.data.user)
             setUserUpdated(false)

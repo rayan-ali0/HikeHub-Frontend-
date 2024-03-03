@@ -32,10 +32,11 @@ const Navbar = () => {
   }
   const logout = async () => {
     try {
-      const action = await axiosInstance.post(`logout`);
+      const action = await axiosInstance.post(`logout`,{},{withCredentials:true});
       if (action) {
         localStorage.removeItem('token')
         setUser(null);
+        navigate('/')
         toast.success("Logout successful!", {
           position: "top-center",
           autoClose: 3000,
@@ -44,18 +45,18 @@ const Navbar = () => {
           pauseOnHover: true,
           draggable: true,
         });
-        navigate('/')
 
       }
     } catch (error) {
-      toast.error("An unexpected error occurred. Please try again.", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      // toast.error("An unexpected error occurred. Please try again.", {
+      //   position: "top-center",
+      //   autoClose: 3000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      // });
+      console.log(error.message)
     }
   };
 
@@ -77,7 +78,6 @@ const Navbar = () => {
         <NavLink to="/">
           <div>
             <img className={styles.imagee} src={logo} alt="/" />
-            {/* <p>AL Monla</p>       */}
           </div>
         </NavLink>
         {/* Navigation Links */}

@@ -1,46 +1,52 @@
-
-.signPage{
+.signPage {
     width: 100%;
     height: 100vh;
     position: relative;
 }
-.signImage{
-position: absolute;
-width: 100%;
-height: 100%;
-object-fit: cover;
-z-index: 1;
-}
 
-.signForm{
-    position: absolute;
-  top: 50%; /* Center vertically */
-  left: 15%; /* 25% from the left edge */
-  transform: translateY(-50%); /* Center vertically */
-  width: 33em; /* Maintain desired width */
-  z-index: 1;
-  color: white;
-  padding: 2rem;
-  /* background: transparent;
-  backdrop-filter: blur(4px); */
-  display: flex;
-flex-direction: column;
-gap: 2em;
-z-index: 4;
-
-background-color: rgba(255, 255, 255, 0.05);
-border: 2px solid rgba(255, 255, 255, 0.1);
-box-shadow: 0 0 5px rgba(8, 7, 16, 0.6);
-padding: 20px 40px;
-backdrop-filter: blur(10px);
-}
-.opacity{
+.signImage {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: 1;
-    background-color: rgba(0,0,0,0.5);
+}
+
+.signForm {
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 15%;
+    /* 25% from the left edge */
+    transform: translateY(-50%);
+    /* Center vertically */
+    width: 33em;
+    /* Maintain desired width */
+    z-index: 1;
+    color: white;
+    padding: 2rem;
+    /* background: transparent;
+  backdrop-filter: blur(4px); */
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    z-index: 4;
+
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 5px rgba(8, 7, 16, 0.6);
+    padding: 20px 40px;
+    backdrop-filter: blur(10px);
+    /* border: 1px solid white; */
+}
+
+.opacity {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .customButton {
@@ -56,70 +62,79 @@ backdrop-filter: blur(10px);
     outline: none;
 
 }
-.normalSign{
+
+.normalSign {
     width: 80%;
 }
-.oauth{
+
+.oauth {
     width: 15%;
     /* background-image: url('../../assets/icons/google-removebg-preview.png'); */
-    background-size: 2em ;
+    background-size: 2em;
     background-position: center;
     background-repeat: no-repeat;
 
 }
-.oauth>img{
+
+.oauth>img {
     height: 100%;
     width: 100%;
     /* border: 1px solid red; */
 }
-.signBtns{
+
+.signBtns {
     /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
-    gap:1em;
+    gap: 1em;
     height: auto;
     justify-content: space-between;
     height: 3.2em;
 }
 
-.signTitle{
+.signTitle {
     color: white;
     text-align: center;
-}
-.formHolder{
-    border: 2px solid white;
-}
-.textStyle{
-position: absolute;
-z-index: 1;
-color: white;
-font-size: 9em;
-color: transparent; 
--webkit-text-stroke: 1px white; 
-/* display: inline-block; */
-/* border: 1px solid red;   */
-width: 6em;
-text-overflow: clip;
-top: 50%; 
-/* left: 4%;  */
-right: 6%;
-transform: translateY(-50%); 
-height: 75%;
-text-align: center;
-display: flex;
-flex-direction: column;
-gap:0px;
-z-index: 2;
-opacity: 0.9;
-/* border: 1px solid red;    */
+
 }
 
-.textSection{
+.formHolder {
+    border: 2px solid white;
+}
+
+.textStyle {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    font-size: 9em;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    /* display: inline-block; */
+    /* border: 1px solid red; */
+    width: 6em;
+    text-overflow: clip;
+    top: 50%;
+    /* left: 4%;  */
+    right: 6%;
+    transform: translateY(-50%);
+    height: 75%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    z-index: 2;
+    opacity: 0.9;
+    /* border: 1px solid red;    */
+}
+
+.textSection {
     /* border: 1px solid red; */
     font-size: 1.25em;
     text-align: center;
+
 }
-.signLink{
+
+.signLink {
     text-decoration: none;
     color: inherit;
     font-weight: bold;
@@ -128,20 +143,139 @@ opacity: 0.9;
     text-decoration: underline;
 }
 
-.backImg{
+.backImg {
     position: absolute;
     z-index: 2;
     width: 1.3em;
     height: 1.3em;
-    top:3%;
+    top: 3%;
     left: 2%;
     cursor: pointer;
 
 }
 
-.authProvider{
+.authProvider {
     width: 100%;
     height: 100%;
     /* overflow: hidden; */
     /* border: 5px solid red; */
 }
+
+@media (max-width:995px) {
+
+    .textStyle {
+    
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        /* height: 80%; */
+        font-size: 8em;
+        width: 95%;
+        
+
+    }
+
+    .signForm{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+
+}
+
+@media (max-width:750px) {
+
+    .textStyle {
+    
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        /* height: 80%; */
+        font-size: 7.5em;
+        width: 95%;
+        
+
+    }
+
+}
+@media (max-width:670px) {
+
+    .textStyle {
+    
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        /* height: 80%; */
+        font-size: 7em;
+        width: 95%;
+        height: 65%;
+
+    }
+
+}
+@media (max-width:630px) {
+
+    .textStyle {
+    display: none;
+
+    }
+
+    .signForm{
+        top: 50%;
+        left: 3%;
+        transform: translateY(-50%);
+        width: 94%;
+    }
+
+
+
+}
+
+@media (max-width:450px) {
+
+    .signForm{
+      padding: 1.2em;
+    }
+
+
+
+}
+
+@media (max-width:466px) {
+.signTitle{
+    font-size: 1.6em;
+}
+
+
+
+}
+
+
+@media (max-width:440px) {
+    .signBtns {
+        /* border: 1px solid red; */
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        height: auto;
+        justify-content: space-between;
+        height: auto;
+        /* border: 1px solid white; */
+    }
+    .customButton{
+        height: 2em;
+        width: 100%;
+    }
+    
+    }
+
+
+@media (max-width:390px) {
+    .signTitle{
+        font-size: 1.4em;
+    }
+    
+    
+    
+    }

@@ -5,16 +5,14 @@
 }
 
 .eventsBody {
-    width: 85%;
+    width: 90%;
     margin: 3em auto;
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 1em;
     /* border: 1px solid black; */
     /* position: relative; */
     min-height: 60vh;
-
-
 
 }
 
