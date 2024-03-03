@@ -9,6 +9,7 @@
     /* gap: 2em; */
     /* border: 2px solid black; */
 }
+
 /* .img1 , .img3 {
     margin-top: 3em;
     overflow: hidden;
@@ -20,15 +21,16 @@
     transition: all 350ms ease;
     cursor: pointer;
     margin-bottom: 12px;
-    height: auto;
+    /* height: auto; */
     width: 100%;
     height: 100%;
 
 }
 
-.pics>img{
+.pics>img {
     object-fit: cover;
 }
+
 .pics:hover {
     filter: opacity(0.8);
 }
@@ -70,7 +72,7 @@
 .showIMg {
     width: auto;
     max-width: 100%;
-    height:auto;
+    height: auto;
     display: block;
     padding: 20px;
     margin: 0 auto;
@@ -99,30 +101,33 @@
 
 .story {
     flex-direction: row;
-   
+
 }
 
 @keyframes fadeIn {
     from {
-      opacity: 0;
+        opacity: 0;
     }
+
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
+}
+
 .story,
 .flexPage {
     display: flex;
     width: 100%;
-    margin: auto;
-    height: 80vh;
-    margin: 2rem 0;
+    /* margin: auto; */
+    height: 100%;
+    min-height: 80vh;
+    margin: 1rem 0;
     color: black;
     animation: fadeIn 0.5s ease-in-out;
-    gap:1em;
-    position: relative;
-    /* background-color:darkblue; */
+    gap: 1em;
+    /* position: relative; */
+    align-items: stretch;
+    /* background-color: darkblue; */
 
 }
 
@@ -132,14 +137,14 @@
 }
 
 .storySection {
-    height: 100%;
+    height: 90%;
     /* border: 10px solid rgb(253, 5, 5) ; */
 }
 
 .storyImage {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
     /* border: 1px solid black ; */
 
 }
@@ -205,60 +210,73 @@
 }
 
 @media (max-width:1001px) {
-   .story{
-    flex-direction: column;
-    height: fit-content;
-   }
-   .textSection{
-    width: 100%;
-   }
-   .storySection{
-    width: 94%;
-   }
-   .storyTestimonial{
-    /* margin-bottom: 1rem; */
-   }
-   .storyDescription{
-    line-height: 32px;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-   }
-   
-}
-@media (max-width:601px) {
-    .story{
-     flex-direction: column;
-     height: fit-content;
+    .story {
+        flex-direction: column;
+        height: fit-content;
     }
-    .textSection{
-     width: 100%;
-    }
-    .storySection{
-     width: 94%;
-    }
-    .storyTitle{
-        font-size: 40px;
-    }
-    .storyTestimonial{
-     /* margin-bottom: 1rem; */
-     width: 90%;
-    }
-    .storyDescription{
-     line-height: 27px;
-     margin-top: 0.5rem;
-     margin-bottom: 1rem;
-     line-height: 24px;
-    }
-    .pics{
+
+    .textSection {
         width: 100%;
     }
-    .storySection{
+
+    .storySection {
+        width: 94%;
+    }
+
+    .storyTestimonial {
+        /* margin-bottom: 1rem; */
+    }
+
+    .storyDescription {
+        line-height: 32px;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+}
+
+@media (max-width:601px) {
+    .story {
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .textSection {
+        width: 100%;
+    }
+
+    .storySection {
+        width: 94%;
+    }
+
+    .storyTitle {
+        font-size: 40px;
+    }
+
+    .storyTestimonial {
+        /* margin-bottom: 1rem; */
+        width: 90%;
+    }
+
+    .storyDescription {
+        line-height: 27px;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        line-height: 24px;
+    }
+
+    .pics {
+        width: 100%;
+    }
+
+    .storySection {
         display: flex;
         flex-direction: column;
         gap: 0.1rem;
     }
-    
- }
+
+}
+
 /* .storyTestimonial::before {
     position: absolute;
     content: "";
@@ -272,8 +290,8 @@
     background-color: white;
 } */
 
-.testimonialsText{
-    color:black;
+.testimonialsText {
+    color: black;
     height: 90%;
     /* border: 1px solid red; */
 }
@@ -376,4 +394,3 @@ opacity: 0.9;
 } */
 /* HTML: <div class="loader"></div> */
 /* HTML: <div class="loader"></div> */
-

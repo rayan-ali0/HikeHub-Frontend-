@@ -7,10 +7,12 @@ import ImageSlider from '../../Components/ImageSlider/ImageSlider';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import './stories.css'
 import arrow from '../../assets/icons/chevron.png'
 
 import arrowLeft from '../../assets/icons/chevronleft.png'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 const Stories = () => {
@@ -29,8 +31,8 @@ const Stories = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 2,
-        nextArrow: <img src={arrow}  className={style.rightarrow} />,
-        prevArrow: <img src={arrowLeft}  className={style.leftarrow}  />,
+        nextArrow: <ArrowForwardIcon className={style.rightarrow} />,
+        prevArrow: <ArrowBackIcon  className={style.leftarrow}  />,
         // autoplay: true,         
         autoplaySpeed: 2000  
     };
@@ -58,30 +60,20 @@ const Stories = () => {
     return (
         !loading ? (
             <div className={style.storyPage}>
-                {/* <img src={backgrd} className={style.backImg}></img> */}
-                {/* <div className={style.opacity}></div> */}
-                {/* {
-        stories.length>0 &&(
-            stories.map((story,index)=>(
-                <div className={style.oneStory} key={index}>
-                <Story story={story} index={index+1}/>
-                </div>
-            ))
-        )
-    } */}
-<div  className={style.slider}>
+
+{/* <div  className={style.slider}> */}
                 <Slider {...settings}  >
                     {
                         stories.length > 0 && (
                             stories.map((story, index) => (
-                                // <div className={style.oneStory} key={index}>
+                                <div className={style.oneStory} key={index}>
                                     <Story story={story} index={index + 1} />
-                                // </div>
+                                 </div>
                             ))
                         )
                     }
                 </Slider>
-                </div>
+                {/* </div> */}
 
                 {/* <ImageSlider sliders={stories} /> */}
             </div>

@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     /* object-fit: contain; */
+    overflow: hidden;
 }
 
 .heroBackground {
@@ -38,28 +39,50 @@
     /* border: 1px solid red; */
 }
 
-/* .clouds {
+.cloudHolders{
+    /* border: 2px solid black; */
+    width: 100%;
+    height: 50%;
     position: absolute;
-    bottom: -3rem;
-    left: 10rem;
+    bottom: -2rem;
+    height: 40rem;
+    /* width: auto; */
+    z-index: 2;
+    overflow-x: hidden;
+    opacity: 0.8;
+    display: flex;
+
+
+}
+
+.clouds {
+    position: absolute;
+    bottom: -2rem;
     height: 40rem;
     width: auto;
     z-index: 2;
     overflow-x: hidden;
-    opacity: 0.6;
-} */
+    opacity: 0.6; 
+        /* left: 10rem; */
+
+    /* /* border: 2px solid red; */
+    /* object-fit: cover; */
+    width: 100%;
+
+}
 
 
 
-/*  
-.clouds{
+ 
+/* .clouds{
     position: absolute;
     bottom: -22rem;
     left:10rem;
     height: 40rem;
     width: 100vw;
     animation: animate 190s linear infinite;
-}
+} */
+
 @keyframes animate {
     0%{
         transform: translateX(-100%);
@@ -71,7 +94,7 @@
         transform: translateX(100%);
     }
     
-}  */
+} 
 .guideText {
     font-size: 1.8em;
     font-style: italic;

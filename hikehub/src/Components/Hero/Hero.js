@@ -14,7 +14,7 @@ const slider = {
         x: 0
     },
     animate: {
-        x: "-10%",
+        x: "-20%",
         transition: {
             repeat: Infinity,
             repeatType: "mirror",
@@ -29,7 +29,7 @@ const slider1 = {
         x: -200
     },
     animate: {
-        x: "-30%",
+        x: "-35%",
         transition: {
             repeat: Infinity,
             repeatType: "mirror",
@@ -52,16 +52,16 @@ const Hero = () => {
                 <h1 className={style.transparentText}>Mountain and beyond</h1>
                 {/* </div> */}
             </section>
-            <div className={style.cloudHolders}>
-{/* 
-                <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds}/>
-                <motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds}/>
-                <motion.img src={cloud3} variants={slider} initial="initial" animate="animate" className={style.clouds}/> */}
+            {/* <div className={style.cloudHolders}> */}
+
+                <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds} />
+                <motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds} />
+                <motion.img src={cloud3} variants={slider} initial="initial" animate="animate" className={style.clouds} />
 
                 {/* <motion.img src={cloud4} variants={slider} initial="initial" animate="animate" className={style.cloudss}/> */}
                 {/* <motion.img src={cloud5} variants={slider} initial="initial" animate="animate" className={style.cloudss}/> */}
 
-            </div>
+            {/* </div> */}
         </div>
     )
 }

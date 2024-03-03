@@ -1,0 +1,15 @@
+.slick-next , .slick-prev{
+    color: var(--dark-green);
+    width: 1.5em !important;
+    height: 1.5em !important;
+    /* background-color: black; */
+
+}
+
+.slick-next:hover ,  .slick-prev:hover{
+    /* transform: scale(1.2); */
+    color: var(--dark-green) !important;
+
+}
+
+

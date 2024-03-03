@@ -1,8 +1,14 @@
 .storyPage{
     position: relative;
-    height: calc(100ch - 4.3em); /* Assuming font size is 16px */
-    margin-top: 5.6em;
+    height: calc(100ch - 7em); /* Assuming font size is 16px */
+    /* margin-top: 5.6em; */
+    /* margin-bottom: 1em; */
     /* border: 5px solid black; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin: 5.6em 3em 1em 3em;
+
 }
 
 .backImg{
@@ -29,12 +35,12 @@
 
 }
 .oneStory{
-    height: 95%;
+    height: 100%;
     width: 95%;
-    margin: 0 auto;
-    z-index: 3;
-    position: relative;
+    /* z-index: 3; */
+    /* position: relative; */
     /* border: 2px solid red; */
+    min-height: 83vh;
 }
 
 .loadingDiv{
@@ -43,7 +49,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 .loader {
     width: fit-content;
@@ -67,12 +72,10 @@
   .rightarrow{
     position: absolute;
     top: 50%;
-    right: 2%;
+    right: 1%;
     transform: translate(0%,-50%);
     z-index: 2;
     cursor: pointer;
-    /* border: 2px solid red; */
-    /* background-color: rgba(0,0,0,0.8); */
     width: 19em;
     height: 4.5em;
 }
@@ -80,27 +83,30 @@
 .leftarrow{
     position: absolute;
     top: 50%;
-    left: 2%;
+    left: 5%;
     transform: translate(0%,-50%);
     z-index: 2;
     cursor: pointer;
-    /* border: 2px solid red; */
-    /* background-color: rgba(0,0,0,0.8); */
     width: 4.5em;
     height: 4.5em;
 }
 
 .slider{
-    height: 100vh;
+    /* height: 100vh; */
     /* padding: 1em; */
-    width: 95%;
-    
+    width: 97%;
+    height: 95%;
     margin: 0 auto;
-    /* border: 1000px solid rgb(0, 8, 255); */
+    border: 3px solid rgb(0, 8, 255);
+    min-height: 83vh;
+    display: flex;
+    flex-direction: column;
+    
+
 }
 @media (max-width:1001px) {
     .storyPage{
-        height: 210vh;
+        /* height: 210vh; */
     }
     .slider{
         width: 90%;
