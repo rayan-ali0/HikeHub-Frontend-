@@ -98,3 +98,12 @@
     margin: 0 auto;
     /* border: 1000px solid rgb(0, 8, 255); */
 }
+@media (max-width:1001px) {
+    .storyPage{
+        height: 210vh;
+    }
+    .slider{
+        width: 90%;
+        margin: auto;
+    }
+ }

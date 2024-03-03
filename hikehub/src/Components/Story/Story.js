@@ -78,10 +78,10 @@ const Story = ({ story, index }) => {
                 </div>
             </motion.section>
             {/******************************** */}
-            <motion.section className={`${model ? style.modelOpen : style.modelClose} ${style.model}`} variants={variants} animate="animate" initial="initial">
+            {/* <motion.section className={`${model ? style.modelOpen : style.modelClose} ${style.model}`} variants={variants} animate="animate" initial="initial">
                 <img src={`${process.env.REACT_APP_BACKEND_PATH}${tempimgSrc}`} className={style.showIMg} />
                 <img src={dlt} className={style.closeModel} onClick={() => setModel(false)}></img>
-            </motion.section>
+            </motion.section> */}
             
             <motion.section className={`${style.storySection} ${style.gallery}`} variants={variants} animate="animate" initial="initial">
                 <div className={style.pics} onClick={() => getImg(0)}>
@@ -93,7 +93,7 @@ const Story = ({ story, index }) => {
                         alt={`story.images[1] ${0 + 1}`}
                     />
                 </div>
-                <div className={style.pics} onClick={() => getImg(1)}>
+                {/* <div className={style.pics} onClick={() => getImg(1)}>
                     <img
                         key={0}
                         src={`${process.env.REACT_APP_BACKEND_PATH}${story.images[1]}`}
@@ -101,8 +101,8 @@ const Story = ({ story, index }) => {
 
                         alt={`story.images[1] ${0 + 1}`}
                     />
-                </div>
-                <div className={style.pics} onClick={() => getImg(2)}>
+                </div> */}
+                {/* <div className={style.pics} onClick={() => getImg(2)}>
                     <img
                         key={0}
                         src={`${process.env.REACT_APP_BACKEND_PATH}${story.images[2]}`}
@@ -119,7 +119,7 @@ const Story = ({ story, index }) => {
 
                         alt={`Image ${0 + 1}`}
                     />
-                </div>
+                </div> */}
 
             </motion.section>
         </motion.div>

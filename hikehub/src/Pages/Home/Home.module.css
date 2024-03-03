@@ -54,3 +54,26 @@ gap: 3em;
     }
     
 }
+@media (max-width:900px){
+    .events{
+        flex-direction: column;
+    }
+    .comingDesc{
+        width: 100%;
+    }
+    
+}
+@media (max-width:500px){
+    
+    .comingDesc>p{
+        line-height:34px;
+    }
+    .comingDesc{
+        font-size: 1.4rem; 
+   }
+   .upcoming{
+    width: 100%;
+   }
+    
+    
+}

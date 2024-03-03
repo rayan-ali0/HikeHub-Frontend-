@@ -40,3 +40,42 @@
     height: 40%;
     /* border: 1px solid red; */
 }
+@media screen and (max-width:900px) {
+   
+    .offerText{
+        font-size: 1rem;
+        line-height: 20px;
+    }
+    .offerTitle{
+        font-size:1.2rem ;
+        text-align: center;
+    }
+    .offerImg{
+        width: 4.5rem;
+        height: 4.rem;
+    }
+ }
+
+ @media screen and (max-width:727px) {
+   
+    .OfferingBox{
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .offerText{
+        font-size: 0.9rem;
+        line-height: 15px;
+    }
+    .offerTitle{
+        font-size:1rem ;
+        text-align: center;
+    }
+    .offerImg{
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+    .offer{
+        width: 100%;
+    }
+ }

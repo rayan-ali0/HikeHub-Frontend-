@@ -89,3 +89,22 @@ border: none;
   color: rgb(255, 255, 255);
 
 }
+@media screen and (max-width:1000px) {
+  .detailsHolder{
+    flex-direction: column;
+  }
+  .liValue{
+    width: 100%;
+    height: fit-content;
+  }
+  .details{
+    width: 100%;
+  }
+  .bookSection{
+    margin-top: 10rem;
+  }
+  .img{
+    width: 100%;
+  }
+
+}

@@ -73,7 +73,7 @@ const Home = () => {
 
   return (
     <div className={style.homeContainer}>
-      {/* <Hero /> */}
+      <Hero />
       <div className={style.bodyContainer}>
         <About />
         <Offering />
@@ -85,10 +85,10 @@ const Home = () => {
             Discover the excitement that awaits! Explore our handpicked selection of upcoming events and embark on unforgettable journeys with fellow adventurers.
             </p>
           </section>
-{/* 
+
           {
             recents.length > 0 && (
-              <Slider {...settings}>
+              // <Slider {...settings}>
 
               <section className={style.upcoming}>
 
@@ -96,10 +96,10 @@ const Home = () => {
                   <EventCart key={event.id} event={event} />
                 ))}
               </section>
-              </Slider>
+              // </Slider>
 
             )
-          } */}
+          }
 
            </div>
         </div>

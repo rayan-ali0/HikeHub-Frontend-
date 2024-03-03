@@ -79,4 +79,36 @@
     border: 1px solid white;
     border-radius: 50%;
     cursor: pointer;
+    transition: 0.2s;
+}
+.arrow:hover{
+    background-color: var(--dark-green);
+    /* border: 1px solid var(--dark-green); */
+    border: none;
+    /* transition: 0.2s; */
+    transform: scale(1.09);
+}
+@media (max-width:760px){
+    
+    .jouneyContainer{
+        grid-template-areas: 
+        'a '
+        'b'
+        'c'
+        'd';
+    }
+    .jouneyContainer>section{
+        height: 15rem;
+    }
+    .journeyTitle{
+        font-size: 24px;
+    }
+    .arrow{
+        bottom: 5%;
+    }
+    .jouneyContainer{
+        height: fit-content;
+    }
+    
+    
 }

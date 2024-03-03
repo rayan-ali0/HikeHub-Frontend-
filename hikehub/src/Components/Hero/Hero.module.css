@@ -2,6 +2,11 @@
     height: 100vh;
     position: relative;
     margin-bottom:4em ;
+    background-image: url(/src/assets/images/hikeman.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* object-fit: contain; */
 }
 
 .heroBackground {
@@ -11,6 +16,7 @@
     position: absolute;
     z-index: 1;
 }
+
 
 .blur {
     height: 100%;
@@ -29,9 +35,10 @@
     top: 48%;
     left: 30%;
     transform: translate(-50%, -50%);
+    /* border: 1px solid red; */
 }
 
-.clouds {
+/* .clouds {
     position: absolute;
     bottom: -3rem;
     left: 10rem;
@@ -40,7 +47,7 @@
     z-index: 2;
     overflow-x: hidden;
     opacity: 0.6;
-}
+} */
 
 
 
@@ -108,3 +115,54 @@ font-weight: 550;
     padding: 20px; 
   }
    */
+   @media screen and (max-width:1390px) {
+        .HeroText{
+            margin-left:9% ;
+            /* width:30rem ; */
+        }
+   }
+   @media screen and (max-width:1095px) {
+    .heading1{
+        font-size: 65px;
+    }
+    .transparentText{
+        font-size: 65px;
+    }
+}
+
+@media screen and (max-width:890px) {
+    .heading1{
+        font-size: 45px;
+    }
+    .transparentText{
+        font-size: 45px;
+    }
+    .HeroText{
+        left: 13rem;
+    }
+}
+@media screen and (max-width:642px) {
+    .heading1{
+        font-size: 38px;
+    }
+    .transparentText{
+        font-size: 38px;
+    }
+    .HeroText{
+        left: 11rem;
+    }
+}
+@media screen and (max-width:535px) {
+   
+    .HeroText{
+        left: 30%;
+    }
+}
+@media screen and (max-width:400px) {
+   
+   .HeroContainer{
+    /* width: 18rem; */
+    background-position: 75% center;
+    
+   }
+}

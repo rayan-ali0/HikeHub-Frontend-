@@ -42,7 +42,7 @@ const Hero = () => {
 
     return (
         <div className={style.HeroContainer}>
-            <img src={hikeman} className={style.heroBackground} />
+            {/* <img src={hikeman} className={style.heroBackground} /> */}
             <div className={style.blur}></div>
             <section className={style.HeroText}>
                 <div className={style.guideText}><span className={style.lineSpan}></span>A Hiking guide</div>
@@ -53,10 +53,10 @@ const Hero = () => {
                 {/* </div> */}
             </section>
             <div className={style.cloudHolders}>
-
+{/* 
                 <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds}/>
                 <motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds}/>
-                <motion.img src={cloud3} variants={slider} initial="initial" animate="animate" className={style.clouds}/>
+                <motion.img src={cloud3} variants={slider} initial="initial" animate="animate" className={style.clouds}/> */}
 
                 {/* <motion.img src={cloud4} variants={slider} initial="initial" animate="animate" className={style.cloudss}/> */}
                 {/* <motion.img src={cloud5} variants={slider} initial="initial" animate="animate" className={style.cloudss}/> */}

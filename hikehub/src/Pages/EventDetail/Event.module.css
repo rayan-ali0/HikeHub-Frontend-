@@ -73,3 +73,7 @@
     
   }
   @keyframes l2 {to{background-size: 100% 3px}}
+
+  @media screen and (max-width:1200px) {
+    
+  }

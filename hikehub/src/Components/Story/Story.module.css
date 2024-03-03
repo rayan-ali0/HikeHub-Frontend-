@@ -1,19 +1,19 @@
 .gallery {
-    padding: 0 12px;
+    /* padding: 0 12px; */
     width: 50%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 4em;
-    gap: 2em;
-
+    /* padding: 4em; */
+    /* gap: 2em; */
+    /* border: 2px solid black; */
 }
-.img1 , .img3 {
+/* .img1 , .img3 {
     margin-top: 3em;
     overflow: hidden;
     object-fit: contain;
-}
+} */
 
 .pics {
     --webkit-transition: all 350ms ease;
@@ -21,10 +21,14 @@
     cursor: pointer;
     margin-bottom: 12px;
     height: auto;
-    width: 40%;
-    height: 45%;
+    width: 100%;
+    height: 100%;
+
 }
 
+.pics>img{
+    object-fit: cover;
+}
 .pics:hover {
     filter: opacity(0.8);
 }
@@ -44,7 +48,7 @@
     opacity: 0;
     transform: scale(0);
     overflow: hidden;
-    z-index: 100;
+    z-index: 10;
     transition: opacity 0.4s ease, visibility .4s ease, transform .5s ease-in-out;
 }
 
@@ -112,12 +116,13 @@
     display: flex;
     width: 100%;
     margin: auto;
-    height: 90vh;
-    margin-bottom: 2rem;
+    height: 80vh;
+    margin: 2rem 0;
     color: black;
     animation: fadeIn 0.5s ease-in-out;
     gap:1em;
     position: relative;
+    /* background-color:darkblue; */
 
 }
 
@@ -199,6 +204,61 @@
     /* background-color: aqua; */
 }
 
+@media (max-width:1001px) {
+   .story{
+    flex-direction: column;
+    height: fit-content;
+   }
+   .textSection{
+    width: 100%;
+   }
+   .storySection{
+    width: 94%;
+   }
+   .storyTestimonial{
+    /* margin-bottom: 1rem; */
+   }
+   .storyDescription{
+    line-height: 32px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+   }
+   
+}
+@media (max-width:601px) {
+    .story{
+     flex-direction: column;
+     height: fit-content;
+    }
+    .textSection{
+     width: 100%;
+    }
+    .storySection{
+     width: 94%;
+    }
+    .storyTitle{
+        font-size: 40px;
+    }
+    .storyTestimonial{
+     /* margin-bottom: 1rem; */
+     width: 90%;
+    }
+    .storyDescription{
+     line-height: 27px;
+     margin-top: 0.5rem;
+     margin-bottom: 1rem;
+     line-height: 24px;
+    }
+    .pics{
+        width: 100%;
+    }
+    .storySection{
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+    
+ }
 /* .storyTestimonial::before {
     position: absolute;
     content: "";
