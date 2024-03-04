@@ -52,7 +52,7 @@ const Hero = () => {
                 <h1 className={style.transparentText}>Mountain and beyond</h1>
                 {/* </div> */}
             </section>
-            {/* <div className={style.cloudHolders}> */}
+            <div className={style.cloudHolders}>
 
                 <motion.img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds} />
                 <motion.img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds} />
@@ -61,7 +61,13 @@ const Hero = () => {
                 {/* <motion.img src={cloud4} variants={slider} initial="initial" animate="animate" className={style.cloudss}/> */}
                 {/* <motion.img src={cloud5} variants={slider} initial="initial" animate="animate" className={style.cloudss}/> */}
 
-            {/* </div> */}
+            </div>
+            <div className={style.cloudsResp}>
+            <img src={cloud2} variants={slider1} initial="initial" animate="animate" className={style.clouds} />
+                <img src={cloud} variants={slider} initial="initial" animate="animate" className={style.clouds} />
+                <img src={cloud3} variants={slider} initial="initial" animate="animate" className={style.clouds} />
+
+            </div>
         </div>
     )
 }

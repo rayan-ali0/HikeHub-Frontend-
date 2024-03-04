@@ -45,7 +45,7 @@ navigate('/stories')
             <section className={`${style.journeyA}`}>
                 <img src={jouney} className={style.image}></img>
                 <div className={style.opacity}></div>
-                <span className={style.journeyTitle}>Tripo For Drab Mseilha</span>
+                <span className={style.journeyTitle}>Tripo For Darb Mseilha</span>
                 <img src={arrow} className={style.arrow} onClick={checkStories}/>
             </section>
 

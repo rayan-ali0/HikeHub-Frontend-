@@ -1,7 +1,7 @@
 .HeroContainer {
     height: 100vh;
     position: relative;
-    margin-bottom:4em ;
+    margin-bottom: 4em;
     background-image: url(/src/assets/images/hikeman.jpg);
     background-position: center center;
     background-repeat: no-repeat;
@@ -39,20 +39,22 @@
     /* border: 1px solid red; */
 }
 
-.cloudHolders{
-    /* border: 2px solid black; */
+.cloudHolders {
     width: 100%;
     height: 50%;
     position: absolute;
     bottom: -2rem;
     height: 40rem;
-    /* width: auto; */
     z-index: 2;
     overflow-x: hidden;
     opacity: 0.8;
     display: flex;
 
 
+}
+
+.cloudsResp {
+    display: none;
 }
 
 .clouds {
@@ -62,21 +64,21 @@
     width: auto;
     z-index: 2;
     overflow-y: hidden;
-    opacity: 0.6; 
+    opacity: 0.6;
     /* object-fit: cover; */
-        /* left: 10rem; */
+    /* left: 10rem; */
 
     /* /* border: 2px solid red; */
     /* object-fit: cover; */
     width: 100%;
-/* max-width: 100%; */
-/* height: auto; */
+    /* max-width: 100%; */
+    /* height: auto; */
 
 }
 
 
 
- 
+
 /* .clouds{
     position: absolute;
     bottom: -22rem;
@@ -87,17 +89,20 @@
 } */
 
 @keyframes animate {
-    0%{
+    0% {
         transform: translateX(-100%);
     }
-    50%{
+
+    50% {
         transform: translateX(50%);
     }
-    100%{
+
+    100% {
         transform: translateX(100%);
     }
-    
-} 
+
+}
+
 .guideText {
     font-size: 1.8em;
     font-style: italic;
@@ -124,7 +129,7 @@
     color: white;
     display: inline-block;
     /* color: black; */
-font-weight: 550;
+    font-weight: 550;
 
 }
 
@@ -141,38 +146,66 @@ font-weight: 550;
     padding: 20px; 
   }
    */
-   @media screen and (max-width:1390px) {
-        .HeroText{
-            margin-left:9% ;
-            /* width:30rem ; */
-        }
-   }
-   @media screen and (max-width:1095px) {
-    .heading1{
+@media screen and (max-width:1390px) {
+    .HeroText {
+        margin-left: 9%;
+        /* width:30rem ; */
+    }
+}
+
+@media screen and (max-width:1095px) {
+    .heading1 {
         font-size: 65px;
     }
-    .transparentText{
+
+    .transparentText {
         font-size: 65px;
     }
 
     .clouds {
-    
+
         /* /* border: 2px solid red; */
         /* object-fit: contain; */
-            transition: none; /* Remove or customize the transition property */
-            /* Add any additional styles you want to apply for responsiveness without animation */
-        
+        transition: none;
+        /* Remove or customize the transition property */
+        /* Add any additional styles you want to apply for responsiveness without animation */
+
     }
 }
 
+
+@media (max-width:780px) {
+    .cloudHolders {
+        display: none;
+    }
+
+    .cloudsResp {
+        width: 100%;
+        height: 50%;
+        position: absolute;
+        bottom: -2rem;
+        height: 40rem;
+        z-index: 2;
+        overflow-x: hidden;
+        /* opacity: 0.8; */
+        display: flex;
+    }
+    .cloudsResp>img{
+        object-fit: cover;
+    }
+}
+
+
 @media screen and (max-width:890px) {
-    .heading1{
+    .heading1 {
         font-size: 45px;
     }
-    .transparentText{
+
+    .transparentText {
         font-size: 45px;
     }
-    .HeroText{
+
+    .HeroText {
         left: 13rem;
     }
 
@@ -182,28 +215,33 @@ font-weight: 550;
         height: 35rem;
     }
 }
+
 @media screen and (max-width:642px) {
-    .heading1{
+    .heading1 {
         font-size: 38px;
     }
-    .transparentText{
+
+    .transparentText {
         font-size: 38px;
     }
-    .HeroText{
+
+    .HeroText {
         left: 11rem;
     }
 }
+
 @media screen and (max-width:535px) {
-   
-    .HeroText{
+
+    .HeroText {
         left: 30%;
     }
 }
+
 @media screen and (max-width:400px) {
-   
-   .HeroContainer{
-    /* width: 18rem; */
-    background-position: 75% center;
-    
-   }
+
+    .HeroContainer {
+        /* width: 18rem; */
+        background-position: 75% center;
+
+    }
 }

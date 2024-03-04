@@ -23,7 +23,9 @@ const EventCart = ({ event }) => {
 
             </section>
             <section className={style.titles}>
-                <h3>{event.trail.title+" - "+event.trail.location.name}</h3>
+            <h3>{event.trail.title+" - "+event.trail.location.name}</h3>
+
+                {/* <h3>{event.trail.title+" - "+event.trail.location.name}</h3> */}
                 <h3 className={style.datee}> {event.date.split('T')[0]}</h3>
             </section>
             <section className={style.details}>
