@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 const ModelAddSubscriber = ({ onClose }) => {
   const [formData, setFormData] = useState({
-    email:'',
+    email: '',
   });
   const [message, setMessage] = useState(null);
 
@@ -26,16 +26,16 @@ const ModelAddSubscriber = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axiosInstance.post('subscribe', formData);
-        if (response) {
-          toast.success("Subscriber added successfully!");
-        } else {
-          setMessage(response.data.message)
-        }
-        onClose();
-      } catch (error) {
-        console.error('Error adding Subscriber:', error.response);
+      const response = await axiosInstance.post('subscribe', formData);
+      if (response) {
+        toast.success("Subscriber added successfully!");
+      } else {
+        setMessage(response.data.message)
       }
+      onClose();
+    } catch (error) {
+      console.error('Error adding Subscriber:', error.response);
+    }
 
   };
 
@@ -81,31 +81,46 @@ const ModelAddSubscriber = ({ onClose }) => {
     <Dialog open={true} onClose={onClose}>
       <Box sx={{ p: 2, width: 400, backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
         <h2 style={{ color: '#064402' }}>Add Subscriber  </h2>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              label="Email"
-              type="text"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              sx={styleField}
-            />
-            <Button
-              variant="contained"
-              onClick={handleSubmit}
-              style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
-            >
-              Add Subscriber
-            </Button>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Email"
+            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            sx={styleField}
+          />
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            style={{ width: "100%", backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+          >
+            Add Subscriber
+          </Button>
 
-          </form>
+        </form>
 
         <Button
           variant="contained"
           onClick={onClose}
-          style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+          sx={{
+            color: 'white',
+            cursor: 'pointer',
+            width: 'auto',
+            height: '2.8rem',
+            fontSize: '1em',
+            backgroundColor: '#064402',
+            borderRadius: '25px',
+            border: '1px solid #386935',
+            padding: '15px',
+            marginTop: '10px',
+            width: "100%",
+            '&:hover': {
+              backgroundColor: '#064402',
+            },
+          }}
         >
           Cancel
         </Button>

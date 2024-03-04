@@ -8,7 +8,8 @@ import TextField from '@mui/material/TextField';
 import img from '../../assets/images/default.jpg'
 import axiosInstance from '../../Utils/AxiosInstance';
 import { toast } from 'react-toastify';
-
+import Style from '../Sites/Sites.module.css'
+import './Restaurants.css'
 const RestaurantForm = ({ onClose, restaurant, type }) => {
     console.log("ress", restaurant)
     const [formData, setFormData] = useState({
@@ -191,7 +192,24 @@ const RestaurantForm = ({ onClose, restaurant, type }) => {
                         <Button
                             variant="contained"
                             type="submit"
-                            style={{ backgroundColor: '#163357', color: 'white', marginTop: '10px' }}
+                            sx={{
+                                color: 'white',
+                                cursor: 'pointer',
+                                width: 'auto',
+                                height: '2.8rem',
+                                fontSize: '1em',
+                                backgroundColor: '#064402',
+                                borderRadius: '25px', // assuming this overrides the inline style
+                                border: '1px solid #386935', // Change to your desired border color
+                                fontWeight: 'bold',
+                                padding: '15px',
+                                marginTop: '10px',
+                                width:"100%",
+                                '&:hover': {
+                                    backgroundColor: '#064402',
+                                    // border: '1px solid #386935',
+                                },}}
+                            // style={{ backgroundColor: '#163357', color: 'white', marginTop: '10px' }}
                         >
                             {type + " "} restaurant
                         </Button>
@@ -200,23 +218,23 @@ const RestaurantForm = ({ onClose, restaurant, type }) => {
 
                 {
                     type === "Delete" && (
-                        <>
+                        <div className={Style.delete} >
                             <p> Are You Sure Delete {restaurant?.name}</p>
                             <Button
                                 variant="contained"
                                 onClick={handleDelete}
-                                style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+                                style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' , width:"100%"  }}
                             >
                                 Confirm
                             </Button>
-                        </>
+                        </div>
 
                     )
                 }
                 <Button
                     variant="contained"
                     onClick={onClose}
-                    style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+                    style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px',width:"100%" }}
                 >
                     Cancel
                 </Button>

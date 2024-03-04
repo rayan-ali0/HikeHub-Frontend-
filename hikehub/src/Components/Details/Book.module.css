@@ -6,7 +6,7 @@
     max-width: 500px;
     width: 90%;
     padding: 20px;
-    /* background-image: url('../../assets/images/background.jpg'); */
+    background-image: url('../../assets/images/background.jpg');
     background-position: bottom;
     backdrop-filter: blur(100px);
     /* background-color: var(--lighter-green); */

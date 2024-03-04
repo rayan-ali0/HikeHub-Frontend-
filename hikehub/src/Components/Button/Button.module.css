@@ -8,4 +8,12 @@
     font-size: 1.2em;
     cursor: pointer;
     padding: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.btnStyle:hover{
+    background-color: var(--lighter-green);
+    transform: scale(1.1);
+    
 }

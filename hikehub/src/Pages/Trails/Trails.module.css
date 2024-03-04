@@ -16,10 +16,25 @@
     /* background-color: #C62507; */
     background-color: transparent;
     border-radius: var(--border-radius);
-    border: 1px solid white;
+    border: 1px solid var(--dark-green);
+    background-color: var(--dark-green);
     font-weight: bold;
-    padding: 15px;
-}
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+
+    }
+
+
+    .btnAdd:hover {
+
+    
+
+        background-color: var(--lighter-green);
+        transform: scale(1.05);
+     
+    
+    }
 
 .addForm {
     /* border: 1px solid white; */

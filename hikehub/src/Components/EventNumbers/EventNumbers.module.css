@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap:10px
+    gap:10px;
 }
 .number>h3{
     font-size: 1.3em;
@@ -21,4 +21,36 @@
 .number>h5{
     font-size: 1.1em;
     font-weight: 400;
+}
+
+
+@media (max-width:900px){
+    .numbers{
+        width: 90%;
+    }
+
+    .number{
+        width: 20%;
+    }
+}
+
+@media (max-width:700px){
+    .numbers{
+        width: 100%;
+    }
+
+    .number{
+        width: 20%;
+    }
+}
+@media (max-width:580px){
+    .numbers{
+        width: 100%;
+        overflow: scroll;
+    }
+
+    .number{
+        width: 20%;
+        min-width: 8em;
+    }
 }

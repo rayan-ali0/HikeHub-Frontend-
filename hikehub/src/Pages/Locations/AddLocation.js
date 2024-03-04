@@ -144,7 +144,7 @@ const ModelAddLocation = ({ onClose, setIsAddFormOpen, type, location }) => {
             <Button
               variant="contained"
               onClick={handleSubmit}
-              style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+              style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' ,width:"100%"}}
             >
               {type} Location
             </Button>
@@ -158,7 +158,7 @@ const ModelAddLocation = ({ onClose, setIsAddFormOpen, type, location }) => {
               <Button
                 variant="contained"
                 onClick={handleDelete}
-                style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+                style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px',width:"100%" }}
               >
                 Confirm
               </Button>
@@ -169,7 +169,7 @@ const ModelAddLocation = ({ onClose, setIsAddFormOpen, type, location }) => {
         <Button
           variant="contained"
           onClick={onClose}
-          style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+          style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px',width:"100%" }}
         >
           Cancel
         </Button>

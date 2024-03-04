@@ -310,7 +310,25 @@ const StoryForm = ({ onClose, story, type }) => {
                         <Button
                             variant="contained"
                             type="submit"
-                            style={{ backgroundColor: '#163357', color: 'white', marginTop: '10px' }}
+                            sx={{
+                                color: 'white',
+                                cursor: 'pointer',
+                                width: 'auto',
+                                height: '2.8rem',
+                                fontSize: '1em',
+                                backgroundColor: '#064402',
+                                borderRadius: '25px', // assuming this overrides the inline style
+                                border: '1px solid #386935', // Change to your desired border color
+                                fontWeight: 'bold',
+                                padding: '15px',
+                                marginTop: '10px',
+                                width:"100%",
+                                '&:hover': {
+                                    backgroundColor: '#064402',
+                                    // border: '1px solid #386935',
+                                },}}
+
+                            // style={{ backgroundColor: '#163357', color: 'white', marginTop: '10px' }}
                         >
                             {type + " "} Story
                         </Button>
@@ -324,7 +342,7 @@ const StoryForm = ({ onClose, story, type }) => {
                             <Button
                                 variant="contained"
                                 onClick={handleDelete}
-                                style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+                                style={{width:"100%", backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
                             >
                                 Confirm
                             </Button>
@@ -335,7 +353,7 @@ const StoryForm = ({ onClose, story, type }) => {
                 <Button
                     variant="contained"
                     onClick={onClose}
-                    style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+                    style={{ width:"100%",backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
                 >
                     Cancel
                 </Button>

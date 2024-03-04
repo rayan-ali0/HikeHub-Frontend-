@@ -154,7 +154,24 @@ const AddUser = ({ onClose }) => {
                         <Button
                             variant="contained"
                             type="submit"
-                            style={{ backgroundColor: '#163357', color: 'white', marginTop: '10px' }}
+                            sx={{
+                                color: 'white',
+                                cursor: 'pointer',
+                                width: 'auto',
+                                height: '2.8rem',
+                                fontSize: '1em',
+                                backgroundColor: '#064402',
+                                borderRadius: '25px', // assuming this overrides the inline style
+                                border: '1px solid #386935', // Change to your desired border color
+                                fontWeight: 'bold',
+                                padding: '15px',
+                                marginTop: '10px',
+                                width:"100%",
+                                '&:hover': {
+                                    backgroundColor: '#064402',
+                                    // border: '1px solid #386935',
+                                },}}
+                            // style={{ backgroundColor: '#163357', color: 'white', marginTop: '10px' }}
                         >
                             Add User
                         </Button>
@@ -164,7 +181,7 @@ const AddUser = ({ onClose }) => {
                 <Button
                     variant="contained"
                     onClick={onClose}
-                    style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+                    style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px',width:"100%" }}
                 >
                     Cancel
                 </Button>

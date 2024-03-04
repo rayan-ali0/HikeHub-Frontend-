@@ -80,8 +80,8 @@ const Router = () => {
                             />
                         }>
                         <Route path="/dashboard" element={<Dashboard />}>
-                            <Route path="Overview" index element={<Overview />} />
-                            <Route path="" index element={<Overview />} />
+                            {/* <Route path="Overview" index element={<Overview />} /> */}
+                            <Route path="" index element={<Trails />} />
                             <Route path="trails"  element={<Trails />} />
                             <Route path="trails/:action"  element={<TrailForm/> } />
                             <Route path="events"  element={<EventsTable />}/>

@@ -4,7 +4,7 @@ import EventCart from '../../Components/EventCart/EventCart'
 import axiosInstance from '../../Utils/AxiosInstance'
 import { useEffect, useState } from 'react'
 import Filter from '../../Components/FilterBar/Filter'
-
+import noData from '../../assets/images/route.png'
 
 const Events = () => {
     const [events, setEvents] = useState([])
@@ -49,7 +49,11 @@ const Events = () => {
                                 ))
                             )
                                 : (
-                                    <h1>no data</h1>
+                                    <div className={style.notFound}>
+                                    {/* <img src={noData}/> */}
+                                    <h1> No Events Found!</h1>
+                                    </div>
+
                                 )
                             }
                         </section>

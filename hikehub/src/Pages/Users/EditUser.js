@@ -100,7 +100,7 @@ const ModelEditUser = ({ onClose ,userData}) => {
   return (
     <Dialog open={true} onClose={onClose}>
       <Box sx={{ p: 2, width: 400, backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-        <h2 style={{ color: '#064402' }}>Add Subscriber  </h2>
+        <h2 style={{ color: '#064402' ,marginBottom:"20px"}}>Edit A User  </h2>
           <form onSubmit={handleSubmit}>
 
            <FormControl fullWidth>
@@ -142,14 +142,14 @@ const ModelEditUser = ({ onClose ,userData}) => {
           <Button
               variant="contained"
               onClick={handleSubmit}
-              style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+              style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' ,width:"100%"}}
             >
             Edit User Role
             </Button>
         <Button
           variant="contained"
           onClick={onClose}
-          style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+          style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px',width:"100%" }}
         >
           Cancel
         </Button>

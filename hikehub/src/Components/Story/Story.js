@@ -78,11 +78,6 @@ const Story = ({ story, index }) => {
                 </div>
             </motion.section>
             {/******************************** */}
-            {/* <motion.section className={`${model ? style.modelOpen : style.modelClose} ${style.model}`} variants={variants} animate="animate" initial="initial">
-                <img src={`${process.env.REACT_APP_BACKEND_PATH}${tempimgSrc}`} className={style.showIMg} />
-                <img src={dlt} className={style.closeModel} onClick={() => setModel(false)}></img>
-            </motion.section> */}
-            
             <motion.section className={`${style.storySection} ${style.gallery}`} variants={variants} animate="animate" initial="initial">
                 <div className={style.pics} onClick={() => getImg(0)}>
                     <img
@@ -93,33 +88,6 @@ const Story = ({ story, index }) => {
                         alt={`story.images[1] ${0 + 1}`}
                     />
                 </div>
-                {/* <div className={style.pics} onClick={() => getImg(1)}>
-                    <img
-                        key={0}
-                        src={`${process.env.REACT_APP_BACKEND_PATH}${story.images[1]}`}
-                        className={`${style.storyImage} ${style.img2}`}
-
-                        alt={`story.images[1] ${0 + 1}`}
-                    />
-                </div> */}
-                {/* <div className={style.pics} onClick={() => getImg(2)}>
-                    <img
-                        key={0}
-                        src={`${process.env.REACT_APP_BACKEND_PATH}${story.images[2]}`}
-                        className={`${style.storyImage} ${style.img3}`}
-
-                        alt={`Image ${0 + 1}`}
-                    />
-                </div>
-                <div className={style.pics} onClick={() => getImg(3)}>
-                    <img
-                        key={0}
-                        src={`${process.env.REACT_APP_BACKEND_PATH}${story.images[3]}`}
-                        className={`${style.storyImage} ${style.img4}`}
-
-                        alt={`Image ${0 + 1}`}
-                    />
-                </div> */}
 
             </motion.section>
         </motion.div>

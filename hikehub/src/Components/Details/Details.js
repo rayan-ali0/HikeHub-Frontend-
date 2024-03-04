@@ -48,7 +48,7 @@ const Details = ({ details, seats, trail }) => {
                     <li onClick={() => setActiveLink('description')} className={activeLink === 'description' ? style.active : style.inactive}>
                         Description
                     </li>
-                    <li onClick={() => setActiveLink('meetingPoints')} className={activeLink === 'meetingPoints' ? style.active : style.inactive}>
+                    <li onClick={() => setActiveLink('meetingPoints')} className={`${activeLink === 'meetingPoints' ? style.active : style.inactive} ${style.pts}`}>
                         Meeting Points
                     </li>
                     <li onClick={() => setActiveLink('tools')} className={activeLink === 'tools' ? style.active : style.inactive}>
@@ -90,7 +90,7 @@ const Details = ({ details, seats, trail }) => {
 
                     {
                         !bookStatus  ? (
-                            <button onClick={() => setBook(true)}>Book Your Seat</button>
+                            <button onClick={() => setBook(true)}>Book Your Seat / <span className={style.cost}>{details.cost+"$"}</span>  </button>
                         ) : (
                             <button disabled>{bookStatus}</button>
                         )

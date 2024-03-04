@@ -8,6 +8,9 @@ import TextField from '@mui/material/TextField';
 import img from '../../assets/images/default.jpg'
 import axiosInstance from '../../Utils/AxiosInstance';
 import { toast } from 'react-toastify';
+import { style } from '@mui/system';
+import styles from "../Trails/Trails.module.css";
+import Style from './Sites.module.css'
 
 const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
     console.log("soteeeee", site)
@@ -235,9 +238,26 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
                         />
 
                         <Button
-                            variant="contained"
+                            sx={{
+                                color: 'white',
+                                cursor: 'pointer',
+                                width: 'auto',
+                                height: '2.8rem',
+                                fontSize: '1em',
+                                backgroundColor: '#064402',
+                                borderRadius: '25px', // assuming this overrides the inline style
+                                border: '1px solid #386935', // Change to your desired border color
+                                fontWeight: 'bold',
+                                padding: '15px',
+                                marginTop: '10px',
+                                '&:hover': {
+                                    backgroundColor: '#064402',
+                                    // border: '1px solid #386935',
+                                },
+                            }} variant="contained"
                             type="submit"
-                            style={{ backgroundColor: '#163357', color: 'white', marginTop: '10px' }}
+                            className={styles.btnAdd}
+                            style={{ marginTop: '10px', width: "100%" }}
                         >
                             {type + " "} Site
                         </Button>
@@ -246,23 +266,23 @@ const SiteForm = ({ onClose, fetchUpdatedData, site, type }) => {
 
                 {
                     type === "Delete" && (
-                        <>
+                        <div className={Style.delete}>
                             <p> Are You Sure Delete {site?.name}</p>
                             <Button
                                 variant="contained"
                                 onClick={handleDelete}
-                                style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+                                style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px', width: "100%" }}
                             >
                                 Confirm
                             </Button>
-                        </>
+                        </div>
 
                     )
                 }
                 <Button
                     variant="contained"
                     onClick={onClose}
-                    style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px' }}
+                    style={{ backgroundColor: '#064402', color: 'white', marginTop: '10px', borderRadius: '25px', padding: '10px 20px', width: "100%" }}
                 >
                     Cancel
                 </Button>

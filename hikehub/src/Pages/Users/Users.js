@@ -159,7 +159,7 @@ export default function Users() {
         try {
             const response = await axiosInstance.delete(`user/${id}`, { withCredentials: true });
             if (response) {
-                toast.success("user plan deleted successfully", {
+                toast.success("user deleted successfully", {
                     position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,

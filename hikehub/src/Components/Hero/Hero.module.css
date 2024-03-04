@@ -61,13 +61,16 @@
     height: 40rem;
     width: auto;
     z-index: 2;
-    overflow-x: hidden;
+    overflow-y: hidden;
     opacity: 0.6; 
+    /* object-fit: cover; */
         /* left: 10rem; */
 
     /* /* border: 2px solid red; */
     /* object-fit: cover; */
     width: 100%;
+/* max-width: 100%; */
+/* height: auto; */
 
 }
 
@@ -151,6 +154,15 @@ font-weight: 550;
     .transparentText{
         font-size: 65px;
     }
+
+    .clouds {
+    
+        /* /* border: 2px solid red; */
+        /* object-fit: contain; */
+            transition: none; /* Remove or customize the transition property */
+            /* Add any additional styles you want to apply for responsiveness without animation */
+        
+    }
 }
 
 @media screen and (max-width:890px) {
@@ -162,6 +174,12 @@ font-weight: 550;
     }
     .HeroText{
         left: 13rem;
+    }
+
+    .clouds {
+        position: absolute;
+        bottom: -2rem;
+        height: 35rem;
     }
 }
 @media screen and (max-width:642px) {

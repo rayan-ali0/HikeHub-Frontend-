@@ -3,13 +3,13 @@
     /* overflow: scroll; */
     height: 300px;
     width: 100%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     overflow-x: auto; /* Enable horizontal scrolling */
 
 }
 
 .storyImg {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     /* width: 20%; */
     margin: 10px;
     position: relative;

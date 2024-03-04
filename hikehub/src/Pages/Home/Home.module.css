@@ -41,7 +41,7 @@
 }
 
 .upcoming {
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     width: 70%;
     height: auto;
     display: flex;

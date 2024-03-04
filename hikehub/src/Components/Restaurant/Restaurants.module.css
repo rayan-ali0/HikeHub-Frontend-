@@ -20,20 +20,27 @@ height: 3.5em;
 /* border: 1px solid black; */
 }
 .restaurants{
-    /* border: 1px solid black; */
+    /* border: 1px solid palevioletred; */
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+
 }
 .restaurant{
     width: 100%;
     display: flex;
-    gap:2%;
+    /* gap:2em; */
     /* border: 1px solid black; */
 height: 10em;
+align-items: flex-start;
+gap: 1em;
+justify-content: space-between;
 
 }
 .image{
     width: 30%;
     /* border: 1px solid black; */
-    height: 90%;
+    height: 100%;
     border-radius: var(--border-radius);
 
 }
@@ -42,6 +49,8 @@ height: 10em;
     width: 100%;
     object-fit: cover;
     border-radius: var(--border-radius);
+    /* border: 2px solid red   ; */
+
 }
 .description{
     width: 70%;
@@ -49,7 +58,7 @@ height: 10em;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    gap:10%
+    gap:1em
 }
 .description>h1{
     font-size: 1.4em;
@@ -57,3 +66,47 @@ height: 10em;
 .description>p{
     font-size: 1.1em;
 }
+@media (max-width:640px){
+    .sectionTitle>h1{
+        font-size: 1.6em;
+        }
+
+        .description>h1{
+            font-size: 1.3em;
+        }
+        .description>p{
+            font-size: 1em;
+        }
+        
+}
+
+@media (max-width:460px){
+    .restaurant{
+        width: 100%;
+        display: flex;
+        /* gap:2em; */
+        flex-direction: column;
+        /* border: 1px solid black; */
+    height: auto;
+
+    }
+    
+.restaurant>section{
+    /* border: 1px solid red; */
+    width: 100%;
+
+}
+.image{
+    height: 13em;
+
+}
+
+}
+
+
+
+
+
+
+
+

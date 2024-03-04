@@ -20,6 +20,11 @@ const TrailForm = () => {
     const [count, setCount] = useState(5)
     const [formData, setFormData] = useState({
         images: [null, null, null, null, null],
+        // image1:'',
+        // image2:'',
+        // image3:'',
+        // image4:'',
+        // image5:'',
         difficulty: ''
     });
 
@@ -66,7 +71,10 @@ const TrailForm = () => {
         }));
         console.log(formData)
 
-
+        // setFormData((prevData) => ({
+        //         ...prevData,
+        //         [e.target.name]: e.target.files[0],
+        //     }));
     };
 
     const fetchLocation = async () => {
@@ -107,26 +115,26 @@ const TrailForm = () => {
 
     const handleAdd = async () => {
         // console.log(formData)
-        const dataTosend = new FormData();
+        // const dataTosend = new FormData();
 
-        // Add text fields
-        dataTosend.append('title', formData.title);
-        dataTosend.append('length', formData.length);
-        dataTosend.append('location', formData.location);
-        dataTosend.append('seaLevel', formData.seaLevel);
-        dataTosend.append('walkingTime', formData.walkingTime);
-        dataTosend.append('difficulty', formData.difficulty);
-        dataTosend.append('description', formData.description);
-        dataTosend.append('sites', JSON.stringify(formData.sites));
+        // // Add text fields
+        // dataTosend.append('title', formData.title);
+        // dataTosend.append('length', formData.length);
+        // dataTosend.append('location', formData.location);
+        // dataTosend.append('seaLevel', formData.seaLevel);
+        // dataTosend.append('walkingTime', formData.walkingTime);
+        // dataTosend.append('difficulty', formData.difficulty);
+        // dataTosend.append('description', formData.description);
+        // dataTosend.append('sites', JSON.stringify(formData.sites));
     
-        // Add image files
-        formData.images.forEach((image, index) => {
-            dataTosend.append(`images[${index}]`, image);
-        });
-        console.log(dataTosend)
+        // // Add image files
+        // formData.images.forEach((image, index) => {
+        //     dataTosend.append(`images[${index}]`, image);
+        // });
+        // console.log(dataTosend)
         try {
             
-            const response = await axiosInstance.post(`trail/create`, dataTosend, {
+            const response = await axiosInstance.post(`trail/create`, formData, {
                 headers: { "Content-Type": 'multipart/form-data' }
             }
                 ,
@@ -334,15 +342,15 @@ const TrailForm = () => {
                                 className={Style.inputFile}
                                 accept="image/*"
                                 type="file"
-                                name="images"
+                                name={`images`}
                                 onChange={(e) => handleImageChange(e, index)}
                             />
                             <img
                                 className={Style.imgg}
                                 src={
 
-                                    formData.images[index]
-                                        ? URL.createObjectURL(formData.images[index])
+                                    formData.images[index+1]
+                                        ? URL.createObjectURL(formData.images[index+1])
                                         : img
                                 }
                                 alt={"new image"}

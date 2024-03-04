@@ -14,12 +14,13 @@ import { Divide as Hamburger } from 'hamburger-react'
 const Filter = ({ setEvents, allEvents, open, setOpen }) => {
     const [locations, setLocations] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
+    const [debounceTimer, setDebounceTimer] = useState()
     const [filterBY, setFilterBY] = useState({
         lengthInterval: [0, 30]
     })
     const toggleNav = () => {
         setOpen(!open);
-        console.log("opennnnn",open)
+        console.log("opennnnn", open)
     };
 
 
@@ -30,11 +31,27 @@ const Filter = ({ setEvents, allEvents, open, setOpen }) => {
         setSearchTerm('')
     }
 
+    function handleScrollBar() {
+
+    }
+
     const handleFilter = (e) => {
-        setFilterBY({
-            ...filterBY,
-            [e.target.name]: e.target.value
-        })
+        if (e.target.name === "lengthInterval") {
+            clearTimeout(debounceTimer);
+            const newTimer = setTimeout(() => {
+                setFilterBY({
+                    ...filterBY,
+                    [e.target.name]: e.target.value
+                })
+            }, 100);
+            setDebounceTimer(newTimer)
+        } else {
+
+            setFilterBY({
+                ...filterBY,
+                [e.target.name]: e.target.value
+            })
+        }
         console.log("BYYYYYY", filterBY)
     }
 
@@ -96,101 +113,101 @@ const Filter = ({ setEvents, allEvents, open, setOpen }) => {
     return (
         <div className={style.filterBar}>
             <div className={style.opacity}></div>
-            
-                    <section className={`${style.filterRes}`}>
-                        <span className={style.filterText}> Filter : </span>
-                        {/* <div className={style.burger} onClick={toggleNav} >
+
+            <section className={`${style.filterRes}`}>
+                <span className={style.filterText}> Filter : </span>
+                {/* <div className={style.burger} onClick={toggleNav} >
                             <div className={`${style.bar} ${open ? style.open : ''}`}></div>
                             <div className={`${style.bar} ${open ? style.open : ''}`}></div>
                             <div className={`${style.bar} ${open ? style.open : ''}`}></div>
                         </div> */}
-                        <Hamburger toggled={open} toggle={setOpen} />
-                    </section>
+                <Hamburger toggled={open} toggle={setOpen} />
+            </section>
 
-                
-                        {/* <div className={`${open ? style.filtersOpen: style.filters}`}> */}
-                        <div className={`${ style.filtersOpen} ${open?style.show:style.hide}` }>
 
-                            <section className={style.inputBox} >
-                                <select type="location" name="location" id="location" placeholder="location" className={`${style.emailInput} ${style.selectInput}`}
-                                    onChange={handleFilter}
-                                >
-                                    <option value="">Location</option>
-                                    {
-                                        locations && locations.map((location, index) => (
-                                            <option value={location._id} key={index}>{location.name}</option>
+            {/* <div className={`${open ? style.filtersOpen: style.filters}`}> */}
+            <div className={`${style.filtersOpen} ${open ? style.show : style.hide}`}>
 
-                                        ))
-                                    }
+                <section className={style.inputBox} >
+                    <select type="location" name="location" id="location" placeholder="location" className={`${style.emailInput} ${style.selectInput}`}
+                        onChange={handleFilter}
+                    >
+                        <option value="">Location</option>
+                        {
+                            locations && locations.map((location, index) => (
+                                <option value={location._id} key={index}>{location.name}</option>
 
-                                </select>
-                            </section>
-                            <section className={style.inputBox} >
-                                <select type="difficulty" name="difficulty" id="difficulty" placeholder="Difficulty" className={`${style.emailInput} ${style.selectInput}`}
-                                    onChange={handleFilter}
+                            ))
+                        }
 
-                                >
-                                    <option value="">difficulty</option>
-                                    <option value="Easy">Easy</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Hard">Hard</option>
+                    </select>
+                </section>
+                <section className={style.inputBox} >
+                    <select type="difficulty" name="difficulty" id="difficulty" placeholder="Difficulty" className={`${style.emailInput} ${style.selectInput}`}
+                        onChange={handleFilter}
 
-                                </select>
-                            </section>
-                            <section className={`${style.inputBox} ${style.slideContainer}`}>
+                    >
+                        <option value="">difficulty</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
 
-                                <div className={style.slider}
-                                >
-                                    <p>{filterBY.lengthInterval[0]}</p>
-                                    <Slider
-                                        value={filterBY.lengthInterval}
-                                        name="lengthInterval"
-                                        onChange={handleFilter}
-                                        getAriaLabel={() => 'Length range'}
-                                        min={0}
-                                        max={200}
-                                        style={{
-                                            color: 'rgba(255, 255, 255, 0.5)',
-                                            '& .MuiSlider-thumb': {
-                                                backgroundColor: 'white',
-                                            },
-                                            '& .MuiSlider-track': {
-                                                color: 'rgba(255, 255, 255, 0.5)',
-                                            },
-                                            '& .MuiSlider-rail': {
-                                                color: 'rgba(255, 255, 255, 0.1)',
-                                            },
-                                        }}
-                                    />
-                                    <p>{filterBY.lengthInterval[1] + "Km"}</p>
+                    </select>
+                </section>
+                <section className={`${style.inputBox} ${style.slideContainer}`}>
 
-                                </div>
-                                
+                    <div className={style.slider}
+                    >
+                        <p>{filterBY.lengthInterval[0]}</p>
+                        <Slider
+                            value={filterBY.lengthInterval}
+                            name="lengthInterval"
+                            onChange={handleFilter}
+                            getAriaLabel={() => 'Length range'}
+                            min={0}
+                            max={30}
+                            style={{
+                                color: 'rgba(255, 255, 255, 0.5)',
+                                '& .MuiSlider-thumb': {
+                                    backgroundColor: 'white',
+                                },
+                                '& .MuiSlider-track': {
+                                    color: 'rgba(255, 255, 255, 0.5)',
+                                },
+                                '& .MuiSlider-rail': {
+                                    color: 'rgba(255, 255, 255, 0.1)',
+                                },
+                            }}
+                        />
+                        <p>{filterBY.lengthInterval[1] + "Km"}</p>
 
-                            </section>
+                    </div>
 
-                            <section className={style.inputBox} >
-                                <input type="title" name="title" id="title" placeholder="Search By Title" className={style.emailInput} onChange={handleSearch}
-                                    value={searchTerm}
-                                />
-                                <img src={magnifier} className={style.submit} onClick={Search}></img>
-                            </section>
-                            <section className={style.resetBTnRes} onClick={reset}>
-                                    <span className={style.resetText}> Reset</span>
-                                </section>
 
-                                    <section className={style.resetBtn} onClick={reset}>
-                                    <img src={delt} className={style.resetX} />
-                                </section>
-                                
-                                    {/* <section className={style.resetBTnRes} onClick={reset}>
+                </section>
+
+                <section className={style.inputBox} >
+                    <input type="title" name="title" id="title" placeholder="Search By Title" className={style.emailInput} onChange={handleSearch}
+                        value={searchTerm}
+                    />
+                    <img src={magnifier} className={style.submit} onClick={Search}></img>
+                </section>
+                <section className={style.resetBTnRes} onClick={reset}>
+                    <span className={style.resetText}> Reset</span>
+                </section>
+
+                <section className={style.resetBtn} onClick={reset}>
+                    <img src={delt} className={style.resetX} />
+                </section>
+
+                {/* <section className={style.resetBTnRes} onClick={reset}>
                                     <span className={style.resetText}> Reset</span>
                                 </section> */}
-                        
-                          
-                        </div>
-                    
-            
+
+
+            </div>
+
+
 
 
         </div>
