@@ -93,7 +93,10 @@ const Home = () => {
               <section className={style.upcoming}>
 
                 {recents.map(event => (
+                  <div className={style.cartHod}>
                   <EventCart key={event.id} event={event} />
+
+                   </div>
                 ))}
               </section>
               // </Slider>

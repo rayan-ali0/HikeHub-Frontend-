@@ -45,11 +45,15 @@
     width: 70%;
     /* height: auto; */
     display: flex    ;
-    /* justify-content: space-between; */
-    overflow: scroll;
+    justify-content: space-between;
+    overflow-x: scroll;
     gap: 2em;
-    padding: 0 1em;
+    padding: 1em;
 
+}
+.cartHod{
+    /* min-width: 30%; */
+    /* border: 2px solid red; */
 }
 
 
@@ -130,4 +134,17 @@
     }
 
 
+}
+
+@media (max-width:570px) {
+    .cartHod {
+        /* width: ; */
+        min-width: 90%;
+        /* width: 100%; */
+        /* margin: 0 auto; */
+        /* background-color: aqua; */
+    }
+    .upcoming{
+        gap:1em
+    }
 }
