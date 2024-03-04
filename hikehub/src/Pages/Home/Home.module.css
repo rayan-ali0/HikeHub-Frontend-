@@ -43,11 +43,12 @@
 .upcoming {
     /* border: 1px solid pink; */
     width: 70%;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
+    /* height: auto; */
+    display: flex    ;
+    /* justify-content: space-between; */
     overflow: scroll;
-    gap: 3em;
+    gap: 2em;
+    padding: 0 1em;
 
 }
 
